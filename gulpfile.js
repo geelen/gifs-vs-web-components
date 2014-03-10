@@ -84,10 +84,10 @@ gulp.task('connect', $.connect.server({
 gulp.task('watch', ['build', 'connect'], function () {
     // Watch for changes in `src` folder
     gulp.watch([
-        'src/*.jade',
-        'src/styles/**/*.css',
-        'src/scripts/**/*.js',
-        'src/images/**/*'
+        'public/*.html',
+        'public/styles/**/*.css',
+        'public/scripts/**/*.js',
+        'public/images/**/*'
     ], function(event) {
         return gulp.src(event.path)
             .pipe($.connect.reload());
@@ -97,7 +97,7 @@ gulp.task('watch', ['build', 'connect'], function () {
     gulp.watch('src/*.jade', ['html']);
 
     // Watch .scss files
-    gulp.watch('src/styles/**/*.sass', ['styles']);
+    gulp.watch('src/styles/**/*.scss', ['styles']);
 
     // Watch .js files
     gulp.watch('src/scripts/**/*.js', ['scripts']);
