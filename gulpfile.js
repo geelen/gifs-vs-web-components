@@ -11,10 +11,10 @@ var $ = require('gulp-load-plugins')();
 gulp.task('styles', function () {
     return gulp.src([
         'src/bower_components/prism/themes/prism-twilight.css',
-        'src/styles/**/*.sass'])
-        .pipe($.rubySass({
+        'src/styles/**/*.scss'])
+        .pipe($.sass({
           style: 'expanded',
-          loadPath: ['src/bower_components']
+          includePath: ['src/bower_components']
         }))
         .pipe($.concat('styles.css'))
         .pipe($.autoprefixer('last 1 version'))

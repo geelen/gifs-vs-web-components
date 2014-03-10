@@ -1,7 +1,6 @@
 {
   "name": "a-gif-odyssey",
   "version": "0.0.0",
-  "dependencies": {},
   "devDependencies": {
     "gulp": "~3.5.0",
     "gulp-load-plugins": "~0.3.0",
@@ -11,11 +10,11 @@
     "gulp-imagemin": "~0.1.4",
     "gulp-clean": "~0.2.4",
     "gulp-cache": "~0.1.1",
-    "gulp-ruby-sass": "~0.3.0",
     "gulp-size": "~0.1.2",
     "gulp-connect": "~1.0.0",
     "gulp-jade": "~0.4.2",
-    "gulp-concat": "~2.1.7"
+    "gulp-concat": "~2.1.7",
+    "gulp-sass": "~0.7.1"
   },
   "engines": {
     "node": ">=0.10.0"
