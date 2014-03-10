@@ -1,20 +1,18 @@
-@import 'nib' // CSS3 extensions for Stylus: http://visionmedia.github.io/nib/
-
 // variables!
 
-slide_width = 640px
-slide_height = 480px
-slide_background = #eaeaea
+$slide_width: 640px
+$slide_height: 480px
+$slide_background: #eaeaea
 
-slide_transition_length = .6s
-slide_transition_easing = ease
-slide_transition_rotate_y = 90deg
+$slide_transition_length: .6s
+$slide_transition_easing: ease
+$slide_transition_rotate_y: 90deg
 // Safari bugs out on 3d transform-origins, so we have to fake it
-slide_transition_nudge_x = -100px
+$slide_transition_nudge_x: -100px
 
-bullet_transition_length = .3s
-bullet_transition_easing = ease
-bullet_transition_translate_x = 16px
+$bullet_transition_length: .3s
+$bullet_transition_easing: ease
+$bullet_transition_translate_x: 16px
 
 // base
 
@@ -50,10 +48,7 @@ article
     perspective: 600px
 
 .bespoke-slide
-  transition:
-    transform slide_transition_length slide_transition_easing,
-    opacity slide_transition_length slide_transition_easing,
-    background slide_transition_length slide_transition_easing
+  transition: transform $slide_transition_length $slide_transition_easing, opacity $slide_transition_length $slide_transition_easing, background $slide_transition_length $slide_transition_easing
   transform-origin: 50% 50% 0
   backface-visibility: hidden
   display: flex
@@ -61,14 +56,14 @@ article
   justify-content: center
   align-items: center
   text-align: center
-  width: slide_width
-  height: slide_height
+  width: $slide_width
+  height: $slide_height
   position: absolute
   top: 50%
-  margin-top: (slide_height / 2) * -1
+  margin-top: ($slide_height / 2) * -1
   left: 50%
-  margin-left: (slide_width / 2) * -1
-  background: slide_background
+  margin-left: ($slide_width / 2) * -1
+  background: $slide_background
   padding: 40px
   border-radius: 0
   @media print
@@ -80,10 +75,10 @@ article
     margin: 0
 
 .bespoke-before
-  transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
+  transform: translateX($slide_transition_nudge_x * -1) translateX($slide_width / -2) rotateY($slide_transition_rotate_y * -1) translateX($slide_width / -2)
 
 .bespoke-after
-  transform: translateX(slide_transition_nudge_x) translateX(slide_width / 2) rotateY(slide_transition_rotate_y) translateX(slide_width / 2)
+  transform: translateX($slide_transition_nudge_x) translateX($slide_width / 2) rotateY($slide_transition_rotate_y) translateX($slide_width / 2)
   @media print
     transform: none
 
@@ -91,7 +86,7 @@ article
   opacity: 0
   pointer-events: none
   @media print
-    opacity 1
+    opacity: 1
 
 .bespoke-active
   opacity: 1
@@ -112,7 +107,7 @@ article
 
 .emphatic,
 .emphatic .bespoke-slide
-  background: slide_background
+  background: $slide_background
 
 // prism styles
 
