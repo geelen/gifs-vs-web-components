@@ -139,12 +139,6 @@ html.wf-loading
         h1 music
         .mid ?
 
-      section
-        .mid How to:
-        h3.ta-left ● Change speed of GIFs
-        h3.ta-left ● Synch to Music
-        hr
-
       section.nobuild
         h1.fadeout GifCity
         .line.fadeout
@@ -163,6 +157,28 @@ html.wf-loading
       section(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
         h1 DJGif
+        h4 github.com/geelen/djgif
+        h4 djgif.com
+          span.feat  (soon)
+
+      section.nobuild
+        .mid How to:
+        h3.ta-left ● Change speed of GIFs
+        h3.ta-left.fadeout ● Find beats from music
+        hr
+
+      section
+        pre
+          code.language-markup.
+            &lt;img src="probably_cats.gif"&gt;
+        pre
+          code.language-javascript.
+            var img = new Image;
+            img.src = "definitely_cats.gif";
+        h3 Now what?
+
+      section
+        h1.red ✖
 
       //section
         h2 Syntax Highlighting
