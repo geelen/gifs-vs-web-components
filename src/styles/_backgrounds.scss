@@ -44,7 +44,7 @@
 .not-sure-if-right {
   //@include background-gif('http://media.giphy.com/media/Br5rWtM1QiYBa/giphy.gif')
   @include background-gif('http://www.reactiongifs.us/wp-content/uploads/2013/08/shaking_head_breaking_bad.gif',
-                          $position: 100% 0%, $blur: 0, $size: 1)
+                          $position: 80% 0%, $blur: 0, $size: 1)
 }
 
 .thumbsup {
@@ -63,4 +63,12 @@
 
 .light {
   background-color: #001F3F;
+}
+
+.yeahnah {
+  @include background-gif("http://media.giphy.com/media/Pr3jpBoQLuovu/giphy.gif", $darkness: 0, $blur: 0.5, $position: 100% 50%);
+}
+
+.yep {
+  @include background-gif("http://media.giphy.com/media/jN0ygssTH2hoI/giphy.gif", $darkness: 0, $blur: 0.5);
 }

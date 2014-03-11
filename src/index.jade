@@ -180,21 +180,97 @@ html.wf-loading
       section
         h1.red ✖
 
-      //section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        hr
+      section
+        h1 Why not video?
         pre
           code.language-javascript.
-            bespoke.from('article', {
-              keys: true,
-              touch: true,
-              hash: true,
-              state: true,
-              bullets: 'li, .bullet'
-            });
+            var video = document.createElement('video');
+            video.autoPlay = true;
+            video.loop = true;
+            video.playbackRate = 1.5;
+            video.src = 'converted.gif.mp4';
 
+      section(data-bespoke-state='yeahnah')
+
+      section
+        h4 Break GIF into frames?
+        pre
+          code.language-markup.
+            &lt;div data-frame="0"&gt;
+              &lt;img src="frame0.gif"&gt;
+              &lt;img src="frame1.gif"&gt;
+              &lt;img src="frame2.gif"&gt;
+            &lt;/div&gt;
+
+      section
+        h4 Break GIF into frames?
+        pre
+          code.language-css.
+            [data-frame] img {
+              opacity: 0;
+            }
+
+            [data-frame="0"] img:nth-child(1),
+            [data-frame="1"] img:nth-child(2),
+            [data-frame="2"] img:nth-child(3) {
+              opacity: 1;
+            }
+
+      section(data-bespoke-state='yep')
+
+      section
+        iframe(data-bespoke-delay-src='http://www.lcdf.org/gifsicle/')
+
+      section
+        h1 Break GIF into frames:
+        pre
+          code.language-bash.
+            brew install gifsicle
+            gifsicle -e cats.gif
+            # outputs cats.gif.001 cats.gif.002 etc
+
+      section(data-bespoke-state='yeahnah')
+
+      section
+        .mid How can I
+        h1 break apart a
+          span.feat  GIF
+        .mid in the
+        h1 browser?
+        hr
+
+      section
+        img(src='http://dl.dropbox.com/u/80664946/emscripten_logo.jpg')
+        h4 github.com/kripken/emscripten
+
+      section(data-bespoke-state='yeahnah')
+
+      section
+        h1 Time for
+          .feat Javascript Binary Hax!
+
+      section
+        h4
+          a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
+
+      section
+        pre
+          code.language-javascript.
+            var binaryGif = new XMLHttpRequest();
+            binaryGif.open('GET', mirroredUrl, true);
+            binaryGif.responseType = 'arraybuffer';
+            binaryGif.onload = function () {
+              this.reponse; // BINARY GIF MADNESS
+            }
+            binaryGif.send();
+
+      section
+        h4.ta-left
+          a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js') https://github.com/geelen/djgif/ blob/master/src/ js/services/gif_exploder.js
       //section(data-bespoke-hash='named-route')
+
+      section
+        h1 Same Origin Policy
 
     script(src='scripts/scripts.js')
     script.

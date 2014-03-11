@@ -33,6 +33,9 @@ gulp.task('scripts', function () {
             'src/bower_components/bespoke-state/dist/bespoke-state.min.js',
             'src/bower_components/bespoke-bullets/dist/bespoke-bullets.min.js',
             'src/bower_components/prism/prism.js',
+            'src/bower_components/prism/components/prism-bash.js',
+            'src/bower_components/prism/components/prism-css.js',
+            'src/bower_components/prism/components/prism-css-extras.js',
             'src/scripts/**/*.js'])
 //        .pipe($.jshint('.jshintrc'))
 //        .pipe($.jshint.reporter('default'))

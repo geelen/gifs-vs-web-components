@@ -6,16 +6,12 @@ bespoke.plugins.delaySrc = function (deck, options) {
   });
 
   deck.on('activate', function (slide) {
-    console.log("ACTIVATE")
-    console.log(delayedObjects[slide.index]);
     delayedObjects[slide.index].map(function (object) {
       object.src = object.dataset.bespokeDelaySrc;
     })
   });
 
   deck.on('deactivate', function (slide) {
-    console.log("DEACTIVATE")
-    console.log(delayedObjects[slide.index]);
     delayedObjects[slide.index].map(function (object) {
       object.src = "";
     })
