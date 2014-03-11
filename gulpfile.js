@@ -31,6 +31,7 @@ gulp.task('scripts', function () {
             'src/bower_components/bespoke-scale/dist/bespoke-scale.min.js',
             'src/bower_components/bespoke-hash/dist/bespoke-hash.min.js',
             'src/bower_components/bespoke-state/dist/bespoke-state.min.js',
+            'src/bower_components/bespoke-bullets/dist/bespoke-bullets.min.js',
             'src/bower_components/prism/prism.js',
             'src/scripts/**/*.js'])
 //        .pipe($.jshint('.jshintrc'))

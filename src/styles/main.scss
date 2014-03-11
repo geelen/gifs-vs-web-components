@@ -85,6 +85,30 @@ article {
       transform: translateZ(0);
     }
   }
+  &.nobuild > * {
+    transition: none;
+  }
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    pointer-events: none;
+  }
+
+  .bespoke-bullet {
+    transition-delay: 0;
+  }
+  .bespoke-bullet-inactive {
+    opacity: 0;
+  }
+
+  .fadeout {
+    transition: opacity 2s 2s;
+    opacity: 1;
+  }
 }
 
 .bespoke-inactive {
@@ -106,6 +130,10 @@ article {
         transform: translateZ(0);
       }
     }
+  }
+
+  .fadeout {
+    opacity: 0.2;
   }
 }
 
@@ -188,9 +216,10 @@ h3 {
   margin: 16px 0;
 }
 
-hr {
-  visibility: hidden;
-  height: 20px;
+h4 {
+  font-size: 36px;
+  font-weight: 300;
+  margin: 16px 0;
 }
 
 ul {
@@ -211,6 +240,12 @@ a {
   text-decoration: none;
 }
 
+hr {
+  border: none;
+  border-top: dotted 1px rgba(white, 0.3);
+  width: 100%;
+  margin: 24px 0;
+}
 .mid {
   font-size: 36px;
   font-family: adobe-jenson-pro, Georgia;
@@ -221,7 +256,7 @@ a {
   &::before,
   &::after {
     content: '';
-    flex-grow: 3;
+    flex-grow: 1;
     display: block;
     border-top: dotted 1px rgba(white, 0.3);
   }
@@ -249,7 +284,15 @@ $me-height: 72px;
 }
 .rtomayko {
   @extend .person;
-  background-image: url("https://1.gravatar.com/avatar/abfc88b96ae18c85ba7aac3bded2ec5e?d=https%3A%2F%2Fidenticons.github.com%2F4f4adcbf8c6f66dcfc8a3282ac2bf10a.png&r=x&s=400");
+  background-image: url("https://1.gravatar.com/avatar/abfc88b96ae18c85ba7aac3bded2ec5e?d=https%3A%2F%2Fidenticons.github.com%2F4f4adcbf8c6f66dcfc8a3282ac2bf10a.png&r=x&s=100");
+}
+.bieber {
+  @extend .person;
+  background-image: url("https://0.gravatar.com/avatar/8b3a5fa50d63275c5c6e304f1a081bfb?d=https%3A%2F%2Fidenticons.github.com%2Fb3e3e393c77e35a4a3f3cbd1e429b5dc.png&r=x&s=100");
+}
+.josh {
+  @extend .person;
+  background-image: url("https://pbs.twimg.com/profile_images/2684842981/56fa21c02d5bd3bb72a4ab067410dadc.jpeg");
 }
 
 .line {
@@ -257,31 +300,27 @@ $me-height: 72px;
   align-items: center;
 }
 
+.leftalign {
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: left;
+}
+.ta-left {
+  width: 100%;
+  text-align: left;
+}
+
 .nope {
   text-decoration: line-through;
 }
 
-@mixin background-gif($url, $position: 50% 50%) {
-  background-color: black;
-  &::before {
-    content: '';
-    position: absolute;
-    height: 21%;
-    width: 21%;
-    background-size: cover;
-    background-image: url(#{$url});
-    background-position: $position;
-    transform-origin: 0 0;
-    transform: scale(5);
-    filter: blur(0.5px);
-    opacity: 0.5;
-  }
+.red {
+  color: red;
 }
 
-.gif-2012 {
-  @include background-gif('http://celebdailynews.com/wp-content/uploads/2013/06/BrowserPreview_tmp.gif', 100% 50%);
+.feat {
+  color: #39CCCC;
 }
 
-.gif-shocked {
-  @include background-gif('http://i989.photobucket.com/albums/af13/dwigley1/6yvc9yh.gif');
-}
+@import 'backgrounds';
