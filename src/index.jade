@@ -246,8 +246,64 @@ html.wf-loading
       section(data-bespoke-state='yeahnah')
 
       section
+        .mid Emscripten:
+        h3.ta-left ● Stubs out the file system
+        h3.ta-left ● Generates a lot of JS
+        h3.ta-left ● Isn't clever about using Browser APIs
+
+      section
         h1 Time for
           .feat Javascript Binary Hax!
+
+      section
+        pre
+          code.language-javascript.
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'cats.gif', true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+              this.reponse; // BINARY GIF MADNESS
+            }
+            xhr.send();
+
+      //section(data-bespoke-hash='named-route')
+
+      section
+        h1 Same Origin Policy
+
+      section
+        .mid Same Origin Policy:
+        h3.ta-left ● Prevents arbitrary cross-domain XHR
+        h3.ta-left ● CORS on the server
+        h3.ta-left ● Or, proxy the content
+
+      section
+        .mid Proxying content?
+        h3.ta-left ● Run your own proxy
+        h3.ta-left ● Use a CDN for evil
+
+      section
+        .mid Proxying content?
+        h3 Run your own proxy
+        .mid vs
+        h3 Use a CDN for evil
+        hr
+
+      section
+        h4
+          a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
+
+      section
+        h4
+          a(target="_blank" href='') tumblr.com/gif
+        h4
+          a(target="_blank" href='') djgif.com/gif
+
+      section
+        h1 Locally?
+        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/gulpfile.js#L71-71')
+          h1 DJGif
+          h4 gulpfile.js
 
       section
         h4
@@ -256,21 +312,67 @@ html.wf-loading
       section
         pre
           code.language-javascript.
-            var binaryGif = new XMLHttpRequest();
-            binaryGif.open('GET', mirroredUrl, true);
-            binaryGif.responseType = 'arraybuffer';
-            binaryGif.onload = function () {
-              this.reponse; // BINARY GIF MADNESS
+            var blob = new Blob(
+              [ buffer1, buffer2, buffer ],
+              {type: 'mime/type'}
+            );
+            img.src = URL.createObjectURL(blob);
+
+      section
+        pre
+          code.language-javascript.
+            xhr.onload = function () {
+              var blob = new Blob(
+                [this.response],
+                {type: 'image/gif'}
+              );
+              img.src = URL.createObjectURL(blob);
             }
-            binaryGif.send();
 
       section
-        h4.ta-left
-          a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js') https://github.com/geelen/djgif/ blob/master/src/ js/services/gif_exploder.js
-      //section(data-bespoke-hash='named-route')
+        pre
+          code.language-javascript.
+            var header = gifData.slice(0, startOfFrames);
+            var footer = gifData.slice(-1);
+            for (var i = 0; i < indices.length; i++) {
+              var frameData = gifData.slice(
+                indices[i],
+                indices[i+1] || endOfFrames);
+              var blob = new Blob(
+                [ header, frameData, gifFooter ],
+                {type: 'image/gif'});
+              frames.push(URL.createObjectURL(blob));
+            }
 
       section
-        h1 Same Origin Policy
+        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js')
+          h1 DJGif
+          h4 src/js/services/gif_exploder.js
+
+      section
+        .mid Much, much more:
+        ul
+          li.fadeout ● Music data from Rdio
+          li.fadeout ● Beat data from EchoNest
+          li.fadeout ● Beat matching playback
+          li
+            strong ● DEMO
+        hr
+
+      section
+        h1 The
+          span.feat  full version
+          |  of this talk
+        .mid at
+        h1 JSConf AU!
+        h4
+
+      section
+      section
+      section
+      section
+
+
 
     script(src='scripts/scripts.js')
     script.
