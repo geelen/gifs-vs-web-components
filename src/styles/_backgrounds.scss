@@ -72,3 +72,11 @@
 .yep {
   @include background-gif("http://media.giphy.com/media/jN0ygssTH2hoI/giphy.gif", $darkness: 0, $blur: 0.5);
 }
+
+.disgunbgood {
+  @include background-gif("http://media.giphy.com/media/edho4s1lWEawo/giphy.gif", $darkness: 0, $blur: 0, $size: 1);
+}
+
+.ticked {
+  @include background-gif("http://media.giphy.com/media/13TBw9SxMnz8pW/giphy.gif");
+}

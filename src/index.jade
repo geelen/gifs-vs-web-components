@@ -46,7 +46,8 @@ html.wf-loading
           h3 @BenSchwarz
 
       section
-        h1 vastimg.herokuapp.com
+        h3
+          strong vastimg.herokuapp.com
         .line
           .rtomayko
           h3 @RTomayko
@@ -79,19 +80,17 @@ html.wf-loading
 
       section(data-bespoke-state='okthen')
         h1
-          span.feat Most
-          |  of Tumblr
+          span.feat One
+          |  Tumblr
 
-      section(data-bespoke-state='thumbsup')
+      section
         .mid Tumblr:
-        h2.ta-left • Arranged by theme
-        h2.ta-left • Full of GIFs
+        ul
+          li • Arranged by theme
+          li • Full of GIFs
         hr
 
-      section(data-bespoke-state='fact')
-        h2 Tumblr
-        .mid is
-        h1 awesome!
+      section(data-bespoke-state='disgunbgood')
 
       section
         h1 GifCity
@@ -113,12 +112,15 @@ html.wf-loading
           strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
 
       section
-        iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=dvdp')
+        h2 mrdiv
+        iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=mrdiv')
 
       section
+        h2 simpsonsgifs
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=simpsonsgifs')
 
       section
+        h2 skt-na-veia-sempre
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
 
       section(data-bespoke-state='fact')
@@ -162,11 +164,11 @@ html.wf-loading
           span.feat  (soon)
 
       section.nobuild
-        .mid How to:
-        h3.ta-left ● Change speed of GIFs
-        h3.ta-left.fadeout ● Find beats from music
+        .mid Two challenges:
+        ul
+          li • Change speed of GIFs
+          li • Find beats from music
         hr
-
       section
         pre
           code.language-markup.
@@ -203,7 +205,7 @@ html.wf-loading
             &lt;/div&gt;
 
       section
-        h4 Break GIF into frames?
+        h4 Show them with CSS
         pre
           code.language-css.
             [data-frame] img {
@@ -247,9 +249,9 @@ html.wf-loading
 
       section
         .mid Emscripten:
-        h3.ta-left ● Stubs out the file system
-        h3.ta-left ● Generates a lot of JS
-        h3.ta-left ● Isn't clever about using Browser APIs
+        h3.ta-left • Stubs out the file system
+        h3.ta-left • Generates a lot of JS
+        h3.ta-left • Isn't clever about using Browser APIs
 
       section
         h1 Time for
@@ -273,20 +275,19 @@ html.wf-loading
 
       section
         .mid Same Origin Policy:
-        h3.ta-left ● Prevents arbitrary cross-domain XHR
-        h3.ta-left ● CORS on the server
-        h3.ta-left ● Or, proxy the content
+        ul
+          li • Prevents arbitrary cross-domain XHR
+          li • CORS on the server
+          li • Or, proxy the content
+        hr
 
       section
         .mid Proxying content?
-        h3.ta-left ● Run your own proxy
-        h3.ta-left ● Use a CDN for evil
-
-      section
-        .mid Proxying content?
-        h3 Run your own proxy
+        h3 Run your own
+          strong.feat  proxy
         .mid vs
-        h3 Use a CDN for evil
+        h3 Use a CDN for
+          strong.red  evil
         hr
 
       section
@@ -294,18 +295,28 @@ html.wf-loading
           a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
 
       section
-        h4
-          a(target="_blank" href='') tumblr.com/gif
-        h4
-          a(target="_blank" href='') djgif.com/gif
+        h3 djgif.com/*.gif
+        .mid =
+        h3 tumblr.com/*.gif
 
       section
         h1 Locally?
         a(target="_blank" href='https://github.com/geelen/djgif/blob/master/gulpfile.js#L71-71')
           h1 DJGif
-          h4 gulpfile.js
+          h4
+            strong gulpfile.js
 
       section
+        h3 localhost:8080/*.gif
+        .mid =
+        h3 tumblr.com/*.gif
+
+      section(data-bespoke-state='ticked')
+        h1 Same Origin Policy
+        h1 ✔
+
+      section
+        h1 What's in a GIF?
         h4
           a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
 
@@ -352,11 +363,11 @@ html.wf-loading
       section
         .mid Much, much more:
         ul
-          li.fadeout ● Music data from Rdio
-          li.fadeout ● Beat data from EchoNest
-          li.fadeout ● Beat matching playback
+          li.fadeout • Music data from Rdio
+          li.fadeout • Beat data from EchoNest
+          li.fadeout • Beat matching playback
           li
-            strong ● DEMO
+            strong • DEMO
         hr
 
       section
@@ -367,11 +378,11 @@ html.wf-loading
         h1 JSConf AU!
         h4
 
-      section
-      section
-      section
-      section
-
+      section(data-bespoke-state='thanks')
+        h1 Thanks!
+        .line
+          .me
+          h3 @GlenMaddern
 
 
     script(src='scripts/scripts.js')
