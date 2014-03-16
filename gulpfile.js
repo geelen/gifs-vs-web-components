@@ -66,11 +66,16 @@ gulp.task('images', function () {
 
 // Clean
 gulp.task('clean', function () {
-    return gulp.src(['public/styles', 'public/scripts', 'public/images'], {read: false}).pipe($.clean());
+    return gulp.src(['public/*'], {read: false}).pipe($.clean());
 });
 
+gulp.task('x-gif', function () {
+  return gulp.src('src/bower_components/x-gif/**/*.{html,js,css}')
+    .pipe(gulp.dest('public/x-gif'));
+})
+
 // Build
-gulp.task('build', ['html', 'styles', 'scripts', 'images']);
+gulp.task('build', ['html', 'styles', 'scripts', 'images', 'x-gif']);
 
 // Default task
 gulp.task('default', ['clean'], function () {

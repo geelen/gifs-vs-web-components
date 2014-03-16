@@ -7,8 +7,7 @@ html.wf-loading
 
     link(rel='stylesheet', type='text/css', href='styles/styles.css')
 
-  body
-
+  body(unresolved)
     article
       section(data-bespoke-state='homescreen')
         h1 A GIF Odyssey
@@ -36,6 +35,7 @@ html.wf-loading
       section(data-bespoke-state='gif-2012')
         h2 December
           strong  2012
+        x-gif(src="images/2012.gif")
 
       section
         .line
@@ -390,7 +390,6 @@ html.wf-loading
           h3 @GlenMaddern
 
 
-    script(src='scripts/scripts.js')
     script.
       (function(d) {
         var config = {
@@ -399,3 +398,6 @@ html.wf-loading
         },
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
+    script(src='scripts/scripts.js')
+    script(src='x-gif/bower_components/platform/platform.js')
+    link(rel="import" href="x-gif/dist/x-gif.html")
