@@ -17,7 +17,7 @@
 }
 
 .gif-2012 {
-  @include background-gif('http://celebdailynews.com/wp-content/uploads/2013/06/BrowserPreview_tmp.gif', 100% 50%);
+  @include background-gif('../images/2012.gif', 100% 50%);
 }
 
 .gif-shocked {
@@ -79,4 +79,8 @@
 
 .ticked {
   @include background-gif("http://media.giphy.com/media/13TBw9SxMnz8pW/giphy.gif");
+}
+
+.homescreen {
+  @include background-gif("/images/giffer.gif");
 }

@@ -10,7 +10,7 @@ html.wf-loading
   body
 
     article
-      section
+      section(data-bespoke-state='homescreen')
         h1 A GIF Odyssey
         .mid by
         .line
@@ -32,9 +32,6 @@ html.wf-loading
           span.buildin -in
           span.buildin -working
           span.buildin -software"
-
-      section
-        h1.mid (Work in progress)
 
       section(data-bespoke-state='gif-2012')
         h2 December
@@ -249,9 +246,11 @@ html.wf-loading
 
       section
         .mid Emscripten:
-        h3.ta-left • Stubs out the file system
-        h3.ta-left • Generates a lot of JS
-        h3.ta-left • Isn't clever about using Browser APIs
+        ul
+          li • Stubs out the file system
+          li • Generates a lot of JS
+          li • Isn't clever about using Browser APIs
+        hr
 
       section
         h1 Time for
@@ -291,7 +290,7 @@ html.wf-loading
         hr
 
       section
-        h4
+        h1
           a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
 
       section
@@ -307,7 +306,7 @@ html.wf-loading
             strong gulpfile.js
 
       section
-        h3 localhost:8080/*.gif
+        h3 localhost:1989/*.gif
         .mid =
         h3 tumblr.com/*.gif
 
@@ -324,7 +323,7 @@ html.wf-loading
         pre
           code.language-javascript.
             var blob = new Blob(
-              [ buffer1, buffer2, buffer ],
+              [ buffer1, buffer2, ... ],
               {type: 'mime/type'}
             );
             img.src = URL.createObjectURL(blob);
