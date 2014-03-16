@@ -32,363 +32,364 @@ html
           span.buildin -working
           span.buildin -software"
 
-      section(data-bespoke-state='gif-2012')
+      section
+        .fullscreen
+          x-gif(src="images/2012.gif" fill)
         h2 December
           strong  2012
-        x-gif(src="images/2012.gif")
-
-      section
-        .line
-          .schwarz
-          h3 @BenSchwarz
-
-      section
-        h3
-          strong vastimg.herokuapp.com
-        .line
-          .rtomayko
-          h3 @RTomayko
-
-      section(data-bespoke-state='gif-shocked')
-        h1 ETOOMUCHPORN
-
-      section(data-bespoke-state='gif-skull')
-      section(data-bespoke-state='gif-skull-2')
-
-      section(data-bespoke-state='fact')
-        //h1 FACT #1
-        //hr
-        h2 Full-screen GIFs
-        .mid are
-        h1 awesome
-
-      section
-        h1 Let's keep it SFW
-
-      section
-        .mid What has
-        h2 lots of GIFs
-        .mid and is
-        h1 totally safe for work
-        .mid ?
-
-      section(data-bespoke-state='not-sure-if-right')
-        h1 Tumblr
-
-      section(data-bespoke-state='okthen')
-        h1
-          span.feat One
-          |  Tumblr
-
-      section
-        .mid Tumblr:
-        ul
-          li • Arranged by theme
-          li • Full of GIFs
-        hr
-
-      section(data-bespoke-state='disgunbgood')
-
-      section
-        h1 GifCity
-        .line
-          .schwarz
-          h4 @BenSchwarz
-        .line
-          h4 @GlenMaddern
-          .me
-        .line
-          .bieber
-          h4 @ToolmanTim
-        .line
-          h4 @NullObject
-          .josh
-
-      section
-        h3
-          strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
-
-      section
-        h2 mrdiv
-        iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=mrdiv')
-
-      section
-        h2 simpsonsgifs
-        iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=simpsonsgifs')
-
-      section
-        h2 skt-na-veia-sempre
-        iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
-
-      section(data-bespoke-state='fact')
-        h2 GifCity
-        .mid is
-        h1 awesome!
-
-      section
-        h1 But we can do
-          span.feat  more
-
-      section(data-bespoke-state='amazed')
-
-      section
-        .mid What about
-        h1 synching
-        .mid to
-        h1 music
-        .mid ?
-
-      section.nobuild
-        h1.fadeout GifCity
-        .line.fadeout
-          .schwarz
-          h4 @BenSchwarz
-        .line
-          h4 @GlenMaddern
-          .me
-        .line.fadeout
-          .bieber
-          h4 @ToolmanTim
-        .line.fadeout
-          h4 @NullObject
-          .josh
-
-      section(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        h1 DJGif
-        h4 github.com/geelen/djgif
-        h4 djgif.com
-          span.feat  (soon)
-
-      section.nobuild
-        .mid Two challenges:
-        ul
-          li • Change speed of GIFs
-          li • Find beats from music
-        hr
-      section
-        pre
-          code.language-markup.
-            &lt;img src="probably_cats.gif"&gt;
-        pre
-          code.language-javascript.
-            var img = new Image;
-            img.src = "definitely_cats.gif";
-        h3 Now what?
-
-      section
-        h1.red ✖
-
-      section
-        h1 Why not video?
-        pre
-          code.language-javascript.
-            var video = document.createElement('video');
-            video.autoPlay = true;
-            video.loop = true;
-            video.playbackRate = 1.5;
-            video.src = 'converted.gif.mp4';
-
-      section(data-bespoke-state='yeahnah')
-
-      section
-        h4 Break GIF into frames?
-        pre
-          code.language-markup.
-            &lt;div data-frame="0"&gt;
-              &lt;img src="frame0.gif"&gt;
-              &lt;img src="frame1.gif"&gt;
-              &lt;img src="frame2.gif"&gt;
-            &lt;/div&gt;
-
-      section
-        h4 Show them with CSS
-        pre
-          code.language-css.
-            [data-frame] img {
-              opacity: 0;
-            }
-
-            [data-frame="0"] img:nth-child(1),
-            [data-frame="1"] img:nth-child(2),
-            [data-frame="2"] img:nth-child(3) {
-              opacity: 1;
-            }
-
-      section(data-bespoke-state='yep')
-
-      section
-        iframe(data-bespoke-delay-src='http://www.lcdf.org/gifsicle/')
-
-      section
-        h1 Break GIF into frames:
-        pre
-          code.language-bash.
-            brew install gifsicle
-            gifsicle -e cats.gif
-            # outputs cats.gif.001 cats.gif.002 etc
-
-      section(data-bespoke-state='yeahnah')
-
-      section
-        .mid How can I
-        h1 break apart a
-          span.feat  GIF
-        .mid in the
-        h1 browser?
-        hr
-
-      section
-        img(src='http://dl.dropbox.com/u/80664946/emscripten_logo.jpg')
-        h4 github.com/kripken/emscripten
-
-      section(data-bespoke-state='yeahnah')
-
-      section
-        .mid Emscripten:
-        ul
-          li • Stubs out the file system
-          li • Generates a lot of JS
-          li • Isn't clever about using Browser APIs
-        hr
-
-      section
-        h1 Time for
-          .feat Javascript Binary Hax!
-
-      section
-        pre
-          code.language-javascript.
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'cats.gif', true);
-            xhr.responseType = 'arraybuffer';
-            xhr.onload = function () {
-              this.reponse; // BINARY GIF MADNESS
-            }
-            xhr.send();
-
-      //section(data-bespoke-hash='named-route')
-
-      section
-        h1 Same Origin Policy
-
-      section
-        .mid Same Origin Policy:
-        ul
-          li • Prevents arbitrary cross-domain XHR
-          li • CORS on the server
-          li • Or, proxy the content
-        hr
-
-      section
-        .mid Proxying content?
-        h3 Run your own
-          strong.feat  proxy
-        .mid vs
-        h3 Use a CDN for
-          strong.red  evil
-        hr
-
-      section
-        h1
-          a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
-
-      section
-        h3 djgif.com/*.gif
-        .mid =
-        h3 tumblr.com/*.gif
-
-      section
-        h1 Locally?
-        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/gulpfile.js#L71-71')
-          h1 DJGif
-          h4
-            strong gulpfile.js
-
-      section
-        h3 localhost:1989/*.gif
-        .mid =
-        h3 tumblr.com/*.gif
-
-      section(data-bespoke-state='ticked')
-        h1 Same Origin Policy
-        h1 ✔
-
-      section
-        h1 What's in a GIF?
-        h4
-          a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
-
-      section
-        pre
-          code.language-javascript.
-            var blob = new Blob(
-              [ buffer1, buffer2, ... ],
-              {type: 'mime/type'}
-            );
-            img.src = URL.createObjectURL(blob);
-
-      section
-        pre
-          code.language-javascript.
-            xhr.onload = function () {
-              var blob = new Blob(
-                [this.response],
-                {type: 'image/gif'}
-              );
-              img.src = URL.createObjectURL(blob);
-            }
-
-      section
-        pre
-          code.language-javascript.
-            var header = gifData.slice(0, startOfFrames);
-            var footer = gifData.slice(-1);
-            for (var i = 0; i < indices.length; i++) {
-              var frameData = gifData.slice(
-                indices[i],
-                indices[i+1] || endOfFrames);
-              var blob = new Blob(
-                [ header, frameData, gifFooter ],
-                {type: 'image/gif'});
-              frames.push(URL.createObjectURL(blob));
-            }
-
-      section
-        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js')
-          h1 DJGif
-          h4 src/js/services/gif_exploder.js
-
-      section
-        .mid Much, much more:
-        ul
-          li.fadeout • Music data from Rdio
-          li.fadeout • Beat data from EchoNest
-          li.fadeout • Beat matching playback
-          li
-            strong •
-              a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
-        hr
-
-      section
-        h1 The
-          span.feat  full version
-          |  of this talk
-        .mid at
-        h1 JSConf AU!
-        h4 au.jsconf.com
-
-      section(data-bespoke-state='fact')
-        h1 Dumb ideas
-        .mid are
-        h1 awesome
-
-      section(data-bespoke-state='thanks')
-        h1 Thanks!
-        .line
-          .me
-          h3 @GlenMaddern
-
+      //
+      //section
+      //  .line
+      //    .schwarz
+      //    h3 @BenSchwarz
+      //
+      //section
+      //  h3
+      //    strong vastimg.herokuapp.com
+      //  .line
+      //    .rtomayko
+      //    h3 @RTomayko
+      //
+      //section(data-bespoke-state='gif-shocked')
+      //  h1 ETOOMUCHPORN
+      //
+      //section(data-bespoke-state='gif-skull')
+      //section(data-bespoke-state='gif-skull-2')
+      //
+      //section(data-bespoke-state='fact')
+      //  //h1 FACT #1
+      //  //hr
+      //  h2 Full-screen GIFs
+      //  .mid are
+      //  h1 awesome
+      //
+      //section
+      //  h1 Let's keep it SFW
+      //
+      //section
+      //  .mid What has
+      //  h2 lots of GIFs
+      //  .mid and is
+      //  h1 totally safe for work
+      //  .mid ?
+      //
+      //section(data-bespoke-state='not-sure-if-right')
+      //  h1 Tumblr
+      //
+      //section(data-bespoke-state='okthen')
+      //  h1
+      //    span.feat One
+      //    |  Tumblr
+      //
+      //section
+      //  .mid Tumblr:
+      //  ul
+      //    li • Arranged by theme
+      //    li • Full of GIFs
+      //  hr
+      //
+      //section(data-bespoke-state='disgunbgood')
+      //
+      //section
+      //  h1 GifCity
+      //  .line
+      //    .schwarz
+      //    h4 @BenSchwarz
+      //  .line
+      //    h4 @GlenMaddern
+      //    .me
+      //  .line
+      //    .bieber
+      //    h4 @ToolmanTim
+      //  .line
+      //    h4 @NullObject
+      //    .josh
+      //
+      //section
+      //  h3
+      //    strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
+      //
+      //section
+      //  h2 mrdiv
+      //  iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=mrdiv')
+      //
+      //section
+      //  h2 simpsonsgifs
+      //  iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=simpsonsgifs')
+      //
+      //section
+      //  h2 skt-na-veia-sempre
+      //  iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
+      //
+      //section(data-bespoke-state='fact')
+      //  h2 GifCity
+      //  .mid is
+      //  h1 awesome!
+      //
+      //section
+      //  h1 But we can do
+      //    span.feat  more
+      //
+      //section(data-bespoke-state='amazed')
+      //
+      //section
+      //  .mid What about
+      //  h1 synching
+      //  .mid to
+      //  h1 music
+      //  .mid ?
+      //
+      //section.nobuild
+      //  h1.fadeout GifCity
+      //  .line.fadeout
+      //    .schwarz
+      //    h4 @BenSchwarz
+      //  .line
+      //    h4 @GlenMaddern
+      //    .me
+      //  .line.fadeout
+      //    .bieber
+      //    h4 @ToolmanTim
+      //  .line.fadeout
+      //    h4 @NullObject
+      //    .josh
+      //
+      //section(data-bespoke-state='light')
+      //  img(src="images/djgif_logo.gif")
+      //  h1 DJGif
+      //  h4 github.com/geelen/djgif
+      //  h4 djgif.com
+      //    span.feat  (soon)
+      //
+      //section.nobuild
+      //  .mid Two challenges:
+      //  ul
+      //    li • Change speed of GIFs
+      //    li • Find beats from music
+      //  hr
+      //section
+      //  pre
+      //    code.language-markup.
+      //      &lt;img src="probably_cats.gif"&gt;
+      //  pre
+      //    code.language-javascript.
+      //      var img = new Image;
+      //      img.src = "definitely_cats.gif";
+      //  h3 Now what?
+      //
+      //section
+      //  h1.red ✖
+      //
+      //section
+      //  h1 Why not video?
+      //  pre
+      //    code.language-javascript.
+      //      var video = document.createElement('video');
+      //      video.autoPlay = true;
+      //      video.loop = true;
+      //      video.playbackRate = 1.5;
+      //      video.src = 'converted.gif.mp4';
+      //
+      //section(data-bespoke-state='yeahnah')
+      //
+      //section
+      //  h4 Break GIF into frames?
+      //  pre
+      //    code.language-markup.
+      //      &lt;div data-frame="0"&gt;
+      //        &lt;img src="frame0.gif"&gt;
+      //        &lt;img src="frame1.gif"&gt;
+      //        &lt;img src="frame2.gif"&gt;
+      //      &lt;/div&gt;
+      //
+      //section
+      //  h4 Show them with CSS
+      //  pre
+      //    code.language-css.
+      //      [data-frame] img {
+      //        opacity: 0;
+      //      }
+      //
+      //      [data-frame="0"] img:nth-child(1),
+      //      [data-frame="1"] img:nth-child(2),
+      //      [data-frame="2"] img:nth-child(3) {
+      //        opacity: 1;
+      //      }
+      //
+      //section(data-bespoke-state='yep')
+      //
+      //section
+      //  iframe(data-bespoke-delay-src='http://www.lcdf.org/gifsicle/')
+      //
+      //section
+      //  h1 Break GIF into frames:
+      //  pre
+      //    code.language-bash.
+      //      brew install gifsicle
+      //      gifsicle -e cats.gif
+      //      # outputs cats.gif.001 cats.gif.002 etc
+      //
+      //section(data-bespoke-state='yeahnah')
+      //
+      //section
+      //  .mid How can I
+      //  h1 break apart a
+      //    span.feat  GIF
+      //  .mid in the
+      //  h1 browser?
+      //  hr
+      //
+      //section
+      //  img(src='http://dl.dropbox.com/u/80664946/emscripten_logo.jpg')
+      //  h4 github.com/kripken/emscripten
+      //
+      //section(data-bespoke-state='yeahnah')
+      //
+      //section
+      //  .mid Emscripten:
+      //  ul
+      //    li • Stubs out the file system
+      //    li • Generates a lot of JS
+      //    li • Isn't clever about using Browser APIs
+      //  hr
+      //
+      //section
+      //  h1 Time for
+      //    .feat Javascript Binary Hax!
+      //
+      //section
+      //  pre
+      //    code.language-javascript.
+      //      var xhr = new XMLHttpRequest();
+      //      xhr.open('GET', 'cats.gif', true);
+      //      xhr.responseType = 'arraybuffer';
+      //      xhr.onload = function () {
+      //        this.reponse; // BINARY GIF MADNESS
+      //      }
+      //      xhr.send();
+      //
+      ////section(data-bespoke-hash='named-route')
+      //
+      //section
+      //  h1 Same Origin Policy
+      //
+      //section
+      //  .mid Same Origin Policy:
+      //  ul
+      //    li • Prevents arbitrary cross-domain XHR
+      //    li • CORS on the server
+      //    li • Or, proxy the content
+      //  hr
+      //
+      //section
+      //  .mid Proxying content?
+      //  h3 Run your own
+      //    strong.feat  proxy
+      //  .mid vs
+      //  h3 Use a CDN for
+      //    strong.red  evil
+      //  hr
+      //
+      //section
+      //  h1
+      //    a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
+      //
+      //section
+      //  h3 djgif.com/*.gif
+      //  .mid =
+      //  h3 tumblr.com/*.gif
+      //
+      //section
+      //  h1 Locally?
+      //  a(target="_blank" href='https://github.com/geelen/djgif/blob/master/gulpfile.js#L71-71')
+      //    h1 DJGif
+      //    h4
+      //      strong gulpfile.js
+      //
+      //section
+      //  h3 localhost:1989/*.gif
+      //  .mid =
+      //  h3 tumblr.com/*.gif
+      //
+      //section(data-bespoke-state='ticked')
+      //  h1 Same Origin Policy
+      //  h1 ✔
+      //
+      //section
+      //  h1 What's in a GIF?
+      //  h4
+      //    a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
+      //
+      //section
+      //  pre
+      //    code.language-javascript.
+      //      var blob = new Blob(
+      //        [ buffer1, buffer2, ... ],
+      //        {type: 'mime/type'}
+      //      );
+      //      img.src = URL.createObjectURL(blob);
+      //
+      //section
+      //  pre
+      //    code.language-javascript.
+      //      xhr.onload = function () {
+      //        var blob = new Blob(
+      //          [this.response],
+      //          {type: 'image/gif'}
+      //        );
+      //        img.src = URL.createObjectURL(blob);
+      //      }
+      //
+      //section
+      //  pre
+      //    code.language-javascript.
+      //      var header = gifData.slice(0, startOfFrames);
+      //      var footer = gifData.slice(-1);
+      //      for (var i = 0; i < indices.length; i++) {
+      //        var frameData = gifData.slice(
+      //          indices[i],
+      //          indices[i+1] || endOfFrames);
+      //        var blob = new Blob(
+      //          [ header, frameData, gifFooter ],
+      //          {type: 'image/gif'});
+      //        frames.push(URL.createObjectURL(blob));
+      //      }
+      //
+      //section
+      //  a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js')
+      //    h1 DJGif
+      //    h4 src/js/services/gif_exploder.js
+      //
+      //section
+      //  .mid Much, much more:
+      //  ul
+      //    li.fadeout • Music data from Rdio
+      //    li.fadeout • Beat data from EchoNest
+      //    li.fadeout • Beat matching playback
+      //    li
+      //      strong •
+      //        a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
+      //  hr
+      //
+      //section
+      //  h1 The
+      //    span.feat  full version
+      //    |  of this talk
+      //  .mid at
+      //  h1 JSConf AU!
+      //  h4 au.jsconf.com
+      //
+      //section(data-bespoke-state='fact')
+      //  h1 Dumb ideas
+      //  .mid are
+      //  h1 awesome
+      //
+      //section(data-bespoke-state='thanks')
+      //  h1 Thanks!
+      //  .line
+      //    .me
+      //    h3 @GlenMaddern
+      //
     script(src='scripts/scripts.js')
-    script(src='x-gif/bower_components/platform/platform.js')
+    script(src='x-gif/dist/platform.js')
     link(rel="import" href="x-gif/dist/x-gif.html")

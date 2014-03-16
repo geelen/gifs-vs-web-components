@@ -70,8 +70,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('x-gif', function () {
-  return gulp.src('src/bower_components/x-gif/**/*.{html,js,css}')
-    .pipe(gulp.dest('public/x-gif'));
+  gulp.src([
+      'src/bower_components/x-gif/dist/*'
+    ])
+    .pipe(gulp.dest('public/x-gif/dist'));
 })
 
 gulp.task('copy', function () {
@@ -80,7 +82,7 @@ gulp.task('copy', function () {
 })
 
 // Build
-gulp.task('build', ['html', 'styles', 'scripts', 'images', 'copy']);
+gulp.task('build', ['html', 'styles', 'scripts', 'images', 'x-gif', 'copy']);
 
 // Default task
 gulp.task('default', ['clean'], function () {
@@ -98,10 +100,7 @@ gulp.task('connect', $.connect.server({
 gulp.task('watch', ['build', 'connect'], function () {
     // Watch for changes in `src` folder
     gulp.watch([
-        'public/*.html',
-        'public/styles/**/*.css',
-        'public/scripts/**/*.js',
-        'public/images/**/*'
+        'public/**/*'
     ], function(event) {
         return gulp.src(event.path)
             .pipe($.connect.reload());
@@ -118,6 +117,12 @@ gulp.task('watch', ['build', 'connect'], function () {
 
     // Watch image files
     gulp.watch('src/images/**/*', ['images']);
+
+    // Watch x-gif
+    gulp.watch('src/bower_components/x-gif/dist/**/*', ['x-gif']);
+
+    // Watch fonts
+    gulp.watch('src/fonts/**', ['copy']);
 
     // Watch bower files
     gulp.watch('src/bower_components/*', ['build']);
