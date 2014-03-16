@@ -25,7 +25,7 @@
 }
 
 .gif-2012 {
-  @include background-gif('../images/2012.gif', 100% 50%);
+  @include background-gif('../images/2012.gif');
 }
 
 .gif-shocked {

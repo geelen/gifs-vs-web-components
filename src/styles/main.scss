@@ -61,20 +61,23 @@ article {
 }
 
 .bespoke-slide {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: $slide_width;
-  height: $slide_height;
-  position: absolute;
-  top: 50%;
-  margin-top: $slide_height / 2 * -1;
-  left: 50%;
-  margin-left: $slide_width / 2 * -1;
-  padding: 40px;
-  border-radius: 0;
+  &.content, > .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: $slide_width;
+    height: $slide_height;
+    position: absolute;
+    top: 50%;
+    margin-top: $slide_height / 2 * -1;
+    left: 50%;
+    margin-left: $slide_width / 2 * -1;
+    padding: 40px;
+    border-radius: 0;
+  }
+
   @media print {
     zoom: 1 !important;
     height: 743px;
