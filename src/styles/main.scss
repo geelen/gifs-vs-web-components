@@ -190,8 +190,8 @@ $background-line-color: rgba(white,0.02);
 $background-patch-color: rgba(black, 0.05);
 body {
   transition: opacity 0.5s;
-  font: 18px/1.5 brandon-grotesque, helvetica, arial, sans-serif;
-  font-weight: 300;
+  font: 18px/1.5 "Raleway", georgia, helvetica, arial, sans-serif;
+  font-weight: 100;
   background-color: change-color(black, $alpha: 0.90);
   color: change-color(white, $alpha: 0.95);
   text-shadow: 0 0 2px black, 0 0 40px black;
@@ -260,7 +260,7 @@ hr {
 }
 .mid {
   font-size: 36px;
-  font-family: adobe-jenson-pro, Georgia;
+  font-family: "EB Garamond", Georgia;
   font-style: italic;
   display: flex;
   width: 100%;
@@ -336,3 +336,4 @@ $me-height: 72px;
 }
 
 @import 'backgrounds';
+@import 'fonts';

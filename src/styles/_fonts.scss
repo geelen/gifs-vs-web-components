@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Raleway Thin'), url(../fonts/raleway-100.woff) format('woff')
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), url(../fonts/raleway-300.woff) format('woff')
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Raleway Heavy'), url(../fonts/raleway-900.woff) format('woff')
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400;
+  src: local('EB Garamond 12 Italic'), url(../fonts/ebgaramond-400i.woff) format('woff')
+}

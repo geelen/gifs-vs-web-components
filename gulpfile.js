@@ -74,8 +74,13 @@ gulp.task('x-gif', function () {
     .pipe(gulp.dest('public/x-gif'));
 })
 
+gulp.task('copy', function () {
+  return gulp.src('src/fonts/**')
+    .pipe(gulp.dest('public/fonts'))
+})
+
 // Build
-gulp.task('build', ['html', 'styles', 'scripts', 'images', 'x-gif']);
+gulp.task('build', ['html', 'styles', 'scripts', 'images', 'copy']);
 
 // Default task
 gulp.task('default', ['clean'], function () {
