@@ -29,44 +29,44 @@
 }
 
 .gif-shocked {
-  @include background-gif('http://i989.photobucket.com/albums/af13/dwigley1/6yvc9yh.gif');
+  @include background-gif('../images/shocked.gif');
   //@include background-gif('http://i.imgur.com/HlwFoVG.gif');
 }
 
 .gif-skull {
-  background: url('http://spinningflamingskull.com/images/an_spinning_flaming_skull.gif');
+  background: url('../images/an_spinning_flaming_skull.gif');
 }
 
 .gif-skull-2 {
-  background: url('http://spinningflamingskull.com/images/an_spinning_flaming_skull.gif');
+  background: url('../images/an_spinning_flaming_skull.gif');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
 
 .fact {
-  @include background-gif('https://dl.dropboxusercontent.com/u/1349167/carl_sagan_good.gif',
+  @include background-gif('../images/carl_sagan_good.gif',
                           $darkness: 0.6, $blur: 0, $size: 1)
 }
 
 .not-sure-if-right {
   //@include background-gif('http://media.giphy.com/media/Br5rWtM1QiYBa/giphy.gif')
-  @include background-gif('http://www.reactiongifs.us/wp-content/uploads/2013/08/shaking_head_breaking_bad.gif',
+  @include background-gif('../images/shaking_head_breaking_bad.gif',
                           $position: 80% 0%, $blur: 0, $size: 1)
 }
 
 .thumbsup {
-  @include background-gif('http://nyobetabeat.files.wordpress.com/2013/08/emoji-thumbs-up-150.jpg',
+  @include background-gif('../images/emoji-thumbs-up-150.jpg',
                           $darkness: 0.8, $blur: 0, $size: 1)
 }
 
 .amazed {
-  @include background-gif('http://media.giphy.com/media/zz00w5nNFMnPq/giphy.gif',
+  @include background-gif('../images/amazed.gif',
                           $darkness: 0, $blur: 0.5, $size: 3)
 }
 
 .okthen {
-  @include background-gif('http://files-cdn.formspring.me/photos/20120614/n4fda79a2cd7ec.gif')
+  @include background-gif('../images/okthen.gif')
 }
 
 .light {
@@ -74,19 +74,19 @@
 }
 
 .yeahnah {
-  @include background-gif("http://media.giphy.com/media/Pr3jpBoQLuovu/giphy.gif", $darkness: 0, $blur: 0.5, $position: 100% 50%);
+  @include background-gif("../images/yeahnah.gif", $darkness: 0, $blur: 0.5, $position: 100% 50%);
 }
 
 .yep {
-  @include background-gif("http://media.giphy.com/media/jN0ygssTH2hoI/giphy.gif", $darkness: 0, $blur: 0.5);
+  @include background-gif("../images/yep.gif", $darkness: 0, $blur: 0.5);
 }
 
 .disgunbgood {
-  @include background-gif("http://media.giphy.com/media/edho4s1lWEawo/giphy.gif", $darkness: 0, $blur: 0, $size: 1);
+  @include background-gif("../images/disgunbgood.gif", $darkness: 0, $blur: 0, $size: 1);
 }
 
 .ticked {
-  @include background-gif("http://media.giphy.com/media/13TBw9SxMnz8pW/giphy.gif");
+  @include background-gif("../images/ticked.gif");
 }
 
 .homescreen {

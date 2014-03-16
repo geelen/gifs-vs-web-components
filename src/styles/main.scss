@@ -295,19 +295,19 @@ $me-height: 72px;
 }
 .schwarz {
   @extend .person;
-  background-image: url("http://2014.cssconf.com.au/images/mugshots/team/ben.jpg");
+  background-image: url("../images/ben.jpg");
 }
 .rtomayko {
   @extend .person;
-  background-image: url("https://1.gravatar.com/avatar/abfc88b96ae18c85ba7aac3bded2ec5e?d=https%3A%2F%2Fidenticons.github.com%2F4f4adcbf8c6f66dcfc8a3282ac2bf10a.png&r=x&s=100");
+  background-image: url("../images/rtomayko.png");
 }
 .bieber {
   @extend .person;
-  background-image: url("https://0.gravatar.com/avatar/8b3a5fa50d63275c5c6e304f1a081bfb?d=https%3A%2F%2Fidenticons.github.com%2Fb3e3e393c77e35a4a3f3cbd1e429b5dc.png&r=x&s=100");
+  background-image: url("../images/cheekbones.jpg");
 }
 .josh {
   @extend .person;
-  background-image: url("https://pbs.twimg.com/profile_images/2684842981/56fa21c02d5bd3bb72a4ab067410dadc.jpeg");
+  background-image: url("../images/nullobject.jpg");
 }
 
 .line {
