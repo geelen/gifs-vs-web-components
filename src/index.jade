@@ -34,7 +34,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/2012.gif" fill)
+          x-gif(src="images/2012.gif" fill stopped)
         .content
           h2 December
             strong  2012
@@ -51,18 +51,22 @@ html
           .rtomayko
           h3 @RTomayko
 
-      section.content(data-bespoke-state='gif-shocked')
-        h1 ETOOMUCHPORN
+      section
+        .fullscreen
+          x-gif(src="images/shocked.gif" fill stopped n-times="1")
+        .content
+          h1 ETOOMUCHPORN
 
       section.content(data-bespoke-state='gif-skull')
       section.content(data-bespoke-state='gif-skull-2')
 
-      section.content(data-bespoke-state='fact')
-        //h1 FACT #1
-        //hr
-        h2 Full-screen GIFs
-        .mid are
-        h1 awesome
+      section
+        .fullscreen
+          x-gif(src="images/carl_sagan_good.gif" fill stopped n-times="1")
+        .content
+          h2 Full-screen GIFs
+          .mid are
+          h1 awesome
 
       section.content
         h1 Let's keep it SFW
@@ -241,7 +245,7 @@ html
         hr
 
       section.content
-        img(src='http://dl.dropbox.com/u/80664946/emscripten_logo.jpg')
+        img(src='images/emscripten_logo.jpg')
         h4 github.com/kripken/emscripten
 
       section.content(data-bespoke-state='yeahnah')

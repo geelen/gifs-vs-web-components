@@ -303,11 +303,11 @@ $me-height: 72px;
 }
 .bieber {
   @extend .person;
-  background-image: url("../images/cheekbones.jpg");
+  background-image: url("../images/cheekbones.jpeg");
 }
 .josh {
   @extend .person;
-  background-image: url("../images/nullobject.jpg");
+  background-image: url("../images/nullobject.jpeg");
 }
 
 .line {
