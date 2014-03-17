@@ -120,7 +120,7 @@ gulp.task('watch', ['build', 'connect'], function () {
   gulp.watch('src/bower_components/x-gif/dist/**/*', ['x-gif']);
 
   // Watch fonts
-  gulp.watch('src/fonts/**', ['copy']);
+  gulp.watch('src/{fonts,demos}/**', ['copy']);
 
   // Watch bower files
   gulp.watch('src/bower_components/*', ['build']);

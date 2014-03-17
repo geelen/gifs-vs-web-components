@@ -533,10 +533,51 @@ html
         hr.fadeout
       //a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
 
-      section.content(data-bespoke-state='fact')
-        h1 Dumb ideas
-        .mid are
-        h1 awesome
+      section.content
+        img(src='images/echo_nest_header.png')
+        h4 developer.echonest.com
+
+      section.content
+        pre(data-line="3")
+          code.language-javascript.
+            http://developer.echonest.com/
+              api/v4/song/search?
+                api_key=API_KEY&
+                format=json&
+                results=1&
+                artist=radiohead&
+                title=karma%20police
+      section.content
+        img(src='images/search_response.png')
+
+      section.content
+        pre(data-line="3")
+          code.language-javascript.
+            http://developer.echonest.com/
+              api/v4/track/profile?
+                api_key=API_KEY&
+                format=json&
+                id=TRTLKZV12E5AC92E11&
+                bucket=audio_summary
+      section.content
+        img(src='images/track_profile_response.png')
+      section.content
+        img(src='images/track_analysis_response.png')
+
+      section
+        .fullscreen
+          x-gif(src="images/ticked.gif" fill n-times="0.85" speed="1.5" stopped)
+        .content.wait-for-gif
+          h1 Beat data for arbitrary tracks
+          h1 ✔
+
+      section
+        .fullscreen
+          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped).blur1
+        .content.wait-for-gif
+          h1 Dumb ideas
+          .mid are
+          h1 awesome
 
       section.content(data-bespoke-state='thanks')
         h1 Thanks!
