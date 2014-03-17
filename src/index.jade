@@ -34,7 +34,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/2012.gif" fill stopped speed="1.5")
+          x-gif(src="images/2012.gif" fill speed="1.5")
         .content
           h2 December
             strong  2012
@@ -58,7 +58,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/carl_sagan_good.gif" fill stopped n-times="1").blur1
+          x-gif(src="images/carl_sagan_good.gif" fill n-times="1").blur1
         .content.wait-for-gif
           h2 Full-screen GIFs
           .mid are
@@ -69,7 +69,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shocked.gif" fill stopped n-times="1").blur2.dark5
+          x-gif(src="images/shocked.gif" fill n-times="1").blur2.dark5
         .content
           div
           h1 ETOOMUCHPORN
@@ -86,22 +86,23 @@ html
           strong  safe for work
         .mid ?
 
-      section.content(data-bespoke-state='not-sure-if-right')
-        h1 Tumblr
-
-      section.content(data-bespoke-state='okthen')
-        h1
-          span.feat One
-          |  Tumblr
+      section
+        .fullscreen
+          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="3").dark5
+        .content
+          h1 Tumblr
 
       section.content
-        .mid Tumblr:
+        h3 Any
+          span.feat  particular
+          |  Tumblr
         ul
-          li • Arranged by theme
-          li • Full of GIFs
-        hr
+          li • Lots of GIFs
+          li • Identified SFW/NSFW
 
-      section.content(data-bespoke-state='disgunbgood')
+      section
+        .fullscreen
+          x-gif(src="images/okthen.gif" fill n-times="1")
 
       section.content
         h1 GifCity
@@ -119,31 +120,38 @@ html
           .josh
 
       section.content
-        h3
+        h1 GifCity
+        .mid +
+        h1 Tumblr
+        .mid =
+        h1.red ♥
+
+      section.content
+        h4
           strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
 
-      section.content
-        h2 mrdiv
+      section
+        .content
+          h2 mrdiv
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=mrdiv')
 
-      section.content
-        h2 simpsonsgifs
+      section
+        .content
+          h2 simpsonsgifs
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=simpsonsgifs')
 
-      section.content
-        h2 skt-na-veia-sempre
+      section
+        .content
+          h2 skt-na-veia-sempre
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
-
-      section.content(data-bespoke-state='fact')
-        h2 GifCity
-        .mid is
-        h1 awesome!
 
       section.content
         h1 But we can do
           span.feat  more
 
-      section.content(data-bespoke-state='amazed')
+      section
+        .fullscreen
+          x-gif(src="images/amazed.gif" fill n-times="1").blur1
 
       section.content
         .mid What about
@@ -173,6 +181,14 @@ html
         h4 github.com/geelen/djgif
         h4 djgif.com
           span.feat  (soon)
+
+      section.content(data-bespoke-state='light')
+        img(src="images/djgif_logo.gif")
+        h1 Tumblr GIFs
+        .mid +
+        h1 Rdio playlists
+        .mid +
+        h1.red ♥
 
       section.content.nobuild
         .mid Two challenges:
@@ -216,11 +232,12 @@ html
             &lt;/div&gt;
 
       section.content
-        h4 Show them with CSS
+        h4 Position/hide them with CSS
         pre
           code.language-css.
             [data-frame] img {
               opacity: 0;
+              position: absolute;
             }
 
             [data-frame="0"] img:nth-child(1),
@@ -229,10 +246,18 @@ html
               opacity: 1;
             }
 
-      section.content(data-bespoke-state='yep')
-
       section.content
-        iframe(data-bespoke-delay-src='http://www.lcdf.org/gifsicle/')
+        h4 Show them with JS
+        pre
+          code.language-javascript.
+            var animate = function() {
+              var currentFrame = calculateFrame();
+              framesElement.dataset.frame = currentFrame;
+              requestAnimationFrame(animate);
+            }
+            animate();
+
+      section.content(data-bespoke-state='yep')
 
       section.content
         h1 Break GIF into frames:
@@ -246,17 +271,17 @@ html
 
       section.content
         .mid How can I
-        h1 break apart a
-          span.feat  GIF
+        h3
+          strong break apart a
+            span.feat  GIF
         .mid in the
-        h1 browser?
+        h3
+          strong browser?
         hr
 
       section.content
         img(src='images/emscripten_logo.jpg')
         h4 github.com/kripken/emscripten
-
-      section.content(data-bespoke-state='yeahnah')
 
       section.content
         .mid Emscripten:
@@ -266,72 +291,48 @@ html
           li • Isn't clever about using Browser APIs
         hr
 
+      section.content(data-bespoke-state='yeahnah')
+
       section.content
         h1 Time for
           .feat Javascript Binary Hax!
 
       section.content
-        pre
-          code.language-javascript.
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'cats.gif', true);
-            xhr.responseType = 'arraybuffer';
-            xhr.onload = function () {
-              this.reponse; // BINARY GIF MADNESS
-            }
-            xhr.send();
-
-      //section.content(data-bespoke-hash='named-route')
-
-      section.content
-        h1 Same Origin Policy
-
-      section.content
-        .mid Same Origin Policy:
-        ul
-          li • Prevents arbitrary cross-domain XHR
-          li • CORS on the server
-          li • Or, proxy the content
-        hr
-
-      section.content
-        .mid Proxying content?
-        h3 Run your own
-          strong.feat  proxy
-        .mid vs
-        h3 Use a CDN for
-          strong.red  evil
-        hr
-
-      section.content
-        h1
-          a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
-
-      section.content
-        h3 djgif.com/*.gif
-        .mid =
-        h3 tumblr.com/*.gif
-
-      section.content
-        h1 Locally?
-        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/gulpfile.js#L71-71')
-          h1 DJGif
-          h4
-            strong gulpfile.js
-
-      section.content
-        h3 localhost:1989/*.gif
-        .mid =
-        h3 tumblr.com/*.gif
-
-      section.content(data-bespoke-state='ticked')
-        h1 Same Origin Policy
-        h1 ✔
-
-      section.content
         h1 What's in a GIF?
-        h4
-          a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
+        h5
+          strong
+            a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
+
+      section
+        iframe(data-bespoke-delay-src='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp')
+
+      section.content
+        img(src="images/gif_file_stream.gif")
+
+      section.content
+        h3
+          strong header
+        h3
+          strong
+            span.feat frame
+            span.green  frame
+            span.red  frame
+        h3
+          strong footer
+
+      section.content
+        h3
+          strong header
+            span.feat  frame
+            |  footer
+        h3
+          strong header
+            span.green  frame
+            |  footer
+        h3
+          strong header
+            span.red  frame
+            |  footer
 
       section.content
         pre
@@ -341,18 +342,6 @@ html
               {type: 'mime/type'}
             );
             img.src = URL.createObjectURL(blob);
-
-      section.content
-        pre
-          code.language-javascript.
-            xhr.onload = function () {
-              var blob = new Blob(
-                [this.response],
-                {type: 'image/gif'}
-              );
-              img.src = URL.createObjectURL(blob);
-            }
-
       section.content
         pre
           code.language-javascript.
@@ -369,9 +358,89 @@ html
             }
 
       section.content
-        a(target="_blank" href='https://github.com/geelen/djgif/blob/master/src/js/services/gif_exploder.js')
-          h1 DJGif
-          h4 src/js/services/gif_exploder.js
+        h1 Binary in JS
+
+      section.content
+        pre
+          code.language-javascript.
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'cats.gif', true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+              this.reponse; // BINARY GIF MADNESS
+            }
+            xhr.send();
+
+      section.content
+        h1 Same Origin Policy
+
+      section.content
+        .mid Two options:
+        h3
+          strong.feat CORS
+          |  on the server
+        .mid vs
+        h3
+          strong.feat Proxy
+          |  the content behind a domain you control
+        hr
+
+      section.content
+        .mid Proxying content?
+        h3 Run your own
+          strong.feat  proxy
+        .mid vs
+        h3 Use a CDN for
+          strong.red  evil
+        hr
+
+      section.content
+        h3
+          strong
+            a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
+        img(src="images/cloudfront.png")
+
+      section.content
+        h4
+          strong djgif.com/*.gif
+        .mid =
+        h4
+          strong media.tumblr.com/*.gif
+
+      section
+        .fullscreen
+          x-gif(src="images/ticked.gif" fill n-times="1" speed="1.5")
+        .content.wait-for-gif
+          h1 Same Origin Policy
+          h1 ✔
+
+      section.content
+        .mid Recap
+        h1
+          | We've can pull down arbitrary GIF data from Tumblr
+          | and split it into frames.
+          | Now it's time to look at playback.
+
+      section.content
+        h1.feat Beat Detection
+
+      section.content
+        .mid Options
+        h3 Do it live
+        .mid vc
+        h3 Do it ahead of time
+        hr
+
+      section.content
+        h1 Doing it live
+
+      section.content
+        pre
+          code.language-javascript.
+            WEB AUDIO API EXAMPLE
+
+      section.content
+
 
       section.content
         .mid Much, much more:

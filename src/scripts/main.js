@@ -20,7 +20,7 @@ bespoke.plugins.delaySrc = function (deck, options) {
 
 bespoke.plugins.startXGif = function (deck, options) {
   var gifs = deck.slides.map(function (slide) {
-    return [].slice.call(slide.querySelectorAll('x-gif[stopped]'), 0);
+    return [].slice.call(slide.querySelectorAll('x-gif'), 0);
   });
 
   var setStopped = function (stopped) {
