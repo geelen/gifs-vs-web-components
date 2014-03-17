@@ -36,6 +36,7 @@ gulp.task('scripts', function () {
       'src/bower_components/prism/components/prism-bash.js',
       'src/bower_components/prism/components/prism-css.js',
       'src/bower_components/prism/components/prism-css-extras.js',
+      'src/bower_components/prism/plugins/line-highlight/prism-line-highlight.js',
       'src/scripts/**/*.js'])
 //        .pipe($.jshint('.jshintrc'))
 //        .pipe($.jshint.reporter('default'))
@@ -72,8 +73,10 @@ gulp.task('x-gif', function () {
 })
 
 gulp.task('copy', function () {
-  return gulp.src('src/fonts/**')
-    .pipe(gulp.dest('public/fonts'))
+  return gulp.src(
+    ['src/fonts/**', 'src/demos/**'],
+    {base: 'src/'})
+    .pipe(gulp.dest('public'))
 })
 
 // Build

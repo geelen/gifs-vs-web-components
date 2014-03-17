@@ -34,7 +34,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/2012.gif" fill speed="1.5")
+          x-gif(src="images/2012_fire.gif" fill speed="1" n-times="1" stopped)
         .content
           h2 December
             strong  2012
@@ -58,7 +58,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/carl_sagan_good.gif" fill n-times="1").blur1
+          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped).blur1
         .content.wait-for-gif
           h2 Full-screen GIFs
           .mid are
@@ -69,8 +69,8 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shocked.gif" fill n-times="1").blur2.dark5
-        .content
+          x-gif(src="images/shocked.gif" fill n-times="1" stopped).blur2.dark5
+        .content.wait-for-gif
           div
           h1 ETOOMUCHPORN
 
@@ -88,7 +88,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="3").dark5
+          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="3" stopped).dark5
         .content
           h1 Tumblr
 
@@ -102,7 +102,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/okthen.gif" fill n-times="1")
+          x-gif(src="images/okthen.gif" fill n-times="1" stopped)
 
       section.content
         h1 GifCity
@@ -151,7 +151,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/amazed.gif" fill n-times="1").blur1
+          x-gif(src="images/amazed.gif" fill n-times="1" stopped).blur1
 
       section.content
         .mid What about
@@ -343,7 +343,7 @@ html
             );
             img.src = URL.createObjectURL(blob);
       section.content
-        pre
+        pre(data-line="8")
           code.language-javascript.
             var header = gifData.slice(0, startOfFrames);
             var footer = gifData.slice(-1);
@@ -402,64 +402,136 @@ html
 
       section.content
         h4
-          strong djgif.com/*.gif
+          strong djgif.com/
+            span.feat *
+            | .gif
         .mid =
         h4
-          strong media.tumblr.com/*.gif
+          strong media.tumblr.com/
+            span.feat *
+            | .gif
 
       section
         .fullscreen
-          x-gif(src="images/ticked.gif" fill n-times="1" speed="1.5")
+          x-gif(src="images/ticked.gif" fill n-times="0.85" speed="1.5" stopped)
         .content.wait-for-gif
           h1 Same Origin Policy
           h1 ✔
 
       section.content
         .mid Recap
-        h1
-          | We've can pull down arbitrary GIF data from Tumblr
+        h4
+          | We can pull down arbitrary GIF data from Tumblr
           | and split it into frames.
-          | Now it's time to look at playback.
+          | Now it's time to look at
+          span.feat  playback.
+        hr
+
+      section.content
+        h4 Playback
+        pre(data-line="3")
+          code.language-javascript.
+            var animate = function() {
+              framesElement.dataset.frame =
+                calculateFrame( ... );
+              requestAnimationFrame(animate);
+            }
+            animate();
 
       section.content
         h1.feat Beat Detection
 
-      section.content
+      section.content.nobuild
         .mid Options
         h3 Do it live
-        .mid vc
+        .mid vs
         h3 Do it ahead of time
         hr
 
+      section.content.nobuild
+        .mid.fadeout Options
+        h3 Do it live
+        .mid.fadeout vs
+        h3.fadeout Do it ahead of time
+        hr.fadeout
+
       section.content
-        h1 Doing it live
+        h1 Web Audio API
+        h4
+          strong
+            a(target="_blank" href="https://developer.mozilla.org/en-US/docs/Web_Audio_API")
+              | developer.mozilla.org/
+              br
+              | en-US/docs/Web_Audio_API
+
+      section.content
+        pre(data-line="3,8")
+          code.language-javascript.
+            var audioContext = new AudioContext(),
+              source = audioContext.createBufferSource(),
+              analyser = audioContext.createAnalyser(),
+              speakers = audioContext.destination;
+
+            audioContext.decodeAudioData(mp3data, (buffer) => {
+              source.buffer = buffer;
+              source.connect(analyser);
+              analyser.connect(speakers);
+            })
 
       section.content
         pre
           code.language-javascript.
-            WEB AUDIO API EXAMPLE
+            // Once the music is playing
+            var frequencyData = new Uint8Array(1024);
+            analyser.getByteFrequencyData(frequencyData);
+            frequencyData[19]; // Intensity of ~440Hz
 
       section.content
-
-
-      section.content
-        .mid Much, much more:
-        ul
-          li.fadeout • Music data from Rdio
-          li.fadeout • Beat data from EchoNest
-          li.fadeout • Beat matching playback
-          li
-            strong •
-              a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
-        hr
+        pre
+          code.language-javascript.
+            navigator.getUserMedia({audio: true}, (stream) => {
+              var source = audioContext
+                              .createMediaStreamSource(stream);
+              source.connect(analyser);
+              analyser.connect(speakers);
+            })
 
       section.content
-        h1 The
-          span.feat  full version
-          |  of this talk
-        .mid at
-        h1 JSConf AU!
-        h4 au.jsconf.com
+        .line
+          .ruthjohn
+          h3 @Rumyra
+        h4
+          a(target="_blank" href="http://24ways.org/2013/make-your-browser-dance/#author")
+            strong 24ways.org/2013/
+            br
+            | make-your-browser-dance
+
+      section
+        iframe(data-bespoke-delay-src='demos/frequency.html')
+
+      section.content
+        pre(data-line="8")
+          code.language-javascript.
+            var frequencyData = new Uint8Array(1024),
+              beatDetector = // TODO: this.
+
+            // called within a requestAnimationFrame loop
+            var calculateFrame = function() {
+              analyser.getByteFrequencyData(frequencyData);
+              beatDetector.update(frequencyData);
+              return beatDetector.howFarThroughBeat();
+            }
+
+      section.content
+        h1.red ✖
+
+      section.content.nobuild
+        .mid.fadeout Options
+        h3.fadeout Do it live
+        .mid.fadeout vs
+        h3 Do it ahead of time
+        hr.fadeout
+      //a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
 
       section.content(data-bespoke-state='fact')
         h1 Dumb ideas

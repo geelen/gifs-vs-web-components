@@ -63,6 +63,7 @@ article {
 .bespoke-slide {
   &.content,
   > .content {
+    background-color: rgba(white, 0.05);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -307,6 +308,7 @@ $me-height: 72px;
   width: $me-height;
   background-repeat: no-repeat;
   background-size: $me-height;
+  background-position: 50% 50%;
   border-radius: 50%;
   box-shadow: 0 0 0 2px black, 0 0 0 3px white;
   margin: 0 16px;
@@ -330,6 +332,11 @@ $me-height: 72px;
 .josh {
   @extend .person;
   background-image: url("../images/nullobject.jpeg");
+}
+.ruthjohn {
+  @extend .person;
+  background-size: $me-height * 1.4;
+  background-image: url("../images/ruth_john.jpeg");
 }
 
 .line {
@@ -360,9 +367,34 @@ $me-height: 72px;
   color: green;
 }
 
+$featColor: #39CCCC;
 .feat {
-  color: #39CCCC;
+  color: $featColor;
 }
+.featbang {
+  color: $featColor !important;
+}
+.line-highlight {
+  margin-top: 16px;
+  background-color: rgba($featColor,0.2);
+  border: none;
+  &::before {
+    display: none;
+  }
+}
+pre[data-line] {
+  padding: 1em;
+}
+//.token.function {
+//  color: lighten($featColor, 20%);
+//  .punctuation {
+//    color: white;
+//    opacity: 0.7;
+//  }
+//}
+//.token.class-name {
+//  color: lighten($featColor, 20%);
+//}
 
 @import 'backgrounds';
 @import 'fonts';
