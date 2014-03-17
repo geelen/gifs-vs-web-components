@@ -34,7 +34,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/2012.gif" fill stopped)
+          x-gif(src="images/2012.gif" fill stopped speed="1.5")
         .content
           h2 December
             strong  2012
@@ -45,37 +45,45 @@ html
           h3 @BenSchwarz
 
       section.content
-        h3
-          strong vastimg.herokuapp.com
+        h1 VastImg
         .line
           .rtomayko
           h3 @RTomayko
 
-      section
-        .fullscreen
-          x-gif(src="images/shocked.gif" fill stopped n-times="1")
-        .content
-          h1 ETOOMUCHPORN
+      section.content
+        h3 vastimg.herokuapp.com/?yourfile.gif
 
       section.content(data-bespoke-state='gif-skull')
       section.content(data-bespoke-state='gif-skull-2')
 
       section
         .fullscreen
-          x-gif(src="images/carl_sagan_good.gif" fill stopped n-times="1")
-        .content
+          x-gif(src="images/carl_sagan_good.gif" fill stopped n-times="1").blur1
+        .content.wait-for-gif
           h2 Full-screen GIFs
           .mid are
           h1 awesome
+
+      section.content
+        h3 vastimg.herokuapp.com
+
+      section
+        .fullscreen
+          x-gif(src="images/shocked.gif" fill stopped n-times="1").blur2.dark5
+        .content
+          div
+          h1 ETOOMUCHPORN
 
       section.content
         h1 Let's keep it SFW
 
       section.content
         .mid What has
-        h2 lots of GIFs
+        h3 lots of
+          strong  GIFs
         .mid and is
-        h1 totally safe for work
+        h3 totally
+          strong  safe for work
         .mid ?
 
       section.content(data-bespoke-state='not-sure-if-right')

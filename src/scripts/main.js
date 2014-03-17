@@ -19,13 +19,18 @@ bespoke.plugins.delaySrc = function (deck, options) {
 }
 
 bespoke.plugins.startXGif = function (deck, options) {
+  var gifs = deck.slides.map(function (slide) {
+    return [].slice.call(slide.querySelectorAll('x-gif[stopped]'), 0);
+  });
+
   var setStopped = function (stopped) {
     return function (slide) {
-
-      window.wat = slide.slide.querySelectorAll('x-gif')
-      return [].map.call(slide.slide.querySelectorAll('x-gif'), function (gif) {
-        console.log(gif, stopped)
+      gifs[slide.index].map(function (gif) {
         gif.stopped = stopped;
+        slide.slide.classList.remove('x-gif-finished');
+        if (!stopped) gif.addEventListener('x-gif-finished', function () {
+          slide.slide.classList.add('x-gif-finished');
+        })
       });
     }
   };
@@ -45,4 +50,10 @@ window.addEventListener('polymer-ready', function () {
     delaySrc: true,
     startXGif: true
   });
+
+  window.addEventListener('resize', function () {
+    [].forEach.call(document.querySelectorAll('x-gif'), function (elem) {
+      elem.relayout();
+    });
+  })
 })

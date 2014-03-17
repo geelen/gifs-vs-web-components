@@ -15,6 +15,13 @@
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), url(../fonts/raleway-700.woff) format('woff')
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
   font-weight: 900;
   src: local('Raleway Heavy'), url(../fonts/raleway-900.woff) format('woff')
 }

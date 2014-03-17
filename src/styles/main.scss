@@ -61,7 +61,8 @@ article {
 }
 
 .bespoke-slide {
-  &.content, > .content {
+  &.content,
+  > .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,7 +77,24 @@ article {
     margin-left: $slide_width / 2 * -1;
     padding: 40px;
     border-radius: 0;
+
+    @for $i from 1 through 20 {
+      > *:nth-child(#{$i}) {
+        transition: opacity 0.6s 0.4s * ($i - 1);
+        transform: translateZ(0);
+      }
+    }
+    &.nobuild > * {
+      transition: none;
+    }
+    &.wait-for-gif {
+      opacity: 0;
+    }
   }
+  &.x-gif-finished .content.wait-for-gif {
+    opacity: 1;
+  }
+
 
   @media print {
     zoom: 1 !important;
@@ -85,15 +103,6 @@ article {
     page-break-before: always;
     position: static;
     margin: 0;
-  }
-  @for $i from 1 through 20 {
-    > *:nth-child(#{$i}) {
-      transition: opacity 0.6s 0.4s * ($i - 1);
-      transform: translateZ(0);
-    }
-  }
-  &.nobuild > * {
-    transition: none;
   }
   iframe {
     position: absolute;
@@ -149,9 +158,12 @@ article {
 }
 
 .bespoke-after {
-  > * {
-    opacity: 0;
-    transition: none !important;
+  &.content,
+  > .content {
+    > * {
+      opacity: 0;
+      transition: none !important;
+    }
   }
   .buildin {
     opacity: 0;
