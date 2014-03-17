@@ -8,12 +8,16 @@ bespoke.plugins.delaySrc = function (deck, options) {
   deck.on('activate', function (slide) {
     delayedObjects[slide.index].map(function (object) {
       object.src = object.dataset.bespokeDelaySrc;
+      requestAnimationFrame(function () {
+        object.classList.add('scrolldown');
+      })
     })
   });
 
   deck.on('deactivate', function (slide) {
     delayedObjects[slide.index].map(function (object) {
       object.src = "";
+      object.classList.remove('scrolldown');
     })
   })
 }
