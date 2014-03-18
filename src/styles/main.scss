@@ -263,6 +263,12 @@ h5 {
   margin: 16px 0;
 }
 
+h6 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
 ul {
   font-size: 36px;
   font-weight: 700;
@@ -391,6 +397,11 @@ $featColor: #39CCCC;
 }
 pre[data-line] {
   padding: 1em;
+}
+
+.two-up {
+  max-height: 40% !important;
+  max-width: 100%;
 }
 //.token.function {
 //  color: lighten($featColor, 20%);

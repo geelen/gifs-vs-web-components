@@ -9,12 +9,15 @@ html
 
   body(unresolved)
     article
-      section.content(data-bespoke-state='homescreen')
-        h1 A GIF Odyssey
-        .mid by
-        .line
-          .me
-          h3 @GlenMaddern
+      section
+        .fullscreen
+          x-gif(src="images/mtnwest.gif" fill speed="0.8" ping-pong stopped)
+        .content
+          h1 A GIF Odyssey
+          .mid by
+          .line
+            .me
+            h3 @GlenMaddern
 
       section.content
         h1 "Odyssey"
@@ -69,7 +72,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shocked.gif" fill n-times="1" stopped).blur2.dark5
+          x-gif(src="images/shocked.gif" fill n-times="1" stopped).blur2
         .content.wait-for-gif
           div
           h1 ETOOMUCHPORN
@@ -88,7 +91,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="3" stopped).dark5
+          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="4" stopped).dark5
         .content
           h1 Tumblr
 
@@ -196,6 +199,7 @@ html
           li • Change speed of GIFs
           li • Find beats from music
         hr
+
       section.content
         pre
           code.language-markup.
@@ -438,6 +442,86 @@ html
             }
             animate();
 
+      section.content(data-bespoke-state='light')
+        h1 A component!
+
+      section.content(data-bespoke-state='light')
+        img(src="images/p-logo.svg")
+        h1. &lt;x-gif&gt;
+        h4 github.com/geelen/x-gif
+
+      section.content(data-bespoke-state='light')
+        h6 &lt;img src="images/jump.gif"&gt;
+        img.two-up(data-bespoke-delay-src="images/jump.gif")
+        x-gif.two-up(src="images/jump.gif")
+        h6 &lt;x-gif src="images/jump.gif"&gt;
+
+      section.content(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/jump.gif"&gt;
+        x-gif.two-up(src="images/jump.gif" speed="1")
+        x-gif.two-up(src="images/jump.gif" speed="2")
+        h6 &lt;x-gif src="images/jump.gif"
+          span.feat  speed="2"&gt;
+
+      section.content(data-bespoke-state='light')
+        h6 &lt;img src="images/jump.gif"&gt;
+        img.two-up(src="images/jump.gif")
+        img.two-up(src="images/pulse.gif")
+        h6 &lt;img src="images/pulse.gif"
+        | &gt;
+
+      section.content.nobuild(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/jump.gif"
+          span.feat  bpm="140"
+          | &gt;
+        x-gif.two-up(src="images/jump.gif" bpm="140")
+        x-gif.two-up(src="images/pulse.gif" bpm="140")
+        h6 &lt;x-gif src="images/pulse.gif
+          span.feat  bpm="140"
+          | &gt;
+
+      section.content.nobuild(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/jump.gif"
+          span.feat  hard-bpm="140"
+          | &gt;
+        x-gif.two-up(src="images/jump.gif" hard-bpm="140")
+        x-gif.two-up(src="images/pulse.gif" hard-bpm="140")
+        h6 &lt;x-gif src="images/pulse.gif
+          span.feat  hard-bpm="140"
+          | &gt;
+
+      section.content.nobuild(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/jump.gif"
+        x-gif.two-up(src="images/jump.gif")
+        x-gif.two-up(src="images/jump.gif" ping-pong)
+        h6 &lt;x-gif src="images/jump.gif
+          span.feat  ping-pong
+          | &gt;
+
+      section.content.nobuild(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/jump.gif"
+          span.feat  n-times="1"
+          | &gt;
+        x-gif.two-up(src="images/jump.gif" n-times="1")
+        x-gif.two-up(src="images/jump.gif" n-times="2")
+        h6 &lt;x-gif src="images/jump.gif
+          span.feat  n-times="2"
+          | &gt;
+
+      section.content(data-bespoke-state='light')
+        .mid X-GIF
+        ul
+          li ✔ Polymer element
+          li • Angular directive
+          li • React component
+          li • Ember component
+        hr
+
+      section.content(data-bespoke-state='light')
+        img(src="images/p-logo.svg")
+        h4 github.com/geelen/x-gif
+        h4.feat The GIF format the internet deserves
+
       section.content
         h1.feat Beat Detection
 
@@ -538,7 +622,7 @@ html
         h4 developer.echonest.com
 
       section.content
-        pre(data-line="3")
+        pre(data-line="2")
           code.language-javascript.
             http://developer.echonest.com/
               api/v4/song/search?
@@ -551,7 +635,7 @@ html
         img(src='images/search_response.png')
 
       section.content
-        pre(data-line="3")
+        pre(data-line="2")
           code.language-javascript.
             http://developer.echonest.com/
               api/v4/track/profile?
@@ -570,6 +654,26 @@ html
         .content.wait-for-gif
           h1 Beat data for arbitrary tracks
           h1 ✔
+
+      section.content.nobuild
+        .mid Two wins:
+        ul
+          li ✔ Change speed of GIFs
+          li ✔ Find beats from music
+        hr
+
+      section.content(data-bespoke-state='light')
+        img(src="images/djgif_logo.gif")
+        h1 DJGif
+        h4 Ship it?
+
+      section.content(data-bespoke-state='light')
+        h1.red ✖
+
+      section.content(data-bespoke-state='light')
+        h1 Side projects
+        .mid are not
+        h1 products
 
       section
         .fullscreen
