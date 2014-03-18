@@ -61,3 +61,23 @@ window.addEventListener('polymer-ready', function () {
     });
   })
 })
+
+var brightness = 0;
+document.addEventListener('keyup', function (e) {
+  var setBrightness = function () {
+    document.querySelector('article').style.webkitFilter =
+      "brightness(" + (1 + brightness) + ") contrast(" + (1 + brightness * 0.25) + ")"
+  }
+  if (e.shiftKey) {
+    if (e.keyCode == 38) {
+      brightness += 0.1;
+      setBrightness(brightness);
+    } else if (e.keyCode == 40) {
+      brightness -= 0.1;
+      setBrightness(brightness);
+    } else if (e.keyCode == 48) {
+      brightness = 0;
+      setBrightness(brightness);
+    }
+  }
+})

@@ -54,7 +54,7 @@ html
           h3 @RTomayko
 
       section.content
-        h3 vastimg.herokuapp.com/?yourfile.gif
+        h3 vastimg.herokuapp.com/?http://some/file.gif
 
       section.content(data-bespoke-state='gif-skull')
       section.content(data-bespoke-state='gif-skull-2')
@@ -91,7 +91,7 @@ html
 
       section
         .fullscreen
-          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="4" stopped).dark5
+          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="4" stopped)
         .content
           h1 Tumblr
 
@@ -122,12 +122,13 @@ html
           h4 @NullObject
           .josh
 
-      section.content
+      section.content(data-bespoke-state='black')
         h1 GifCity
         .mid +
         h1 Tumblr
         .mid =
-        h1.red ♥
+        h1
+          img.smallish(src="images/heart.gif")
 
       section.content
         h4
@@ -184,14 +185,6 @@ html
         h4 github.com/geelen/djgif
         h4 djgif.com
           span.feat  (soon)
-
-      section.content(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        h1 Tumblr GIFs
-        .mid +
-        h1 Rdio playlists
-        .mid +
-        h1.red ♥
 
       section.content.nobuild
         .mid Two challenges:
@@ -307,8 +300,8 @@ html
           strong
             a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
 
-      section
-        iframe.x10(data-bespoke-delay-src='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp')
+      //section
+      //  iframe.x10(data-bespoke-delay-src='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp')
 
       section.content
         img(src="images/gif_file_stream.gif")
@@ -361,6 +354,10 @@ html
               frames.push(URL.createObjectURL(blob));
             }
 
+      seciton.content
+        h4
+          strong
+            a(target="_blank" href="https://github.com/geelen/x-gif/blob/master/src/exploder.js") exploder.js
       section.content
         h1 Binary in JS
 
@@ -453,20 +450,20 @@ html
       section.content(data-bespoke-state='light')
         h6 &lt;img src="images/jump.gif"&gt;
         img.two-up(data-bespoke-delay-src="images/jump.gif")
-        x-gif.two-up(src="images/jump.gif")
+        x-gif.two-up(src="images/jump.gif" stopped)
         h6 &lt;x-gif src="images/jump.gif"&gt;
 
       section.content(data-bespoke-state='light')
         h6 &lt;x-gif src="images/jump.gif"&gt;
-        x-gif.two-up(src="images/jump.gif" speed="1")
-        x-gif.two-up(src="images/jump.gif" speed="2")
+        x-gif.two-up(src="images/jump.gif" speed="1" stopped)
+        x-gif.two-up(src="images/jump.gif" speed="2" stopped)
         h6 &lt;x-gif src="images/jump.gif"
           span.feat  speed="2"&gt;
 
       section.content(data-bespoke-state='light')
         h6 &lt;img src="images/jump.gif"&gt;
-        img.two-up(src="images/jump.gif")
-        img.two-up(src="images/pulse.gif")
+        img.two-up(src="images/jump.gif" stopped)
+        img.two-up(src="images/pulse.gif" stopped)
         h6 &lt;img src="images/pulse.gif"
         | &gt;
 
@@ -474,26 +471,26 @@ html
         h6 &lt;x-gif src="images/jump.gif"
           span.feat  bpm="140"
           | &gt;
-        x-gif.two-up(src="images/jump.gif" bpm="140")
-        x-gif.two-up(src="images/pulse.gif" bpm="140")
+        x-gif.two-up(src="images/jump.gif" bpm="140" stopped)
+        x-gif.two-up(src="images/pulse.gif" bpm="140" stopped)
         h6 &lt;x-gif src="images/pulse.gif
           span.feat  bpm="140"
           | &gt;
 
-      section.content.nobuild(data-bespoke-state='light')
+      section.content.nobuild(data-bespoke-state='light' )
         h6 &lt;x-gif src="images/jump.gif"
           span.feat  hard-bpm="140"
           | &gt;
-        x-gif.two-up(src="images/jump.gif" hard-bpm="140")
-        x-gif.two-up(src="images/pulse.gif" hard-bpm="140")
+        x-gif.two-up(src="images/jump.gif" hard-bpm="140" stopped)
+        x-gif.two-up(src="images/pulse.gif" hard-bpm="140" stopped)
         h6 &lt;x-gif src="images/pulse.gif
           span.feat  hard-bpm="140"
           | &gt;
 
       section.content.nobuild(data-bespoke-state='light')
         h6 &lt;x-gif src="images/jump.gif"
-        x-gif.two-up(src="images/jump.gif")
-        x-gif.two-up(src="images/jump.gif" ping-pong)
+        x-gif.two-up(src="images/jump.gif" stopped)
+        x-gif.two-up(src="images/jump.gif" ping-pong stopped)
         h6 &lt;x-gif src="images/jump.gif
           span.feat  ping-pong
           | &gt;
@@ -502,11 +499,19 @@ html
         h6 &lt;x-gif src="images/jump.gif"
           span.feat  n-times="1"
           | &gt;
-        x-gif.two-up(src="images/jump.gif" n-times="1")
-        x-gif.two-up(src="images/jump.gif" n-times="2")
+        x-gif.two-up(src="images/jump.gif" n-times="1" stopped)
+        x-gif.two-up(src="images/jump.gif" n-times="2" stopped)
         h6 &lt;x-gif src="images/jump.gif
           span.feat  n-times="2"
           | &gt;
+
+      section
+        .fullscreen
+          x-gif(src="images/jump.gif" fill stopped)
+        .content.nobuild(data-bespoke-state='light')
+          h6 &lt;x-gif src="images/jump.gif"
+            span.feat  fill
+            | &gt;
 
       section.content(data-bespoke-state='light')
         .mid X-GIF
@@ -524,13 +529,6 @@ html
 
       section.content
         h1.feat Beat Detection
-
-      section.content.nobuild
-        .mid Options
-        h3 Do it live
-        .mid vs
-        h3 Do it ahead of time
-        hr
 
       section.content.nobuild
         .mid.fadeout Options
@@ -629,24 +627,57 @@ html
                 api_key=API_KEY&
                 format=json&
                 results=1&
-                artist=radiohead&
-                title=karma%20police
+                artist=weezer&
+                title=el%20scorcho&
+                bucket=audio_summary
       section.content
         img(src='images/search_response.png')
 
       section.content
-        pre(data-line="2")
-          code.language-javascript.
-            http://developer.echonest.com/
-              api/v4/track/profile?
-                api_key=API_KEY&
-                format=json&
-                id=TRTLKZV12E5AC92E11&
-                bucket=audio_summary
-      section.content
-        img(src='images/track_profile_response.png')
-      section.content
         img(src='images/track_analysis_response.png')
+
+      section.content
+        .mid EchoNest
+        ul
+          li • Search ~ 1kb
+          li • Analysis ~ 300kb
+          li.feat Both require private API key
+        hr
+
+      section.content(data-bespoke-state='light')
+        h1 NodeJS Micro Service!
+
+      section.content(data-bespoke-state='light')
+        pre.small
+          code.language-javascript.
+            app.get('/search', (req, res) => {
+              var url = searchUrl(req.query.artist, req.query.title)
+              request.get(url, (err, data) => {
+                var track = JSON.parse(data.body);
+                var summary = track.response.songs[0].audio_summary;
+                request.get(summary.analysis_url, (err, data) => {
+                  var analysis = JSON.parse(data.body);
+                  delete analysis.segments;
+                  delete analysis.tatums;
+                  track.response.songs[0].analysis = analysis;
+                  res.send(200, track);
+                });
+              });
+            });
+
+      section.content(data-bespoke-state='light')
+        pre
+          code.language-javascript.
+            http://djgif-echonest-proxy.herokuapp.com/
+              search?artist=weezer&title=el+scorcho
+        ul
+          li ✔ 55kb
+          li ✔ No API keys on client
+
+      section.content(data-bespoke-state='light')
+        h1
+          a(target="_blank" href="https://github.com/geelen/djgif/tree/master/echonest-proxy")
+            | echonest-proxy
 
       section
         .fullscreen
@@ -665,15 +696,36 @@ html
       section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
         h1 DJGif
-        h4 Ship it?
-
-      section.content(data-bespoke-state='light')
-        h1.red ✖
+        h4 Almost!
 
       section.content(data-bespoke-state='light')
         h1 Side projects
         .mid are not
         h1 products
+
+      section.content(data-bespoke-state='light')
+        h1 DEMO
+
+      section.content(data-bespoke-state='light')
+        h6 &lt;x-gif src="images/explosion.gif"
+          span.feat  sync
+          | &gt;
+        pre
+          code.language-javascript.
+            var xGif = document.querySelector('x-gif'),
+              beats = metadata.beats, //from Echonest proxy
+              animationLoop = () => {
+                // calculate these three:
+                xGif.clock(beatNr, beatDuration, beatFraction);
+              };
+            animationLoop();
+
+      section.content(data-bespoke-state='light')
+        h1
+          a(target="_blank" href="http://localhost:8080/demos/audio.html") DEMO
+
+      section.content(data-bespoke-state='light')
+        h1 Final thoughts
 
       section
         .fullscreen
@@ -683,11 +735,19 @@ html
           .mid are
           h1 awesome
 
-      section.content(data-bespoke-state='thanks')
+      section.content(data-bespoke-state='light')
         h1 Thanks!
         .line
           .me
-          h3 @GlenMaddern
+          h3
+            strong @GlenMaddern
+        h4
+          strong geelen.github.io/a-gif-odyssey
+
+      section.content(data-bespoke-state='light')
+        img(src="images/djgif_logo.gif")
+        h1
+          a(target="_blank" href="http://djgif.com/?rdio=p7794600&tumblrs=mrdiv") DEMO
 
     script(src='scripts/scripts.js')
     script(src='x-gif/dist/platform.js')

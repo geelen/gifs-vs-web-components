@@ -63,7 +63,7 @@ article {
 .bespoke-slide {
   &.content,
   > .content {
-    background-color: rgba(white, 0.05);
+    //background-color: rgba(white, 0.05);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -398,11 +398,19 @@ $featColor: #39CCCC;
 pre[data-line] {
   padding: 1em;
 }
+pre.small {
+  font-size: 0.85em;
+}
 
 .two-up {
   max-height: 40% !important;
   max-width: 100%;
 }
+img.smallish {
+  max-height: 20%;
+  transform: scale(1.8);
+}
+
 //.token.function {
 //  color: lighten($featColor, 20%);
 //  .punctuation {
