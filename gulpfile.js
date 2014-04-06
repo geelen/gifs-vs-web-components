@@ -92,19 +92,19 @@ gulp.task('connect', function () {
   $.connect.server({
     root: ['public'],
     port: 8000,
-    livereload: false
+    livereload: true
   })
 });
 
 // Watch
 gulp.task('watch', ['build', 'connect'], function () {
   // Watch for changes in `src` folder
-//  gulp.watch([
-//    'public/**/*'
-//  ], function (event) {
-//    return gulp.src(event.path)
-//      .pipe($.connect.reload());
-//  });
+  gulp.watch([
+    'public/**/*'
+  ], function (event) {
+    return gulp.src(event.path)
+      .pipe($.connect.reload());
+  });
 
   // Watch .jade files
   gulp.watch('src/*.jade', ['html']);

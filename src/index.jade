@@ -291,8 +291,11 @@ html
       section.content(data-bespoke-state='yeahnah')
 
       section.content
-        h1 Time for
-          .feat Javascript Binary Hax!
+        h1 Time for...
+
+      section
+        .fullscreen
+          x-gif(src="images/javascript_time_logo.gif" fill n-times="1" stopped)
 
       section.content
         h1 What's in a GIF?
@@ -357,7 +360,8 @@ html
       seciton.content
         h4
           strong
-            a(target="_blank" href="https://github.com/geelen/x-gif/blob/master/src/exploder.js") exploder.js
+            a(target="_blank" href="https://github.com/geelen/x-gif/blob/gh-pages/src/exploder.js") exploder.js
+
       section.content
         h1 Binary in JS
 
@@ -451,39 +455,41 @@ html
         h6 &lt;img src="images/jump.gif"&gt;
         img.two-up(data-bespoke-delay-src="images/jump.gif")
         x-gif.two-up(src="images/jump.gif" stopped)
-        h6 &lt;x-gif src="images/jump.gif"&gt;
+        h6 &lt;
+          span.feat x-gif
+          |  src="images/jump.gif"&gt;
 
       section.content(data-bespoke-state='light')
         h6 &lt;x-gif src="images/jump.gif"&gt;
         x-gif.two-up(src="images/jump.gif" speed="1" stopped)
         x-gif.two-up(src="images/jump.gif" speed="2" stopped)
         h6 &lt;x-gif src="images/jump.gif"
-          span.feat  speed="2"&gt;
+          span.feat  speed="2"
+          | &gt;
 
       section.content(data-bespoke-state='light')
-        h6 &lt;img src="images/jump.gif"&gt;
-        img.two-up(src="images/jump.gif" stopped)
-        img.two-up(src="images/pulse.gif" stopped)
-        h6 &lt;img src="images/pulse.gif"
-        | &gt;
+        h6 &lt;img src="images/waves.gif"&gt;
+        img.two-up(src="images/waves.gif")
+        img.two-up(src="images/vectors.gif")
+        h6 &lt;img src="images/vectors.gif"&gt;
 
       section.content.nobuild(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/jump.gif"
+        h6 &lt;x-gif src="images/waves.gif"
           span.feat  bpm="140"
           | &gt;
-        x-gif.two-up(src="images/jump.gif" bpm="140" stopped)
-        x-gif.two-up(src="images/pulse.gif" bpm="140" stopped)
-        h6 &lt;x-gif src="images/pulse.gif
+        x-gif.two-up(src="images/waves.gif" bpm="140" stopped)
+        x-gif.two-up(src="images/vectors.gif" bpm="140" stopped)
+        h6 &lt;x-gif src="images/vectors.gif
           span.feat  bpm="140"
           | &gt;
 
       section.content.nobuild(data-bespoke-state='light' )
-        h6 &lt;x-gif src="images/jump.gif"
+        h6 &lt;x-gif src="images/waves.gif"
           span.feat  hard-bpm="140"
           | &gt;
-        x-gif.two-up(src="images/jump.gif" hard-bpm="140" stopped)
-        x-gif.two-up(src="images/pulse.gif" hard-bpm="140" stopped)
-        h6 &lt;x-gif src="images/pulse.gif
+        x-gif.two-up(src="images/waves.gif" hard-bpm="140" stopped)
+        x-gif.two-up(src="images/vectors.gif" hard-bpm="140" stopped)
+        h6 &lt;x-gif src="images/vectors.gif
           span.feat  hard-bpm="140"
           | &gt;
 
@@ -525,7 +531,7 @@ html
       section.content(data-bespoke-state='light')
         img(src="images/p-logo.svg")
         h4 github.com/geelen/x-gif
-        h4.feat The GIF format the internet deserves
+        h4.feat The GIF tag the internet deserves
 
       section.content
         h1.feat Beat Detection
@@ -722,7 +728,7 @@ html
 
       section.content(data-bespoke-state='light')
         h1
-          a(target="_blank" href="http://localhost:8080/demos/audio.html") DEMO
+          a(target="_blank" href="http://localhost:1983/demos/audio2.html") DEMO
 
       section.content(data-bespoke-state='light')
         h1 Final thoughts
