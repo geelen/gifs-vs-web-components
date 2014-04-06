@@ -10,8 +10,8 @@ var $ = require('gulp-load-plugins')();
 // Styles
 gulp.task('styles', function () {
   return gulp.src([
-      'src/bower_components/prism/themes/prism-twilight.css',
-      'src/styles/**/*.scss'])
+    'src/bower_components/prism/themes/prism-twilight.css',
+    'src/styles/**/*.scss'])
     .pipe($.sass({
       style: 'expanded',
       includePath: ['src/bower_components']
@@ -25,19 +25,19 @@ gulp.task('styles', function () {
 // Scripts
 gulp.task('scripts', function () {
   return gulp.src([
-      'src/bower_components/bespoke.js/dist/bespoke.min.js',
-      'src/bower_components/bespoke-keys/dist/bespoke-keys.min.js',
-      'src/bower_components/bespoke-touch/dist/bespoke-touch.min.js',
-      'src/bower_components/bespoke-scale/dist/bespoke-scale.min.js',
-      'src/bower_components/bespoke-hash/dist/bespoke-hash.min.js',
-      'src/bower_components/bespoke-state/dist/bespoke-state.min.js',
-      'src/bower_components/bespoke-bullets/dist/bespoke-bullets.min.js',
-      'src/bower_components/prism/prism.js',
-      'src/bower_components/prism/components/prism-bash.js',
-      'src/bower_components/prism/components/prism-css.js',
-      'src/bower_components/prism/components/prism-css-extras.js',
-      'src/bower_components/prism/plugins/line-highlight/prism-line-highlight.js',
-      'src/scripts/**/*.js'])
+    'src/bower_components/bespoke.js/dist/bespoke.min.js',
+    'src/bower_components/bespoke-keys/dist/bespoke-keys.min.js',
+    'src/bower_components/bespoke-touch/dist/bespoke-touch.min.js',
+    'src/bower_components/bespoke-scale/dist/bespoke-scale.min.js',
+    'src/bower_components/bespoke-hash/dist/bespoke-hash.min.js',
+    'src/bower_components/bespoke-state/dist/bespoke-state.min.js',
+    'src/bower_components/bespoke-bullets/dist/bespoke-bullets.min.js',
+    'src/bower_components/prism/prism.js',
+    'src/bower_components/prism/components/prism-bash.js',
+    'src/bower_components/prism/components/prism-css.js',
+    'src/bower_components/prism/components/prism-css-extras.js',
+    'src/bower_components/prism/plugins/line-highlight/prism-line-highlight.js',
+    'src/scripts/**/*.js'])
 //        .pipe($.jshint('.jshintrc'))
 //        .pipe($.jshint.reporter('default'))
     .pipe($.concat('scripts.js'))
@@ -67,8 +67,8 @@ gulp.task('clean', function () {
 
 gulp.task('x-gif', function () {
   gulp.src([
-      'src/bower_components/x-gif/dist/*'
-    ])
+    'src/bower_components/x-gif/dist/*'
+  ])
     .pipe(gulp.dest('public/x-gif/dist'));
 })
 
@@ -88,11 +88,13 @@ gulp.task('default', ['clean'], function () {
 });
 
 // Connect
-gulp.task('connect', $.connect.server({
-  root: ['public'],
-  port: 8000,
-  livereload: false
-}));
+gulp.task('connect', function () {
+  $.connect.server({
+    root: ['public'],
+    port: 8000,
+    livereload: false
+  })
+});
 
 // Watch
 gulp.task('watch', ['build', 'connect'], function () {
