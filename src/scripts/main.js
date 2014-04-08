@@ -47,7 +47,7 @@ window.addEventListener('polymer-ready', function () {
   bespoke.from('article', {
     keys: true,
     touch: true,
-    scale: true,
+    scale: false,
     hash: true,
     state: true,
     bullets: true,
