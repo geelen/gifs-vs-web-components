@@ -186,6 +186,13 @@ html
         h4 djgif.com
           span.feat  (soon)
 
+      section.content(data-bespoke-state='light')
+        img(src="images/djgif_logo.gif")
+        .mid =
+        h1 Tumblr
+        .mid +
+        h1 Rdio
+
       section.content.nobuild
         .mid Two challenges:
         ul
@@ -216,10 +223,27 @@ html
             video.playbackRate = 1.5;
             video.src = 'converted.gif.mp4';
 
+      section.content
+        h1
+          a(target="_blank" href='https://github.com/geelen/djgif/blob/i_dont_want_no_scrubs/elastic-transcoder/app.js#L10') Convert GIFs to video
+
       section.content(data-bespoke-state='yeahnah')
 
       section.content
-        h4 Break GIF into frames?
+        h1.red ✖
+
+      section.content
+        .mid What is
+        h3
+          strong an animation
+        .mid but a
+        h3
+          strong series of
+            span.feat  frames
+        .mid ?
+
+      section.content
+        h4 Put the frames in the DOM
         pre
           code.language-markup.
             &lt;div data-frame="0"&gt;
@@ -229,7 +253,7 @@ html
             &lt;/div&gt;
 
       section.content
-        h4 Position/hide them with CSS
+        h4 Show one at a time with CSS
         pre
           code.language-css.
             [data-frame] img {
@@ -244,7 +268,7 @@ html
             }
 
       section.content
-        h4 Show them with JS
+        h4 Cycle through with JS
         pre
           code.language-javascript.
             var animate = function() {
@@ -264,10 +288,17 @@ html
             gifsicle -e cats.gif
             # outputs cats.gif.001 cats.gif.002 etc
 
+      section.content
+        .mid Host Gifsicle?
+        ul
+          li • Download from Tumblr
+          li • Split apart on filesystem
+          li • Serve... somehow?
+        hr
       section.content(data-bespoke-state='yeahnah')
 
       section.content
-        .mid How can I
+        .mid Why don't we
         h3
           strong break apart a
             span.feat  GIF
@@ -291,7 +322,10 @@ html
       section.content(data-bespoke-state='yeahnah')
 
       section.content
-        h1 Time for...
+        h1.red ✖
+
+      section.content
+        h3: strong What time is it?
 
       section
         .fullscreen
@@ -335,6 +369,9 @@ html
             |  footer
 
       section.content
+        h1.feat ✔
+
+      section.content
         pre
           code.language-javascript.
             var blob = new Blob(
@@ -342,6 +379,7 @@ html
               {type: 'mime/type'}
             );
             img.src = URL.createObjectURL(blob);
+
       section.content
         pre(data-line="8")
           code.language-javascript.
@@ -358,12 +396,12 @@ html
             }
 
       seciton.content
-        h4
-          strong
-            a(target="_blank" href="https://github.com/geelen/x-gif/blob/gh-pages/src/exploder.js") exploder.js
+        h1
+          a(target="_blank" href="https://github.com/geelen/x-gif/blob/gh-pages/src/exploder.js") exploder.js
 
       section.content
         h1 Binary in JS
+          span.red !
 
       section.content
         pre
@@ -378,6 +416,7 @@ html
 
       section.content
         h1 Same Origin Policy
+          span.red !
 
       section.content
         .mid Two options:
@@ -415,6 +454,15 @@ html
           strong media.tumblr.com/
             span.feat *
             | .gif
+
+      section.content
+        h4
+          strong djgif.com/
+            span.feat *.*
+        .mid =
+        h4
+          strong s3.amazonaws.com/djgif/
+            span.feat *.*
 
       section
         .fullscreen
@@ -523,7 +571,7 @@ html
         .mid X-GIF
         ul
           li ✔ Polymer element
-          li • Angular directive
+          li ✔ Angular directive
           li • React component
           li • Ember component
         hr
@@ -534,7 +582,7 @@ html
         h4.feat The GIF tag the internet deserves
 
       section.content
-        h1.feat Beat Detection
+        h1 Beat Detection
 
       section.content.nobuild
         .mid.fadeout Options
@@ -699,18 +747,21 @@ html
           li ✔ Find beats from music
         hr
 
-      section.content(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        h1 DJGif
-        h4 Almost!
+      section.content.nobuild
+        hr
+        h3: strong How do we match a
+          span.feat  GIF
+          |  to a
+          span.feat  beat
+        .mid ?
 
-      section.content(data-bespoke-state='light')
-        h1 Side projects
-        .mid are not
-        h1 products
-
-      section.content(data-bespoke-state='light')
-        h1 DEMO
+      section.content.nobuild
+        .mid Three things:
+        ul
+          li • How many beats does the GIF span?
+          li • Which sub-beat are we on?
+          li • How far through this beat?
+        hr
 
       section.content(data-bespoke-state='light')
         h6 &lt;x-gif src="images/explosion.gif"
@@ -725,6 +776,19 @@ html
                 xGif.clock(beatNr, beatDuration, beatFraction);
               };
             animationLoop();
+
+      section.content(data-bespoke-state='light')
+        img(src="images/djgif_logo.gif")
+        h1 DJGif
+        h4 Shipped, right?
+
+      section.content(data-bespoke-state='light')
+        h1.red ✖
+
+      section.content(data-bespoke-state='light')
+        h1 Side projects
+        .mid are not
+        h1 products
 
       section.content(data-bespoke-state='light')
         h1
