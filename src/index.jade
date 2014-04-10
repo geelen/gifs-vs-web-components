@@ -756,11 +756,20 @@ html
         .mid ?
 
       section.content.nobuild
-        .mid Three things:
+        .mid Find these:
         ul
           li • How many beats does the GIF span?
-          li • Which sub-beat are we on?
+          li • Which beat are we on?
           li • How far through this beat?
+        hr
+
+      section.content.nobuild
+        .mid From these:
+        ul
+          li • Duration of the GIF
+          li • Duration of the beat
+          li • Number of the beat
+          li • Fraction through the beat
         hr
 
       section.content(data-bespoke-state='light')
@@ -778,6 +787,10 @@ html
             animationLoop();
 
       section.content(data-bespoke-state='light')
+        h1
+          a(target="_blank" href="http://localhost:1983/demos/audio2.html") DEMO
+
+      section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
         h1 DJGif
         h4 Shipped, right?
@@ -791,11 +804,20 @@ html
         h1 products
 
       section.content(data-bespoke-state='light')
-        h1
-          a(target="_blank" href="http://localhost:1983/demos/audio2.html") DEMO
+        ul
+          li ✔ Binary JS hax
+          li ✔ Cloudfront proxying
+          li ✔ Transcoding GIFs to Video
+          li ✔ Web Audio Analysis API
+          li ✔ Beat synchronisation
+          li ✔ Polymer & Web Components
 
       section.content(data-bespoke-state='light')
-        h1 Final thoughts
+        ul
+          li • Beat detection algorithms
+          li • RXJS + React
+          li • GIF mood detection
+          li • ... more dumb things
 
       section
         .fullscreen
