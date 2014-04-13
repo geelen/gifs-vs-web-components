@@ -411,6 +411,10 @@ img.smallish {
   transform: scale(1.8);
 }
 
+x-gif.top25 #frames {
+  transform-origin: 50% 30%;
+}
+
 //.token.function {
 //  color: lighten($featColor, 20%);
 //  .punctuation {

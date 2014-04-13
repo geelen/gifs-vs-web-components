@@ -92,7 +92,7 @@ gulp.task('connect', function () {
   $.connect.server({
     root: ['public'],
     port: 8000,
-    livereload: true
+    livereload: false
   })
 });
 
