@@ -1,11 +1,10 @@
 'use strict';
 // Generated on 2014-03-10 using generator-gulp-webapp 0.0.4
 
-var gulp = require('gulp');
-
-// Load plugins
-var $ = require('gulp-load-plugins')();
-
+var gulp = require('gulp'),
+  $ = require('gulp-load-plugins')(),
+  path = require('path'),
+  projectName = path.basename(__dirname);
 
 // Styles
 gulp.task('styles', function () {
@@ -82,22 +81,17 @@ gulp.task('copy', function () {
 // Build
 gulp.task('build', ['html', 'styles', 'scripts', 'images', 'x-gif', 'copy']);
 
-// Default task
-gulp.task('default', ['clean'], function () {
-  gulp.start('build');
-});
-
 // Connect
 gulp.task('connect', function () {
   $.connect.server({
     root: ['public'],
     port: 8000,
-    livereload: false
+    livereload: true
   })
 });
 
 // Watch
-gulp.task('watch', ['build', 'connect'], function () {
+gulp.task('default', ['build', 'connect'], function () {
   // Watch for changes in `src` folder
   gulp.watch([
     'public/**/*'

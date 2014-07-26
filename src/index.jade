@@ -10,10 +10,10 @@ html
   body(unresolved)
     article
       section
-        .fullscreen
-          x-gif.top25(src="images/jsconf.gif" fill speed="0.6" ping-pong stopped)
+        .fullscreen(ui-fx="blur2")
+          x-gif.top25(src="http://i.imgur.com/s2q8FMS.gif" fill speed="0.6" stopped ui-fx="dark50%")
         .content
-          h1 A GIF Odyssey
+          h1 GIFs vs Web Components
           .mid by
           .line
             .me
@@ -60,8 +60,8 @@ html
       section.content(data-bespoke-state='gif-skull-2')
 
       section
-        .fullscreen
-          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped).blur1
+        .fullscreen(ui-fx="blur1")
+          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped)
         .content.wait-for-gif
           h2 Full-screen GIFs
           .mid are
@@ -71,8 +71,8 @@ html
         h3 vastimg.herokuapp.com
 
       section
-        .fullscreen
-          x-gif(src="images/shocked.gif" fill n-times="1" stopped).blur2
+        .fullscreen(ui-fx="blur2")
+          x-gif(src="images/shocked.gif" fill n-times="1" stopped)
         .content.wait-for-gif
           div
           h1 ETOOMUCHPORN
@@ -154,8 +154,8 @@ html
           span.feat  more
 
       section
-        .fullscreen
-          x-gif(src="images/amazed.gif" fill n-times="1" stopped).blur1
+        .fullscreen(ui-fx="blur1")
+          x-gif(src="images/amazed.gif" fill n-times="1" stopped)
 
       section.content
         .mid What about
@@ -821,8 +821,8 @@ html
         .mid & more dumb things
 
       section
-        .fullscreen
-          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped).blur1
+        .fullscreen(ui-fx="blur1")
+          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped)
         .content.wait-for-gif
           h1 Dumb ideas
           .mid are
