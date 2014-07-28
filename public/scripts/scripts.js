@@ -787,7 +787,7 @@ bespoke.plugins.delaySrc = function (deck, options) {
 
   deck.on('activate', function (slide) {
     delayedObjects[slide.index].map(function (object) {
-      object.src = object.dataset.bespokeDelaySrc;
+      object.setAttribute('src', object.dataset.bespokeDelaySrc);
       requestAnimationFrame(function () {
         object.classList.add('scrolldown');
       })
@@ -796,7 +796,7 @@ bespoke.plugins.delaySrc = function (deck, options) {
 
   deck.on('deactivate', function (slide) {
     delayedObjects[slide.index].map(function (object) {
-      object.src = "";
+      object.setAttribute('src', '');
       object.classList.remove('scrolldown');
     })
   })
@@ -810,7 +810,7 @@ bespoke.plugins.startXGif = function (deck, options) {
   var setStopped = function (stopped) {
     return function (slide) {
       gifs[slide.index].map(function (gif) {
-        gif.stopped = stopped;
+        stopped ? gif.setAttribute('stopped', '') : gif.removeAttribute('stopped');
         slide.slide.classList.remove('x-gif-finished');
         if (!stopped) gif.addEventListener('x-gif-finished', function () {
           slide.slide.classList.add('x-gif-finished');
@@ -819,27 +819,25 @@ bespoke.plugins.startXGif = function (deck, options) {
     }
   };
 
-  deck.on('activate', setStopped(null));
+  deck.on('activate', setStopped(false));
   deck.on('deactivate', setStopped(true));
 }
 
-window.addEventListener('polymer-ready', function () {
-  bespoke.from('article', {
-    keys: true,
-    touch: true,
-    scale: false,
-    hash: true,
-    state: true,
-    bullets: true,
-    delaySrc: true,
-    startXGif: true
-  });
+bespoke.from('article', {
+  keys: true,
+  touch: true,
+  scale: false,
+  hash: true,
+  state: true,
+  bullets: true,
+  delaySrc: true,
+  startXGif: true
+});
 
-  window.addEventListener('resize', function () {
-    [].forEach.call(document.querySelectorAll('x-gif'), function (elem) {
-      elem.relayout();
-    });
-  })
+window.addEventListener('resize', function () {
+  [].forEach.call(document.querySelectorAll('x-gif'), function (elem) {
+    elem.relayout();
+  });
 })
 
 var brightness = 0;

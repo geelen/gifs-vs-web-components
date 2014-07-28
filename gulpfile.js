@@ -91,7 +91,7 @@ gulp.task('connect', function () {
 });
 
 // Watch
-gulp.task('default', ['build', 'connect'], function () {
+gulp.task('watch', function () {
   // Watch for changes in `src` folder
   gulp.watch([
     'public/**/*'
@@ -121,3 +121,5 @@ gulp.task('default', ['build', 'connect'], function () {
   // Watch bower files
   gulp.watch('src/bower_components/*', ['build']);
 });
+
+gulp.task('default', ['build', 'connect', 'watch']);

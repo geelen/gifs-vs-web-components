@@ -646,10 +646,6 @@ img.smallish {
   -webkit-transform: scale(1.8);
           transform: scale(1.8); }
 
-x-gif.top25 #frames {
-  -webkit-transform-origin: 50% 30%;
-          transform-origin: 50% 30%; }
-
 .fullscreen {
   position: absolute;
   top: 0;

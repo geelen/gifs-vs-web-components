@@ -7,11 +7,11 @@ html
 
     link(rel='stylesheet', type='text/css', href='styles/styles.css')
 
-  body(unresolved)
+  body
     article
       section
         .fullscreen(ui-fx="blur2")
-          x-gif.top25(src="http://i.imgur.com/s2q8FMS.gif" fill speed="0.6" stopped ui-fx="dark50%")
+          x-gif(src="images/stars.gif" fill speed="0.6" stopped)
         .content
           h1 GIFs vs Web Components
           .mid by
@@ -19,8 +19,8 @@ html
             .me
             h3 @GlenMaddern
 
-      section.content
-        h1 "Odyssey"
+      section.content: h1 Story time
+      section.content: h1 How did I get started?
 
       section.content
         h3
@@ -843,5 +843,13 @@ html
           a(target="_blank" href="http://djgif.com/?rdio=p7794600&tumblrs=mrdiv") DEMO
 
     script(src='scripts/scripts.js')
-    script(src='x-gif/dist/platform.js')
-    link(rel="import" href="x-gif/dist/x-gif.html")
+    script.
+      if ('registerElement' in document
+        && 'createShadowRoot' in HTMLElement.prototype
+        && 'import' in document.createElement('link')
+        && 'content' in document.createElement('template')) {
+        // We're using a browser with native WC support!
+      } else {
+        document.write('<script src="x-gif/dist/platform.js"><\/script>')
+      }
+    link(rel="import" href="x-gif/dist/x-gif.raw.html")
