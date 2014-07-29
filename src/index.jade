@@ -28,33 +28,17 @@ html
             .me
             h3 @GlenMaddern
 
-      section.content: h1 Story time
-      section.content: h1 How did I get started?
-
-      section.content
-        h3
-          span.buildin "Series
-          span.buildin -of
-          span.buildin -dumb
-          span.buildin -decisions
-          span.buildin -that
-          span.buildin -surprisingly
-          span.buildin -result
-          span.buildin -in
-          span.buildin -working
-          span.buildin -software"
-
       section
-        .fullscreen
-          x-gif(src="images/2012_fire.gif" fill speed="1" n-times="1" stopped)
+        .fullscreen(ui-fx="blur2")
+          x-gif(src="images/stars.gif" fill speed="0.6" stopped)
         .content
-          h2 December
-            strong  2012
+          h1 The Past
+          .mid vs
+          h1 The Future
+          .mid A Story in 4 parts
 
       section.content
-        .line
-          .schwarz
-          h3 @BenSchwarz
+        h1 Part 1: The Idea
 
       section.content
         h1 VastImg
@@ -62,22 +46,7 @@ html
           .rtomayko
           h3 @RTomayko
 
-      section.content
-        h3 vastimg.herokuapp.com/?http://some/file.gif
-
-      section.content(data-bespoke-state='gif-skull')
       section.content(data-bespoke-state='gif-skull-2')
-
-      section
-        .fullscreen(ui-fx="blur1")
-          x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped)
-        .content.wait-for-gif
-          h2 Full-screen GIFs
-          .mid are
-          h1 awesome
-
-      section.content
-        h3 vastimg.herokuapp.com
 
       section
         .fullscreen(ui-fx="blur2")
@@ -85,51 +54,6 @@ html
         .content.wait-for-gif
           div
           h1 ETOOMUCHPORN
-
-      section.content
-        h1 Let's keep it SFW
-
-      section.content
-        .mid What has
-        h3 lots of
-          strong  GIFs
-        .mid and is
-        h3 totally
-          strong  safe for work
-        .mid ?
-
-      section
-        .fullscreen
-          x-gif(src="images/shaking_head_breaking_bad.gif" fill ping-pong n-times="4" stopped)
-        .content
-          h1 Tumblr
-
-      section.content
-        h3 Any
-          span.feat  particular
-          |  Tumblr
-        ul
-          li • Lots of GIFs
-          li • Identified SFW/NSFW
-
-      section
-        .fullscreen
-          x-gif(src="images/okthen.gif" fill n-times="1" stopped)
-
-      section.content
-        h1 GifCity
-        .line
-          .schwarz
-          h4 @BenSchwarz
-        .line
-          h4 @GlenMaddern
-          .me
-        .line
-          .bieber
-          h4 @ToolmanTim
-        .line
-          h4 @NullObject
-          .josh
 
       section.content(data-bespoke-state='black')
         h1 GifCity
@@ -158,35 +82,9 @@ html
           h2 skt-na-veia-sempre
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
 
-      section.content
-        h1 But we can do
-          span.feat  more
-
       section
         .fullscreen(ui-fx="blur1")
           x-gif(src="images/amazed.gif" fill n-times="1" stopped)
-
-      section.content
-        .mid What about
-        h1 synching
-        .mid to
-        h1 music
-        .mid ?
-
-      section.content.nobuild
-        h1.fadeout GifCity
-        .line.fadeout
-          .schwarz
-          h4 @BenSchwarz
-        .line
-          h4 @GlenMaddern
-          .me
-        .line.fadeout
-          .bieber
-          h4 @ToolmanTim
-        .line.fadeout
-          h4 @NullObject
-          .josh
 
       section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
@@ -223,25 +121,6 @@ html
         h1.red ✖
 
       section.content
-        h1 Why not video?
-        pre
-          code.language-javascript.
-            var video = document.createElement('video');
-            video.autoPlay = true;
-            video.loop = true;
-            video.playbackRate = 1.5;
-            video.src = 'converted.gif.mp4';
-
-      section.content
-        h1
-          a(target="_blank" href='https://github.com/geelen/djgif/blob/i_dont_want_no_scrubs/elastic-transcoder/app.js#L10') Convert GIFs to video
-
-      section.content(data-bespoke-state='yeahnah')
-
-      section.content
-        h1.red ✖
-
-      section.content
         .mid What is
         h3
           strong an animation
@@ -252,102 +131,13 @@ html
         .mid ?
 
       section.content
-        h4 Put the frames in the DOM
-        pre
-          code.language-markup.
-            &lt;div data-frame="0"&gt;
-              &lt;img src="frame0.gif"&gt;
-              &lt;img src="frame1.gif"&gt;
-              &lt;img src="frame2.gif"&gt;
-            &lt;/div&gt;
-
-      section.content
-        h4 Show one at a time with CSS
-        pre
-          code.language-css.
-            [data-frame] img {
-              opacity: 0;
-              position: absolute;
-            }
-
-            [data-frame="0"] img:nth-child(1),
-            [data-frame="1"] img:nth-child(2),
-            [data-frame="2"] img:nth-child(3) {
-              opacity: 1;
-            }
-
-      section.content
-        h4 Cycle through with JS
-        pre
-          code.language-javascript.
-            var animate = function() {
-              var currentFrame = calculateFrame();
-              framesElement.dataset.frame = currentFrame;
-              requestAnimationFrame(animate);
-            }
-            animate();
-
-      section.content(data-bespoke-state='yep')
-
-      section.content
-        h1 Break GIF into frames:
-        pre
-          code.language-bash.
-            brew install gifsicle
-            gifsicle -e cats.gif
-            # outputs cats.gif.001 cats.gif.002 etc
-
-      section.content
-        .mid Host Gifsicle?
-        ul
-          li • Download from Tumblr
-          li • Split apart on filesystem
-          li • Serve... somehow?
-        hr
-      section.content(data-bespoke-state='yeahnah')
-
-      section.content
-        .mid Why don't we
-        h3
-          strong break apart a
-            span.feat  GIF
-        .mid in the
-        h3
-          strong browser?
-        hr
-
-      section.content
-        img(src='images/emscripten_logo.jpg')
-        h4 github.com/kripken/emscripten
-
-      section.content
-        .mid Emscripten:
-        ul
-          li • Stubs out the file system
-          li • Generates a lot of JS
-          li • Isn't clever about using Browser APIs
-        hr
-
-      section.content(data-bespoke-state='yeahnah')
-
-      section.content
-        h1.red ✖
-
-      section.content
-        h3: strong What time is it?
-
-      section
-        .fullscreen
-          x-gif(src="images/javascript_time_logo.gif" fill n-times="1" stopped)
+        h1 Break GIF into frames!
 
       section.content
         h1 What's in a GIF?
         h5
           strong
             a(target="_blank" href='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp') http://www.matthewflickinger.com/lab/ whatsinagif/bits_and_bytes.asp
-
-      //section
-      //  iframe.x10(data-bespoke-delay-src='http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp')
 
       section.content
         img(src="images/gif_file_stream.gif")
@@ -377,131 +167,47 @@ html
             span.red  frame
             |  footer
 
-      section.content
-        h1.feat ✔
-
-      section.content
-        pre
-          code.language-javascript.
-            var blob = new Blob(
-              [ buffer1, buffer2, ... ],
-              {type: 'mime/type'}
-            );
-            img.src = URL.createObjectURL(blob);
-
-      section.content
-        pre(data-line="8")
-          code.language-javascript.
-            var header = gifData.slice(0, startOfFrames);
-            var footer = gifData.slice(-1);
-            for (var i = 0; i < indices.length; i++) {
-              var frameData = gifData.slice(
-                indices[i],
-                indices[i+1] || endOfFrames);
-              var blob = new Blob(
-                [ header, frameData, gifFooter ],
-                {type: 'image/gif'});
-              frames.push(URL.createObjectURL(blob));
-            }
-
       seciton.content
         h1
           a(target="_blank" href="https://github.com/geelen/x-gif/blob/gh-pages/src/exploder.js") exploder.js
 
       section.content
-        h1 Binary in JS
-          span.red !
+        h4 Put the frames in the DOM
+        pre
+          code.language-markup.
+            &lt;div data-frame="0"&gt;
+              &lt;img src="frame0.gif"&gt;
+              &lt;img src="frame1.gif"&gt;
+              &lt;img src="frame2.gif"&gt;
+            &lt;/div&gt;
 
       section.content
+        h4 Show one at a time with CSS
+        pre
+          code.language-css.
+            [data-frame] img {
+              opacity: 0;
+              position: absolute;
+            }
+            [data-frame="0"] img:nth-child(1),
+            [data-frame="1"] img:nth-child(2),
+            [data-frame="2"] img:nth-child(3) {
+              opacity: 1;
+            }
+
+      section.content
+        h4 Cycle through with JS
         pre
           code.language-javascript.
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'cats.gif', true);
-            xhr.responseType = 'arraybuffer';
-            xhr.onload = function () {
-              this.reponse; // BINARY GIF MADNESS
-            }
-            xhr.send();
-
-      section.content
-        h1 Same Origin Policy
-          span.red !
-
-      section.content
-        .mid Two options:
-        h3
-          strong.feat CORS
-          |  on the server
-        .mid vs
-        h3
-          strong.feat Proxy
-          |  the content behind a domain you control
-        hr
-
-      section.content
-        .mid Proxying content?
-        h3 Run your own
-          strong.feat  proxy
-        .mid vs
-        h3 Use a CDN for
-          strong.red  evil
-        hr
-
-      section.content
-        h3
-          strong
-            a(target="_blank" href='https://console.aws.amazon.com/cloudfront/home?#distribution-settings:EK5BEJUQJT3ZX') CloudFront
-        img(src="images/cloudfront.png")
-
-      section.content
-        h4
-          strong djgif.com/
-            span.feat *
-            | .gif
-        .mid =
-        h4
-          strong media.tumblr.com/
-            span.feat *
-            | .gif
-
-      section.content
-        h4
-          strong djgif.com/
-            span.feat *.*
-        .mid =
-        h4
-          strong s3.amazonaws.com/djgif/
-            span.feat *.*
-
-      section
-        .fullscreen
-          x-gif(src="images/ticked.gif" fill n-times="0.85" speed="1.5" stopped)
-        .content.wait-for-gif
-          h1 Same Origin Policy
-          h1 ✔
-
-      section.content
-        .mid Recap
-        h4
-          | We can pull down arbitrary GIF data from Tumblr
-          | and split it into frames.
-          | Now it's time to look at
-          span.feat  playback.
-        hr
-
-      section.content
-        h4 Playback
-        pre(data-line="3")
-          code.language-javascript.
             var animate = function() {
-              framesElement.dataset.frame =
-                calculateFrame( ... );
+              var currentFrame = calculateFrame();
+              framesElement.dataset.frame = currentFrame;
               requestAnimationFrame(animate);
             }
             animate();
 
       section.content(data-bespoke-state='light')
-        h1 A component!
+        h1 Chapter 2: The Component
 
       section.content(data-bespoke-state='light')
         img(src="images/p-logo.svg")
@@ -577,257 +283,58 @@ html
             | &gt;
 
       section.content(data-bespoke-state='light')
-        .mid X-GIF
-        ul
-          li ✔ Polymer element
-          li ✔ Angular directive
-          li • React component
-          li • Ember component
-        hr
-
-      section.content(data-bespoke-state='light')
         img(src="images/p-logo.svg")
         h4 geelen.github.io/x-gif
         h4.feat The GIF tag the internet deserves
 
-      section.content
-        h1 Beat Detection
-
-      section.content.nobuild
-        .mid.fadeout Options
-        h3 Do it live
-        .mid.fadeout vs
-        h3.fadeout Do it ahead of time
-        hr.fadeout
+      section.content: h1 Chapter Three: The Launch
 
       section.content
-        h1 Web Audio API
-        h4
-          strong
-            a(target="_blank" href="https://developer.mozilla.org/en-US/docs/Web_Audio_API")
-              | developer.mozilla.org/
-              br
-              | en-US/docs/Web_Audio_API
+        img(src="images/x-gif_traffic.png")
 
       section.content
-        pre(data-line="3,8")
-          code.language-javascript.
-            var audioContext = new AudioContext(),
-              source = audioContext.createBufferSource(),
-              analyser = audioContext.createAnalyser(),
-              speakers = audioContext.destination;
-
-            audioContext.decodeAudioData(mp3data, (buffer) => {
-              source.buffer = buffer;
-              source.connect(analyser);
-              analyser.connect(speakers);
-            })
+        h4 Dependencies
+        ul
+          li • platform.js
+          li • polymer.html
+          li • polymer.js
+          li • layout.html
+        h4 X requests, Ykb downloaded
 
       section.content
+        h4 Polymer
+        ul
+          li • Very much a framework
+          li • Own mental model for structuring apps
+          li • Easy to follow, but seemed orthogonal to my purpose
+
+      section.content
+        h4 What about Angular/Ember/React
+        ul
+          li • Custom elements without Web Components
+          li • Provide common functionality (Promises, XHR)
+          li • Why not use them?
+
+      section.content
+        h4 An idea!
+        ul
+          li • A framework-agnostic core, with adapters for each framework
+          li • Consistent component API
+          li • Bare minimum of dependencies for each framework
+          li • One library, 4 entry points
+
+      section.content
+        h4 Superficially, it should work
         pre
           code.language-javascript.
-            // Once the music is playing
-            var frequencyData = new Uint8Array(1024);
-            analyser.getByteFrequencyData(frequencyData);
-            frequencyData[19]; // Intensity of ~440Hz
-
-      section.content
-        pre
-          code.language-javascript.
-            navigator.getUserMedia({audio: true}, (stream) => {
-              var source = audioContext
-                              .createMediaStreamSource(stream);
-              source.connect(analyser);
-              analyser.connect(speakers);
-            })
-
-      section.content
-        .line
-          .ruthjohn
-          h3 @Rumyra
-        h4
-          a(target="_blank" href="http://24ways.org/2013/make-your-browser-dance/#author")
-            strong 24ways.org/2013/
-            br
-            | make-your-browser-dance
-
-      section
-        iframe(data-bespoke-delay-src='https://glen.site44.com/frequency.html')
-
-      section.content
-        pre(data-line="8")
-          code.language-javascript.
-            var frequencyData = new Uint8Array(1024),
-              beatDetector = // TODO: this.
-
-            // called within a requestAnimationFrame loop
-            var calculateFrame = function() {
-              analyser.getByteFrequencyData(frequencyData);
-              beatDetector.update(frequencyData);
-              return beatDetector.howFarThroughBeat();
-            }
+            import XGifCore from './x-gif.core.js'
+            myModule.directive('xGif', XGifCore.Angular);
+            Ember.component('xGif', XGifCore.Ember);
+            React.createClass(XGifCore.React);
+            Polymer(XGifCore.Polymer);
 
       section.content
         h1.red ✖
-
-      section.content.nobuild
-        .mid.fadeout Options
-        h3.fadeout Do it live
-        .mid.fadeout vs
-        h3 Do it ahead of time
-        hr.fadeout
-      //a(target="_blank" href='http://djgif.com/?rdio=p7794600&tumblrs=simpsonsgifs')  DEMO
-
-      section.content
-        img(src='images/echo_nest_header.png')
-        h4 developer.echonest.com
-
-      section.content
-        pre(data-line="2")
-          code.language-javascript.
-            http://developer.echonest.com/
-              api/v4/song/search?
-                api_key=API_KEY&
-                format=json&
-                results=1&
-                artist=weezer&
-                title=el%20scorcho&
-                bucket=audio_summary
-      section.content
-        img(src='images/search_response.png')
-
-      section.content
-        img(src='images/track_analysis_response.png')
-
-      section.content
-        .mid EchoNest
-        ul
-          li • Search ~ 1kb
-          li • Analysis ~ 300kb
-          li.feat Both require private API key
-        hr
-
-      section.content(data-bespoke-state='light')
-        h1 NodeJS Micro Service!
-
-      section.content(data-bespoke-state='light')
-        pre.small
-          code.language-javascript.
-            app.get('/search', (req, res) => {
-              var url = searchUrl(req.query.artist, req.query.title)
-              request.get(url, (err, data) => {
-                var track = JSON.parse(data.body);
-                var summary = track.response.songs[0].audio_summary;
-                request.get(summary.analysis_url, (err, data) => {
-                  var analysis = JSON.parse(data.body);
-                  delete analysis.segments;
-                  delete analysis.tatums;
-                  track.response.songs[0].analysis = analysis;
-                  res.send(200, track);
-                });
-              });
-            });
-
-      section.content(data-bespoke-state='light')
-        pre
-          code.language-javascript.
-            http://djgif-echonest-proxy.herokuapp.com/
-              search?artist=weezer&title=el+scorcho
-        ul
-          li ✔ 55kb
-          li ✔ No API keys on client
-
-      section.content(data-bespoke-state='light')
-        h1
-          a(target="_blank" href="https://github.com/geelen/djgif/tree/master/echonest-proxy")
-            | echonest-proxy
-
-      section
-        .fullscreen
-          x-gif(src="images/ticked.gif" fill n-times="0.85" speed="1.5" stopped)
-        .content.wait-for-gif
-          h1 Beat data for arbitrary tracks
-          h1 ✔
-
-      section.content.nobuild
-        .mid Two wins:
-        ul
-          li ✔ Change speed of GIFs
-          li ✔ Find beats from music
-        hr
-
-      section.content.nobuild
-        hr
-        h3: strong How do we match a
-          span.feat  GIF
-          |  to a
-          span.feat  beat
-        .mid ?
-
-      section.content.nobuild
-        .mid Find these:
-        ul
-          li • How many beats does the GIF span?
-          li • Which beat are we on?
-          li • How far through this beat?
-        hr
-
-      section.content.nobuild
-        .mid From these:
-        ul
-          li • Duration of the GIF
-          li • Duration of the beat
-          li • Number of the beat
-          li • Fraction through the beat
-        hr
-
-      section.content(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/explosion.gif"
-          span.feat  sync
-          | &gt;
-        pre
-          code.language-javascript.
-            var xGif = document.querySelector('x-gif'),
-              beats = metadata.beats, //from Echonest proxy
-              animationLoop = () => {
-                // calculate these three:
-                xGif.clock(beatNr, beatDuration, beatFraction);
-              };
-            animationLoop();
-
-      section.content(data-bespoke-state='light')
-        h1
-          a(target="_blank" href="http://localhost:1983/demos/audio2.html") DEMO
-
-      section.content(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        h1 DJGif
-        h4 Shipped, right?
-
-      section.content(data-bespoke-state='light')
-        h1.red ✖
-
-      section.content(data-bespoke-state='light')
-        h1 Side projects
-        .mid are not
-        h1 products
-
-      section.content(data-bespoke-state='light')
-        ul
-          li ✔ Binary JS hax
-          li ✔ Cloudfront proxying
-          li ✔ Transcoding GIFs to Video
-          li ✔ Web Audio Analysis API
-          li ✔ Beat synchronisation
-          li ✔ Polymer & Web Components
-
-      section.content(data-bespoke-state='light')
-        .mid Next, maybe:
-        ul
-          li • Beat detection algorithms
-          li • RXJS + React
-          li • GIF mood detection
-        .mid & more dumb things
 
       section
         .fullscreen(ui-fx="blur1")
