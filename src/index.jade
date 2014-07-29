@@ -336,6 +336,28 @@ html
       section.content
         h1.red ✖
 
+      section.content: h1 Nope
+
+      section.content
+        h4 Problems
+        ul
+          li • Frameworks aren't really compatible with one another
+          li • All have different expectations/idioms for accomplishing things
+
+      section.content
+        h4 An example - Angular
+        pre
+          code.language-markup.
+            <input type="range" ng-model="speed">
+            <x-gif speed="{{ speed }}">
+            ^ weak
+
+      section.content
+        h4 An example - React
+        pre
+          code.language-markup.
+
+
       section
         .fullscreen(ui-fx="blur1")
           x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped)
