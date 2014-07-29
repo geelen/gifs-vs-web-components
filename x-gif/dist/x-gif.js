@@ -1852,6 +1852,46 @@ process.chdir = function (dir) {
 
 },{}],3:[function(require,module,exports){
 "use strict";
+
+import macros from './macros.sjs';
+
+var DirectDomUpdater = function (element) {
+  this.element = element;
+};
+
+DirectDomUpdater.prototype.initNewGif = function (gif, fill) {
+  this.element.innerHTML = "";
+
+  gif.frames.map((frame) => {
+    var image = new Image();
+    image.src = frame.url;
+    image.classList.add('frame');
+    if (frame.disposal == 2) image.classList.add('disposal-restore');
+    this.element.appendChild(image);
+  });
+
+  if (fill) requestAnimationFrame(this.scaleToFill.bind(this));
+}
+
+DirectDomUpdater.prototype.scaleToFill = function () {
+  if (!(this.element.offsetWidth && this.element.offsetHeight)) {
+    requestAnimationFrame(this.scaleToFill.bind(this));
+  } else {
+    var xScale = this.element.parentElement.offsetWidth / this.element.offsetWidth,
+      yScale = this.element.parentElement.offsetHeight / this.element.offsetHeight;
+
+    this.element.style.webkitTransform = "scale(" + 1.1 * Math.max(xScale, yScale) + ")";
+  }
+}
+
+DirectDomUpdater.prototype.setFrame = function (frameNr) {
+  this.element.dataset['frame'] = frameNr;
+}
+
+module.exports = DirectDomUpdater;
+
+},{}],4:[function(require,module,exports){
+"use strict";
 "use strict";
 Object.defineProperties(exports, {
   default: {get: function() {
@@ -1996,11 +2036,12 @@ var $__default = (function() {
 }());
 
 
-},{"./gif.js":5,"./stream_reader.js":8,"./utils.js":9}],4:[function(require,module,exports){
+},{"./gif.js":6,"./stream_reader.js":9,"./utils.js":10}],5:[function(require,module,exports){
 "use strict";
 "use strict";
 var Playback = $traceurRuntime.assertObject(require('./playback.js')).default;
 var Strategies = $traceurRuntime.assertObject(require('./strategies.js')).default;
+var DirectDomUpdater = $traceurRuntime.assertObject(require('./direct_dom_updater.sjs')).default;
 var XGif = function() {
   this.ready = function() {
     if (this.exploded != null) {
@@ -2018,7 +2059,8 @@ var XGif = function() {
   };
   this.srcChanged = function() {
     var playbackStrategy = Strategies[this.playbackStrategy];
-    this.playback = new Playback(this, this.$.frames, this.src, {
+    var domUpdater = new DirectDomUpdater(this.$.frames);
+    this.playback = new Playback(this, domUpdater, this.src, {
       pingPong: this['ping-pong'] != null,
       fill: this.fill != null,
       stopped: this.stopped != null
@@ -2054,7 +2096,7 @@ var XGif = function() {
 Polymer('x-gif', new XGif());
 
 
-},{"./playback.js":6,"./strategies.js":7}],5:[function(require,module,exports){
+},{"./direct_dom_updater.sjs":3,"./playback.js":7,"./strategies.js":8}],6:[function(require,module,exports){
 "use strict";
 "use strict";
 Object.defineProperties(exports, {
@@ -2087,7 +2129,7 @@ var $__default = (function() {
 }());
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 "use strict";
 Object.defineProperties(exports, {
@@ -2214,7 +2256,7 @@ var $__default = (function() {
 }());
 
 
-},{"./exploder.js":3}],7:[function(require,module,exports){
+},{"./exploder.js":4}],8:[function(require,module,exports){
 "use strict";
 "use strict";
 Object.defineProperties(exports, {
@@ -2238,7 +2280,7 @@ var Strategies = {
 var $__default = Strategies;
 
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 "use strict";
 Object.defineProperties(exports, {
@@ -2291,7 +2333,7 @@ var $__default = (function() {
 }());
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 "use strict";
 Object.defineProperties(exports, {
@@ -2320,4 +2362,4 @@ var Promises = {xhrGet: (function(url, type) {
   })};
 
 
-},{}]},{},[1,4])
+},{}]},{},[1,5])
