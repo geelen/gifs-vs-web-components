@@ -82,6 +82,9 @@ html
           h2 skt-na-veia-sempre
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
 
+      section.content
+        h1.green ✔
+
       section
         .fullscreen(ui-fx="blur1")
           x-gif(src="images/amazed.gif" fill n-times="1" stopped)
@@ -93,18 +96,11 @@ html
         h4 djgif.com
           span.feat  (soon)
 
-      section.content(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        .mid =
-        h1 Tumblr
-        .mid +
-        h1 Rdio
-
       section.content.nobuild
         .mid Two challenges:
         ul
           li • Change speed of GIFs
-          li • Find beats from music
+          li.fadeout • Find beats from music
         hr
 
       section.content
@@ -344,19 +340,68 @@ html
           li • Frameworks aren't really compatible with one another
           li • All have different expectations/idioms for accomplishing things
 
-      section.content
-        h4 An example - Angular
-        pre
-          code.language-markup.
-            <input type="range" ng-model="speed">
-            <x-gif speed="{{ speed }}">
-            ^ weak
+      //section.content
+      //  h4 An example - Playback
+      //  pre
+      //    code.language-javascript
+      //      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SOME MATHS;\n  this.element.dataset['frame'] = frameNr;\n}"
+      //  pre
+      //    code.language-javascript
+      //      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SAME MATHS;\n  this.domUpdater.setFrame(frameNr);\n}"
+      //
+      //section.content
+      //  pre
+      //    code.language-javascript
+      //      = "class DirectDomUpdater {\n  setFrame(frameNr) {\n    this.element.dataset['frame'] = frameNr;\n  }\n}"
+      //  pre
+      //    code.language-javascript
+      //      = "// Meets the api for the DomUpdater that Playback expects\n// but React works totally differently.\nclass GifState {\n  setFrame(frameNr) { this.frameNr = frameNr; }\n}"
 
       section.content
-        h4 An example - React
-        pre
-          code.language-markup.
+        h4 An example - Playback
+        pre: code.language-javascript
+          = "setFrame(fraction, repeatCount) {\n  var frameNr = (this.pingPong && repeatCount % 2 >= 1) ?\n    this.gif.frameAt(1 - fraction) :\n    this.gif.frameAt(fraction);\n  this.element.dataset['frame'] = frameNr;\n}"
 
+      section.content
+        h4 React changes
+        pre: code.language-javascript
+          = "setFrame(fraction, repeatCount) {\n  var frameNr = // SAME MATHS;\n  this.domUpdater.setFrame(frameNr);\n}"
+        pre: code.language-javascript
+          = "class ShadowDomUpdater { /* ... */ }\n"
+          = "class ReactStateUpdater {/* ... */ }\n"
+
+      section.content
+        img(src="images/loljava.png")
+
+      section.content
+        h1 Chapter Four: The Solution
+
+      section.content
+        h1 Chrome 36
+
+      section.content
+        img(src="images/addy_chrome_36.png")
+
+      section.content
+        h4 Polymer
+        .mid is not equal to
+        h4 Web Components
+
+      section.content
+        h6 Polymer
+        pre: code.language-javascript
+          = "class XGif {\n ready() { /* ... */ }\n}\nPolymer('x-gif', new XGif());"
+        h6 Web Components
+        pre: code.language-javascript
+          = "class XGif extends HTMLElement {\n  createdCallback() { /* ... */ }\n}\ndocument.registerElement('x-gif', XGif);"
+
+      section.content
+        h6 Polymer
+        pre.small: code.language-javascript
+          = "srcChanged() {\n  this.playback = new Playback(/* ... */)\n}\nspeedChanged(oldVal, newVal) {\n  this.playback.speed = newVal;\n}"
+        h6 Web Components
+        pre.small: code.language-javascript
+          = "attributeChangedCallback(attribute, oldVal, newVal) {\n  if (attribute == 'src') {\n    this.controller.srcChanged(newVal)\;\n  } else if (attribute == 'speed') {\n    this.controller.speedChanged(parseFloat(newVal));\n  // ..."
 
       section
         .fullscreen(ui-fx="blur1")

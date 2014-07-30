@@ -13,7 +13,7 @@ Part 1 - The idea
   - Hours of fun
   - There was a problem
   - Anyone could add any URL to a GIF, with no moderation
-  - We should all be ashamed of ourselves. We took something beautiful, and we 4channed it.
+  - We should all be ashamed of ourselves. W'e took something beautiful, and we 4channed it.
 - GifCity - our take
   - We built a fullscreen GIF slideshow from Tumblrs
   - Grab a tumblr (here are some cool ones), it will scrape all the GIFs and start playing them back
@@ -79,7 +79,13 @@ Thoughts to convey:
 - (true) Web Components are the
 
 
+BURNDOWN
 
+- Get n-times working.
+- Transition from VastIMG - GifCity - DJGif needs tightening
+- Better name than HARD
+- HOLY SHIT CHAPTER 4. Code samples, slides, etc. Size comparison.
+- Attribute dreamcode to someone
 
 
 
