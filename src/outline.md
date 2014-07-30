@@ -86,8 +86,8 @@ BURNDOWN
 - Better name than HARD
 - HOLY SHIT CHAPTER 4. Code samples, slides, etc. Size comparison.
 - Push new x-gif homepage. OR get x-gif slides working well.
-- VULCANISE
-
+- VULCANISE. STATS.
+- HOLY SHIT CHAPTER 3. Not so many dot-points.
 
 
 

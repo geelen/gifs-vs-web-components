@@ -22,31 +22,31 @@ html
         .fullscreen(ui-fx="blur2")
           x-gif(src="images/stars.gif" fill speed="0.6" stopped)
         .content
-          h1 GIFs vs Web Components
+          h1: small GIFs
+          .mid vs
+          h1: small Web Components
           .mid by
           .line
             .me
-            h3 @GlenMaddern
+            h4 @GlenMaddern
 
       section
         .fullscreen(ui-fx="blur2")
           x-gif(src="images/stars.gif" fill speed="0.6" stopped)
         .content
-          h1 The Past
-          .mid vs
-          h1 The Future
-          .mid A Story in 4 parts
+          .mid A story in four parts
 
       section.content
-        h1 Part 1: The Idea
+        h3 Chapter One
+        h1 The Idea
 
       section.content
         h1 VastImg
-        .line
-          .rtomayko
-          h3 @RTomayko
 
       section.content(data-bespoke-state='gif-skull-2')
+
+      section.content
+        h1 VastImg
 
       section
         .fullscreen(ui-fx="blur2")
@@ -87,7 +87,7 @@ html
 
       section
         .fullscreen(ui-fx="blur1")
-          x-gif(src="images/amazed.gif" fill n-times="1" stopped)
+          x-gif(src="images/takes_off_glasses.gif" fill n-times="1" stopped)
 
       section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
@@ -125,9 +125,6 @@ html
           strong series of
             span.feat  frames
         .mid ?
-
-      section.content
-        h1 Break GIF into frames!
 
       section.content
         h1 What's in a GIF?
@@ -203,7 +200,8 @@ html
             animate();
 
       section.content(data-bespoke-state='light')
-        h1 Chapter 2: The Component
+        h3 Chapter Two
+        h1 The Component
 
       section.content(data-bespoke-state='light')
         img(src="images/p-logo.svg")
@@ -299,7 +297,9 @@ html
       //  h4 geelen.github.io/x-gif
       //  h4.feat The GIF tag the internet deserves
 
-      section.content: h1 Chapter Three: The Launch
+      section.content
+        h3 Chapter Three
+        h1 The Launch
 
       section.content
         img(src="images/x-gif_traffic.png")
@@ -348,8 +348,6 @@ html
       section.content
         h1.red ✖
 
-      section.content: h1 Nope
-
       section.content
         h4 Problems
         ul
@@ -389,21 +387,34 @@ html
       section.content
         img(src="images/loljava.png")
 
-      section.content
-        h1 Chapter Four: The Solution
+      section
+        .fullscreen
+          x-gif(src="images/nope.gif" fill stopped)
 
       section.content
+        h1 Shadow DOM
+        .mid is
+        h1 badass
+
+      section.content
+        h1 :(
+
+      section.content(data-bespoke-state='light')
+        h3 Chapter Four
+        h1 The Solution
+
+      section.content(data-bespoke-state='chrome')
         h1 Chrome 36
 
-      section.content
+      section.content(data-bespoke-state='light')
         img(src="images/addy_chrome_36.png")
 
-      section.content
+      section.content(data-bespoke-state='light')
         h4 Polymer
         .mid is not equal to
         h4 Web Components
 
-      section.content
+      section.content(data-bespoke-state='light')
         h6 Polymer
         pre: code.language-javascript
           = "class XGif {\n ready() { /* ... */ }\n}\nPolymer('x-gif', new XGif());"
@@ -411,7 +422,7 @@ html
         pre: code.language-javascript
           = "class XGif extends HTMLElement {\n  createdCallback() { /* ... */ }\n}\ndocument.registerElement('x-gif', XGif);"
 
-      section.content
+      section.content(data-bespoke-state='light')
         h6 Polymer
         pre.small: code.language-javascript
           = "srcChanged() {\n  this.playback = new Playback(/* ... */)\n}\nspeedChanged(oldVal, newVal) {\n  this.playback.speed = newVal;\n}"

@@ -106,3 +106,7 @@
 .homescreen {
   @include background-gif("/images/mtnwest.gif");
 }
+
+.chrome {
+  @include background-gif("/images/chrome.jpg", $position: 50% 20%);
+}
