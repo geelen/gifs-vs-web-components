@@ -403,8 +403,10 @@ pre.small {
 }
 
 .two-up {
-  max-height: 40% !important;
-  max-width: 100%;
+  width: 200px;
+}
+x-gif.two-up::shadow .frame {
+  width: 100%;
 }
 img.smallish {
   max-height: 20%;

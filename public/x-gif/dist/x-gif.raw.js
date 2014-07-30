@@ -2004,85 +2004,130 @@ var owner = (document._currentScript || document.currentScript).ownerDocument;
 var XGifController = function XGifController(xgif) {
   this.xgif = xgif;
   this.setupComponent();
+  this.srcChanged(this.xgif.getAttribute('src'));
 };
-($traceurRuntime.createClass)(XGifController, {setupComponent: function() {
-    var $__0 = this;
+($traceurRuntime.createClass)(XGifController, {
+  setupComponent: function() {
     this.shadow = this.xgif.createShadowRoot();
     var template = owner.querySelector("#template").content.cloneNode(true);
     this.shadow.appendChild(template);
-    if (xgif.hasAttribute('exploded')) {
-      this.playbackStrategy = 'noop';
-    } else if (xgif.hasAttribute('sync')) {
-      this.playbackStrategy = 'noop';
-    } else if (xgif.getAttribute('hard-bpm')) {
-      this.playbackStrategy = 'hardBpm';
-    } else if (xgif.getAttribute('bpm')) {
-      this.playbackStrategy = 'bpm';
-    } else {
-      this.speed = parseFloat(xgif.getAttribute('speed')) || 1.0;
-      this.playbackStrategy = 'speed';
-    }
-    this.srcChanged = function(src) {
-      if (!src)
-        return;
-      console.log("Loading " + src);
-      var playbackStrategy = Strategies[this.playbackStrategy];
-      this.playback = new Playback(this, this.shadow.querySelector('#frames'), src, {
-        pingPong: xgif.hasAttribute('ping-pong'),
-        fill: xgif.hasAttribute('fill'),
-        stopped: xgif.hasAttribute('stopped')
-      });
-      this.playback.ready.then(playbackStrategy.bind(this));
-    };
-    this.srcChanged(xgif.getAttribute('src'));
-    this.speedChanged = function(speedStr) {
-      this.speed = parseFloat(speedStr) || this.speed;
-      if (this.playback)
-        this.playback.speed = this.speed;
-    };
-    this.stoppedChanged = function(newVal) {
-      var nowStop = newVal != null;
-      if (this.playback && nowStop && !this.playback.stopped) {
+  },
+  srcChanged: function(src) {
+    var $__0 = this;
+    if (!src)
+      return;
+    console.log("Loading " + src);
+    this.playback = new Playback(this, this.shadow.querySelector('#frames'), src, this.xgif.options);
+    this.playback.ready.then((function() {
+      if ($__0.xgif.playbackMode == 'speed') {
+        $__0.playback.startSpeed($__0.xgif.speed);
+      } else if ($__0.xgif.playbackMode == 'bpm') {
+        $__0.playback.startBpm($__0.xgif.bpm);
+      }
+    }));
+  },
+  speedChanged: function(speed) {
+    if (this.playback)
+      this.playback.speed = speed;
+  },
+  bpmChanged: function(bpm) {
+    if (this.playback)
+      this.playback.changeBpm(bpm);
+  },
+  hardChanged: function(hard) {
+    console.log("TURN DOWN");
+    if (this.playback)
+      this.playback.hard = hard;
+  },
+  stoppedChanged: function(nowStop) {
+    if (this.playback) {
+      if (nowStop && !this.playback.stopped) {
         this.playback.stop();
-      } else if (this.playback && !nowStop && this.playback.stopped) {
+      } else if (!nowStop && this.playback.stopped) {
         this.playback.start();
       }
-    };
-    xgif.togglePingPong = (function() {
-      if (xgif.hasAttribute('ping-pong')) {
-        xgif.removeAttribute('ping-pong');
-      } else {
-        xgif.setAttribute('ping-pong', '');
-      }
-      if ($__0.playback)
-        $__0.playback.pingPong = xgif.hasAttribute('ping-pong');
-    });
-    xgif.clock = (function(beatNr, beatDuration, beatFraction) {
-      if ($__0.playback && $__0.playback.gif)
-        $__0.playback.fromClock(beatNr, beatDuration, beatFraction);
-    });
-    xgif.relayout = (function() {
-      if (xgif.hasAttribute('fill'))
-        $__0.playback.scaleToFill();
-    });
-  }}, {});
+    }
+  },
+  pingPongChanged: function(nowPingPong) {
+    if (this.playback)
+      this.playback.pingPong = nowPingPong;
+  },
+  clock: function(beatNr, beatDuration, beatFraction) {
+    if (this.playback && this.playback.gif) {
+      this.playback.fromClock(beatNr, beatDuration, beatFraction);
+    }
+  },
+  relayout: function() {
+    if (this.playback && this.xgif.options.fill) {
+      this.playback.scaleToFill();
+    }
+  }
+}, {});
 var XGif = function XGif() {
   $traceurRuntime.defaultSuperCall(this, $XGif.prototype, arguments);
 };
 var $XGif = XGif;
-($traceurRuntime.createClass)(XGif, {createdCallback: function() {}}, {}, HTMLElement);
-XGif.createdCallback = function() {
-  this.controller = new XGifController(this);
-};
-XGif.attributeChangedCallback = function(attribute, oldVal, newVal) {
-  if (attribute == "src")
-    this.controller.srcChanged(newVal);
-  if (attribute == "speed")
-    this.controller.speedChanged(newVal);
-  if (attribute == "stopped")
-    this.controller.stoppedChanged(newVal);
-};
-document.registerElement('x-gif', {prototype: XGif});
+($traceurRuntime.createClass)(XGif, {
+  createdCallback: function() {
+    this.determinePlaybackMode();
+    this.determinePlaybackOptions();
+    this.controller = new XGifController(this);
+  },
+  determinePlaybackMode: function() {
+    if (this.hasAttribute('exploded') || this.hasAttribute('sync')) {
+      this.playbackMode = undefined;
+      return;
+    }
+    var maybeBPM = parseFloat(this.getAttribute('bpm'));
+    if (!isNaN(maybeBPM)) {
+      this.playbackMode = 'bpm';
+      this.bpm = maybeBPM;
+      return;
+    }
+    var maybeSpeed = parseFloat(this.getAttribute('speed'));
+    this.speed = isNaN(maybeSpeed) ? 1.0 : maybeSpeed;
+    this.playbackMode = 'speed';
+  },
+  determinePlaybackOptions: function() {
+    var maybeNtimes = parseFloat(this.getAttribute('n-times'));
+    this.options = {
+      stopped: this.hasAttribute('stopped'),
+      fill: this.hasAttribute('fill'),
+      nTimes: isNaN(maybeNtimes) ? null : maybeNtimes,
+      hard: this.hasAttribute('hard'),
+      pingPong: this.hasAttribute('ping-pong')
+    };
+  },
+  attributeChangedCallback: function(attribute, oldVal, newVal) {
+    console.log(attribute);
+    if (attribute == "src") {
+      this.controller.srcChanged(newVal);
+    } else if (attribute == "speed") {
+      this.determinePlaybackMode();
+      this.controller.speedChanged(this.speed);
+    } else if (attribute == "bpm") {
+      this.determinePlaybackMode();
+      this.controller.bpmChanged(this.bpm);
+    } else if (attribute == "stopped") {
+      this.determinePlaybackOptions();
+      this.controller.stoppedChanged(this.options.stopped);
+    } else if (attribute == "ping-pong") {
+      this.determinePlaybackOptions();
+      this.controller.pingPongChanged(this.options.pingPong);
+    } else if (attribute == "hard") {
+      console.log("TURN DOWN");
+      this.determinePlaybackOptions();
+      this.controller.hardChanged(this.options.hard);
+    }
+  },
+  clock: function(beatNr, beatDuration, beatFraction) {
+    this.controller.clock(beatNr, beatDuration, beatFraction);
+  },
+  relayout: function() {
+    this.controller.relayout();
+  }
+}, {}, HTMLElement);
+document.registerElement('x-gif', XGif);
 
 
 },{"./playback.js":6,"./strategies.js":7}],5:[function(require,module,exports){
@@ -2147,6 +2192,7 @@ var $__default = (function() {
     this.pingPong = opts.pingPong;
     this.fill = opts.fill;
     this.stopped = opts.stopped;
+    this.hard = opts.hard;
     this.ready = new Promise((function(resolve, reject) {
       var exploder = new Exploder(file);
       exploder.load().then((function(gif) {
@@ -2206,34 +2252,23 @@ var $__default = (function() {
     },
     fromClock: function(beatNr, beatDuration, beatFraction) {
       var speedup = 1.5,
-          lengthInBeats = Math.max(1, Math.round((1 / speedup) * 10 * this.gif.length / beatDuration)),
+          lengthInBeats = this.hard ? 1 : Math.max(1, Math.round((1 / speedup) * 10 * this.gif.length / beatDuration)),
           subBeat = beatNr % lengthInBeats,
           repeatCount = beatNr / lengthInBeats,
           subFraction = (beatFraction / lengthInBeats) + subBeat / lengthInBeats;
       this.setFrame(subFraction, repeatCount);
     },
-    startHardBpm: function(bpm) {
-      var $__0 = this;
-      var beatLength = 60 * 1000 / bpm;
-      this.animationLoop = (function() {
-        var duration = performance.now() - $__0.startTime,
-            repeatCount = duration / beatLength,
-            fraction = repeatCount % 1;
-        $__0.setFrame(fraction, repeatCount);
-        if (!$__0.stopped)
-          requestAnimationFrame($__0.animationLoop);
-      });
-      if (!this.stopped)
-        this.start();
+    changeBpm: function(bpm) {
+      this.beatLength = 60 * 1000 / bpm;
     },
     startBpm: function(bpm) {
       var $__0 = this;
-      var beatLength = 60 * 1000 / bpm;
+      this.changeBpm(bpm);
       this.animationLoop = (function() {
         var duration = performance.now() - $__0.startTime,
-            beatNr = Math.floor(duration / beatLength),
-            beatFraction = (duration % beatLength) / beatLength;
-        $__0.fromClock(beatNr, beatLength, beatFraction);
+            beatNr = Math.floor(duration / $__0.beatLength),
+            beatFraction = (duration % $__0.beatLength) / $__0.beatLength;
+        $__0.fromClock(beatNr, $__0.beatLength, beatFraction);
         if (!$__0.stopped)
           requestAnimationFrame($__0.animationLoop);
       });
