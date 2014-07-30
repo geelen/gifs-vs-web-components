@@ -915,6 +915,27 @@ img.smallish {
             filter: blur(0.5px);
     opacity: 0.5; }
 
+.vulcan {
+  background-color: black; }
+  .vulcan::before {
+    content: '';
+    position: absolute;
+    height: 20%;
+    width: 20%;
+    background-size: cover;
+    background-image: url(/images/vulcan_gladiator.jpg);
+    background-position: 50% 10%;
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transform: scale(5);
+            transform: scale(5);
+    -webkit-filter: blur(0.5px);
+            filter: blur(0.5px);
+    opacity: 0.5; }
+  .vulcan::before {
+    background-size: contain;
+    background-repeat: no-repeat; }
+
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
