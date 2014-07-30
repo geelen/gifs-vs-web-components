@@ -305,13 +305,38 @@ html
         img(src="images/x-gif_traffic.png")
 
       section.content
-        h4 Dependencies
-        ul
-          li • platform.js
-          li • polymer.html
-          li • polymer.js
-          li • layout.html
-        h4 X requests, Ykb downloaded
+        h6 Polymer
+        pre: code.
+          platform.js - 50kb
+          polymer.html - 1kb
+          polymer.js - 23kb
+          layout.html - 2kb
+        h6
+          br
+          = "<x-gif>"
+        pre: code.
+          x-gif.html - 1kb
+          x-gif.js - 11kb
+          x-gif.css - 3kb
+        h6
+          br
+          | 7 requests, 91kb total
+
+      section.content(data-bespoke-state='black')
+        h4 https://github.com/Polymer/vulcanize
+
+      section.content.nobuild(data-bespoke-state="vulcan")
+        h4 https://github.com/Polymer/vulcanize
+
+      section.content
+        pre: code.language-bash.
+          vulcanize -o dist/x-gif.vulcan.html --inline dist/x-gif.html
+        pre: code.
+          platform.js - 50kb
+          x-gif.vulcan.html - 34kb
+        h6
+          br
+          | 7 requests, 91kb total
 
       section.content
         h4 Polymer

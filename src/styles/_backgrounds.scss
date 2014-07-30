@@ -110,3 +110,11 @@
 .chrome {
   @include background-gif("/images/chrome.jpg", $position: 50% 20%);
 }
+
+.vulcan {
+  @include background-gif("/images/vulcan_gladiator.jpg", $position: 50% 10%);
+  &::before {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
