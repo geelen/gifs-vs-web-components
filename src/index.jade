@@ -211,77 +211,93 @@ html
         h4 geelen.github.io/x-gif
 
       section.content(data-bespoke-state='light')
-        h6 &lt;img src="images/jump.gif"&gt;
-        img.two-up(data-bespoke-delay-src="images/jump.gif")
-        x-gif.two-up(src="images/jump.gif" stopped)
-        h6 &lt;
-          span.feat x-gif
-          |  src="images/jump.gif"&gt;
+        h1 Dreamcode
 
       section.content(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/jump.gif"&gt;
-        x-gif.two-up(src="images/jump.gif" speed="1" stopped)
-        x-gif.two-up(src="images/jump.gif" speed="2" stopped)
-        h6 &lt;x-gif src="images/jump.gif"
-          span.feat  speed="2"
-          | &gt;
+        pre: code.language-markup
+          = "<img src='lulz.gif'>"
+        pre: code.language-markup
+          = "<x-gif src='lulz.gif'></x-gif>"
 
       section.content(data-bespoke-state='light')
-        h6 &lt;img src="images/waves.gif"&gt;
-        img.two-up(src="images/waves.gif")
-        img.two-up(src="images/vectors.gif")
-        h6 &lt;img src="images/vectors.gif"&gt;
-
-      section.content.nobuild(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/waves.gif"
-          span.feat  bpm="140"
-          | &gt;
-        x-gif.two-up(src="images/waves.gif" bpm="140" stopped)
-        x-gif.two-up(src="images/vectors.gif" bpm="140" stopped)
-        h6 &lt;x-gif src="images/vectors.gif
-          span.feat  bpm="140"
-          | &gt;
-
-      section.content.nobuild(data-bespoke-state='light' )
-        h6 &lt;x-gif src="images/waves.gif"
-          span.feat  hard-bpm="140"
-          | &gt;
-        x-gif.two-up(src="images/waves.gif" hard-bpm="140" stopped)
-        x-gif.two-up(src="images/vectors.gif" hard-bpm="140" stopped)
-        h6 &lt;x-gif src="images/vectors.gif
-          span.feat  hard-bpm="140"
-          | &gt;
-
-      section.content.nobuild(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/jump.gif"
-        x-gif.two-up(src="images/jump.gif" stopped)
-        x-gif.two-up(src="images/jump.gif" ping-pong stopped)
-        h6 &lt;x-gif src="images/jump.gif
-          span.feat  ping-pong
-          | &gt;
-
-      section.content.nobuild(data-bespoke-state='light')
-        h6 &lt;x-gif src="images/jump.gif"
-          span.feat  n-times="1"
-          | &gt;
-        x-gif.two-up(src="images/jump.gif" n-times="1" stopped)
-        x-gif.two-up(src="images/jump.gif" n-times="2" stopped)
-        h6 &lt;x-gif src="images/jump.gif
-          span.feat  n-times="2"
-          | &gt;
-
-      section
-        .fullscreen
-          x-gif(src="images/jump.gif" fill stopped)
-        .content.nobuild(data-bespoke-state='light')
-          h6 &lt;x-gif src="images/jump.gif"
-            span.feat  fill
-            | &gt;
+        pre: code.language-javascript
+          = "<x-gif\n  src=''\n  // Playback Modes\n  [speed='' || sync || bpm='']\n  // Playback options\n  stopped\n  fill\n  n-times=''\n  ping-pong\n  snap\n>"
 
       section.content(data-bespoke-state='light')
-        img(src="images/p-logo.svg")
-        h4 geelen.github.io/x-gif
-        h4.feat The GIF tag the internet deserves
+        h4: a(target="_blank" href="http://localhost:1983/") geelen.github.io/x-gif
+
+      //section.content(data-bespoke-state='light')
+      //  h6 &lt;img src="images/jump.gif"&gt;
+      //  img.two-up(data-bespoke-delay-src="images/jump.gif")
+      //  x-gif.two-up(src="images/jump.gif" stopped)
+      //  h6 &lt;
+      //    span.feat x-gif
+      //    |  src="images/jump.gif"&gt;
+      //
+      //section.content(data-bespoke-state='light')
+      //  h6 &lt;x-gif src="images/jump.gif"&gt;
+      //  x-gif.two-up(src="images/jump.gif" speed="1" stopped)
+      //  x-gif.two-up(src="images/jump.gif" speed="2" stopped)
+      //  h6 &lt;x-gif src="images/jump.gif"
+      //    span.feat  speed="2"
+      //    | &gt;
+      //
+      //section.content(data-bespoke-state='light')
+      //  h6 &lt;img src="images/waves.gif"&gt;
+      //  img.two-up(src="images/waves.gif")
+      //  img.two-up(src="images/vectors.gif")
+      //  h6 &lt;img src="images/vectors.gif"&gt;
+      //
+      //section.content.nobuild(data-bespoke-state='light')
+      //  h6 &lt;x-gif src="images/waves.gif"
+      //    span.feat  bpm="140"
+      //    | &gt;
+      //  x-gif.two-up(src="images/waves.gif" bpm="140" stopped)
+      //  x-gif.two-up(src="images/vectors.gif" bpm="140" stopped)
+      //  h6 &lt;x-gif src="images/vectors.gif
+      //    span.feat  bpm="140"
+      //    | &gt;
+      //
+      //section.content.nobuild(data-bespoke-state='light' )
+      //  h6 &lt;x-gif src="images/waves.gif"
+      //    span.feat  hard-bpm="140"
+      //    | &gt;
+      //  x-gif.two-up(src="images/waves.gif" hard-bpm="140" stopped)
+      //  x-gif.two-up(src="images/vectors.gif" hard-bpm="140" stopped)
+      //  h6 &lt;x-gif src="images/vectors.gif
+      //    span.feat  hard-bpm="140"
+      //    | &gt;
+      //
+      //section.content.nobuild(data-bespoke-state='light')
+      //  h6 &lt;x-gif src="images/jump.gif"
+      //  x-gif.two-up(src="images/jump.gif" stopped)
+      //  x-gif.two-up(src="images/jump.gif" ping-pong stopped)
+      //  h6 &lt;x-gif src="images/jump.gif
+      //    span.feat  ping-pong
+      //    | &gt;
+      //
+      //section.content.nobuild(data-bespoke-state='light')
+      //  h6 &lt;x-gif src="images/jump.gif"
+      //    span.feat  n-times="1"
+      //    | &gt;
+      //  x-gif.two-up(src="images/jump.gif" n-times="1" stopped)
+      //  x-gif.two-up(src="images/jump.gif" n-times="2" stopped)
+      //  h6 &lt;x-gif src="images/jump.gif
+      //    span.feat  n-times="2"
+      //    | &gt;
+      //
+      //section
+      //  .fullscreen
+      //    x-gif(src="images/jump.gif" fill stopped)
+      //  .content.nobuild(data-bespoke-state='light')
+      //    h6 &lt;x-gif src="images/jump.gif"
+      //      span.feat  fill
+      //      | &gt;
+      //
+      //section.content(data-bespoke-state='light')
+      //  img(src="images/p-logo.svg")
+      //  h4 geelen.github.io/x-gif
+      //  h4.feat The GIF tag the internet deserves
 
       section.content: h1 Chapter Three: The Launch
 

@@ -85,9 +85,8 @@ BURNDOWN
 - Transition from VastIMG - GifCity - DJGif needs tightening
 - Better name than HARD
 - HOLY SHIT CHAPTER 4. Code samples, slides, etc. Size comparison.
-- Attribute dreamcode to someone
-
-
+- Push new x-gif homepage. OR get x-gif slides working well.
+- VULCANISE
 
 
 
