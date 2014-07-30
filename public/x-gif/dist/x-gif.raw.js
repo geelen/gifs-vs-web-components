@@ -1998,26 +1998,28 @@ var $__default = (function() {
 
 },{"./gif.js":5,"./stream_reader.js":8,"./utils.js":9}],4:[function(require,module,exports){
 "use strict";
-"use strict";
 var Playback = $traceurRuntime.assertObject(require('./playback.js')).default;
 var Strategies = $traceurRuntime.assertObject(require('./strategies.js')).default;
-(function(document, owner) {
-  var XGifController = function(context) {
+var owner = (document._currentScript || document.currentScript).ownerDocument;
+var XGifController = function XGifController(xgif) {
+  this.xgif = xgif;
+  this.setupComponent();
+};
+($traceurRuntime.createClass)(XGifController, {setupComponent: function() {
     var $__0 = this;
-    this.context = context;
-    this.shadow = this.context.createShadowRoot();
+    this.shadow = this.xgif.createShadowRoot();
     var template = owner.querySelector("#template").content.cloneNode(true);
     this.shadow.appendChild(template);
-    if (context.hasAttribute('exploded')) {
+    if (xgif.hasAttribute('exploded')) {
       this.playbackStrategy = 'noop';
-    } else if (context.hasAttribute('sync')) {
+    } else if (xgif.hasAttribute('sync')) {
       this.playbackStrategy = 'noop';
-    } else if (context.getAttribute('hard-bpm')) {
+    } else if (xgif.getAttribute('hard-bpm')) {
       this.playbackStrategy = 'hardBpm';
-    } else if (context.getAttribute('bpm')) {
+    } else if (xgif.getAttribute('bpm')) {
       this.playbackStrategy = 'bpm';
     } else {
-      this.speed = parseFloat(context.getAttribute('speed')) || 1.0;
+      this.speed = parseFloat(xgif.getAttribute('speed')) || 1.0;
       this.playbackStrategy = 'speed';
     }
     this.srcChanged = function(src) {
@@ -2026,13 +2028,13 @@ var Strategies = $traceurRuntime.assertObject(require('./strategies.js')).defaul
       console.log("Loading " + src);
       var playbackStrategy = Strategies[this.playbackStrategy];
       this.playback = new Playback(this, this.shadow.querySelector('#frames'), src, {
-        pingPong: context.hasAttribute('ping-pong'),
-        fill: context.hasAttribute('fill'),
-        stopped: context.hasAttribute('stopped')
+        pingPong: xgif.hasAttribute('ping-pong'),
+        fill: xgif.hasAttribute('fill'),
+        stopped: xgif.hasAttribute('stopped')
       });
       this.playback.ready.then(playbackStrategy.bind(this));
     };
-    this.srcChanged(context.getAttribute('src'));
+    this.srcChanged(xgif.getAttribute('src'));
     this.speedChanged = function(speedStr) {
       this.speed = parseFloat(speedStr) || this.speed;
       if (this.playback)
@@ -2046,38 +2048,41 @@ var Strategies = $traceurRuntime.assertObject(require('./strategies.js')).defaul
         this.playback.start();
       }
     };
-    context.togglePingPong = (function() {
-      if (context.hasAttribute('ping-pong')) {
-        context.removeAttribute('ping-pong');
+    xgif.togglePingPong = (function() {
+      if (xgif.hasAttribute('ping-pong')) {
+        xgif.removeAttribute('ping-pong');
       } else {
-        context.setAttribute('ping-pong', '');
+        xgif.setAttribute('ping-pong', '');
       }
       if ($__0.playback)
-        $__0.playback.pingPong = context.hasAttribute('ping-pong');
+        $__0.playback.pingPong = xgif.hasAttribute('ping-pong');
     });
-    context.clock = (function(beatNr, beatDuration, beatFraction) {
+    xgif.clock = (function(beatNr, beatDuration, beatFraction) {
       if ($__0.playback && $__0.playback.gif)
         $__0.playback.fromClock(beatNr, beatDuration, beatFraction);
     });
-    context.relayout = (function() {
-      if (context.hasAttribute('fill'))
+    xgif.relayout = (function() {
+      if (xgif.hasAttribute('fill'))
         $__0.playback.scaleToFill();
     });
-  };
-  var XGif = Object.create(HTMLElement.prototype);
-  XGif.createdCallback = function() {
-    this.controller = new XGifController(this);
-  };
-  XGif.attributeChangedCallback = function(attribute, oldVal, newVal) {
-    if (attribute == "src")
-      this.controller.srcChanged(newVal);
-    if (attribute == "speed")
-      this.controller.speedChanged(newVal);
-    if (attribute == "stopped")
-      this.controller.stoppedChanged(newVal);
-  };
-  document.registerElement('x-gif', {prototype: XGif});
-})(document, (document._currentScript || document.currentScript).ownerDocument);
+  }}, {});
+var XGif = function XGif() {
+  $traceurRuntime.defaultSuperCall(this, $XGif.prototype, arguments);
+};
+var $XGif = XGif;
+($traceurRuntime.createClass)(XGif, {createdCallback: function() {}}, {}, HTMLElement);
+XGif.createdCallback = function() {
+  this.controller = new XGifController(this);
+};
+XGif.attributeChangedCallback = function(attribute, oldVal, newVal) {
+  if (attribute == "src")
+    this.controller.srcChanged(newVal);
+  if (attribute == "speed")
+    this.controller.speedChanged(newVal);
+  if (attribute == "stopped")
+    this.controller.stoppedChanged(newVal);
+};
+document.registerElement('x-gif', {prototype: XGif});
 
 
 },{"./playback.js":6,"./strategies.js":7}],5:[function(require,module,exports){
@@ -2114,7 +2119,6 @@ var $__default = (function() {
 
 
 },{}],6:[function(require,module,exports){
-"use strict";
 "use strict";
 Object.defineProperties(exports, {
   default: {get: function() {
