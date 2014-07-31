@@ -87,7 +87,7 @@ html
 
       section
         .fullscreen(ui-fx="blur1")
-          x-gif(src="images/takes_off_glasses.gif" fill n-times="1" stopped)
+          x-gif(src="images/takes_off_glasses.gif" fill stopped)
 
       section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
@@ -99,8 +99,8 @@ html
       section.content.nobuild
         .mid Two challenges:
         ul
-          li • Change speed of GIFs
-          li.fadeout • Find beats from music
+          li Change speed of GIFs
+          li.fadeout Find beats from music
         hr
 
       section.content
@@ -338,27 +338,28 @@ html
           br
           | 2 requests, 84kb total
 
-      section.content.small
+      section.content
         h4 Polymer
         ul
-          li • Very much a framework
-          li • Own mental model for structuring apps
-          li • Easy to follow, but seemed orthogonal to my purpose
+          li A framework in its own right
+          li Has opinions about structure, reuse
+          li Very easy to get started
+          li Seemed orthogonal to my purpose
 
       section.content.small
-        h4 What about Angular/Ember/React
+        h4 What about Angular/Ember/React?
         ul
-          li • Custom elements without Web Components
-          li • Provide common functionality (Promises, XHR)
-          li • Why not use them?
+          li Custom elements without Web Components
+          li Provide common functionality (Promises, XHR)
+          li Why not use them?
 
       section.content.small
         h4 An idea!
         ul
-          li • A framework-agnostic core, with adapters for each framework
-          li • Consistent component API
-          li • Bare minimum of dependencies for each framework
-          li • One library, 4 entry points
+          li A framework-agnostic core, with adapters for each framework
+          li Consistent component API
+          li Bare minimum of dependencies for each framework
+          li One library, 4 entry points
 
       section.content
         h4 Superficially, it should work
@@ -376,8 +377,8 @@ html
       section.content
         h1 Problems
         ul
-          li • Frameworks aren't really compatible with one another
-          li • All have different expectations/idioms for accomplishing things
+          li Frameworks aren't really compatible with one another
+          li All have different expectations/idioms for accomplishing things
 
       //section.content
       //  h4 An example - Playback
@@ -471,25 +472,31 @@ html
           = "class XGif extends HTMLElement {\n  createdCallback() {\n    this.shadow = this.xgif.createShadowRoot();\n    var owner = document.currentScript.ownerDocument;\n    var template = owner.querySelector('#template');\n    this.shadow.appendChild(template.content.cloneNode(true));\n  }\n}\n\ndocument.registerElement('x-gif', XGif);"
 
       section.content(data-bespoke-state='light')
-        h4 Chome 36+
+        h4 Chrome 36+
+        pre: code.language-markup
+          = "<link rel='import' href='x-gif.html'>\n<x-gif src='mrt_works_it.gif'></x-gif>"
         h6= "<x-gif>"
         pre: code.
-          x-gif.html - 1kb
+          x-gif.local.html - 1kb
           x-gif.js - 11kb
           x-gif.css - 3kb
         h6
           br
           | Vulcanized
         pre: code.
-          x-gif.vulcanized.html - 14kb
+          x-gif.html - 14kb
 
       section.content(data-bespoke-state='light')
         h1 platform.js
         h4 ... it's not just for Polymer
 
       section.content(data-bespoke-state='light')
+        h6 All browsers (IE9+)
         pre.small: code.language-javascript
-          = "<script>\n  if ('registerElement' in document\n    && 'createShadowRoot' in HTMLElement.prototype\n    && 'import' in document.createElement('link')\n    && 'content' in document.createElement('template')) {\n    // We're using a browser with native WC support!\n  } else {\n    document.write(\"<script src='platform.js'><\/script>\")\n  }\n</script>"
+          = "<script>\n  if ('registerElement' in document\n    && 'createShadowRoot' in HTMLElement.prototype\n    && 'import' in document.createElement('link')\n    && 'content' in document.createElement('template')) {\n    // We're using a browser with native WC support!\n  } else {\n    document.write(\"<script src='platform.js'><\/script>\")\n  }\n</script>\n<link rel='import' href='x-gif.html'>\n<x-gif src='mrt_works_it.gif'></x-gif>"
+        pre: code.
+          platform.js - 50kb
+          x-gif.html - 14kb
 
       section.content(data-bespoke-state='light')
         h1 What's so different?

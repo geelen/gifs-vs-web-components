@@ -38,7 +38,6 @@ $bullet_transition_translate_x: 16px;
   color: red;
 }
 
-
 // bespoke.js layout styles
 
 article {
@@ -99,7 +98,6 @@ article {
   &.x-gif-finished .content.wait-for-gif {
     opacity: 1;
   }
-
 
   @media print {
     zoom: 1 !important;
@@ -209,11 +207,12 @@ article {
 pre {
   border-radius: 8px;
 }
+
 $shadow: black;
 
 // content styles
 
-$background-line-color: rgba(white,0.02);
+$background-line-color: rgba(white, 0.02);
 $background-patch-color: rgba(black, 0.05);
 body {
   transition: opacity 0.5s;
@@ -270,15 +269,21 @@ h6 {
 }
 
 ul {
-  font-size: 36px;
-  font-weight: 700;
   list-style: none;
+  font-size: 32px;
+  font-weight: 400;
 }
 
 li {
   margin-bottom: 12px;
   text-align: left;
   width: 100%;
+  margin-left: 0.5em;
+  &::before {
+    content: '\2022';
+    position: absolute;
+    left: -0.5em;
+  }
 }
 
 p {
@@ -297,6 +302,7 @@ hr {
   width: 100%;
   margin: 24px 0;
 }
+
 .mid {
   font-size: 36px;
   font-family: "EB Garamond", Georgia;
@@ -311,8 +317,12 @@ hr {
     display: block;
     border-top: dotted 1px rgba(white, 0.3);
   }
-  &::before { margin-right: 16px; }
-  &::after { margin-left: 16px; }
+  &::before {
+    margin-right: 16px;
+  }
+  &::after {
+    margin-left: 16px;
+  }
 }
 
 $me-height: 72px;
@@ -326,26 +336,32 @@ $me-height: 72px;
   box-shadow: 0 0 0 2px black, 0 0 0 3px white;
   margin: 0 16px;
 }
+
 .me {
   @extend .person;
   background-image: url("../images/me_headshot.jpg");
 }
+
 .schwarz {
   @extend .person;
   background-image: url("../images/ben.jpg");
 }
+
 .rtomayko {
   @extend .person;
   background-image: url("../images/rtomayko.png");
 }
+
 .bieber {
   @extend .person;
   background-image: url("../images/cheekbones.jpeg");
 }
+
 .josh {
   @extend .person;
   background-image: url("../images/nullobject.jpeg");
 }
+
 .ruthjohn {
   @extend .person;
   background-size: $me-height * 1.4;
@@ -363,6 +379,7 @@ $me-height: 72px;
   //justify-content: center;
   align-items: left;
 }
+
 .ta-left {
   width: 100%;
   text-align: left;
@@ -384,20 +401,24 @@ $featColor: #39CCCC;
 .feat {
   color: $featColor;
 }
+
 .featbang {
   color: $featColor !important;
 }
+
 .line-highlight {
   margin-top: 16px;
-  background-color: rgba($featColor,0.2);
+  background-color: rgba($featColor, 0.2);
   border: none;
   &::before {
     display: none;
   }
 }
+
 pre[data-line] {
   padding: 1em;
 }
+
 pre.small {
   font-size: 0.85em;
 }
@@ -405,9 +426,11 @@ pre.small {
 .two-up {
   width: 200px;
 }
+
 x-gif.two-up::shadow .frame {
   width: 100%;
 }
+
 img.smallish {
   max-height: 20%;
   transform: scale(1.8);

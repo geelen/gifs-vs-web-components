@@ -511,14 +511,19 @@ h6 {
   margin: 0; }
 
 ul {
-  font-size: 36px;
-  font-weight: 700;
-  list-style: none; }
+  list-style: none;
+  font-size: 32px;
+  font-weight: 400; }
 
 li {
   margin-bottom: 12px;
   text-align: left;
-  width: 100%; }
+  width: 100%;
+  margin-left: 0.5em; }
+  li::before {
+    content: '\2022';
+    position: absolute;
+    left: -0.5em; }
 
 p {
   margin: 0 100px 12px;
