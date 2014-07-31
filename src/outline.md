@@ -76,16 +76,6 @@ Thoughts to convey:
 
 - Dreamcode! Write the most beautiful API you can think of. Use attributes, it's literally what they're for
 - Know what type of component you're writing. There's a huge difference between a core piece of application logic you want to encapsulate and reuse & something to be used by others
-- (true) Web Components are the
-
-
-BURNDOWN
-
-- Transition from VastIMG - GifCity - DJGif needs tightening
-- HOLY SHIT CHAPTER 4. Code samples, slides, etc. Size comparison.
-- Push new x-gif homepage. OR get x-gif slides working well.
-- HOLY SHIT CHAPTER 3. Not so many dot-points.
-
 
 
 
