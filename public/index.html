@@ -43,12 +43,12 @@ polymer.js - 23kb
 layout.html - 2kb</code></pre><h6><br>&lt;x-gif&gt;</h6><pre><code>x-gif.html - 1kb
 x-gif.js - 11kb
 x-gif.css - 3kb</code></pre><h6><br>7 requests, 91kb total</h6></section><section data-bespoke-state="black" class="content"><h4>https://github.com/Polymer/vulcanize</h4></section><section data-bespoke-state="vulcan" class="content nobuild"><h4>https://github.com/Polymer/vulcanize</h4></section><section class="content"><pre><code class="language-bash">vulcanize -o dist/x-gif.vulcan.html --inline dist/x-gif.html</code></pre><pre><code>platform.js - 50kb
-x-gif.vulcan.html - 34kb</code></pre><h6><br>7 requests, 91kb total</h6></section><section class="content"><h4>Polymer</h4><ul><li>• Very much a framework</li><li>• Own mental model for structuring apps</li><li>• Easy to follow, but seemed orthogonal to my purpose</li></ul></section><section class="content"><h4>What about Angular/Ember/React</h4><ul><li>• Custom elements without Web Components</li><li>• Provide common functionality (Promises, XHR)</li><li>• Why not use them?</li></ul></section><section class="content"><h4>An idea!</h4><ul><li>• A framework-agnostic core, with adapters for each framework</li><li>• Consistent component API</li><li>• Bare minimum of dependencies for each framework</li><li>• One library, 4 entry points</li></ul></section><section class="content"><h4>Superficially, it should work</h4><pre><code class="language-javascript">import XGifCore from './x-gif.core.js'
+x-gif.vulcan.html - 34kb</code></pre><h6><br>2 requests, 84kb total</h6></section><section class="content small"><h4>Polymer</h4><ul><li>• Very much a framework</li><li>• Own mental model for structuring apps</li><li>• Easy to follow, but seemed orthogonal to my purpose</li></ul></section><section class="content small"><h4>What about Angular/Ember/React</h4><ul><li>• Custom elements without Web Components</li><li>• Provide common functionality (Promises, XHR)</li><li>• Why not use them?</li></ul></section><section class="content small"><h4>An idea!</h4><ul><li>• A framework-agnostic core, with adapters for each framework</li><li>• Consistent component API</li><li>• Bare minimum of dependencies for each framework</li><li>• One library, 4 entry points</li></ul></section><section class="content"><h4>Superficially, it should work</h4><pre><code class="language-javascript">import XGifCore from './x-gif.core.js'
 myModule.directive('xGif', XGifCore.Angular);
-Ember.component('xGif', XGifCore.Ember);
+Ember.Component.extend(XGifCore.Ember);
 React.createClass(XGifCore.React);
-Polymer(XGifCore.Polymer);
-</code></pre></section><section class="content"><h1 class="red">✖</h1></section><section class="content"><h4>Problems</h4><ul><li>• Frameworks aren't really compatible with one another</li><li>• All have different expectations/idioms for accomplishing things</li></ul></section><!--section.content--><!--  h4 An example - Playback--><!--  pre--><!--    code.language-javascript--><!--      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SOME MATHS;\n  this.element.dataset['frame'] = frameNr;\n}"--><!--  pre--><!--    code.language-javascript--><!--      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SAME MATHS;\n  this.domUpdater.setFrame(frameNr);\n}"--><!----><!--section.content--><!--  pre--><!--    code.language-javascript--><!--      = "class DirectDomUpdater {\n  setFrame(frameNr) {\n    this.element.dataset['frame'] = frameNr;\n  }\n}"--><!--  pre--><!--    code.language-javascript--><!--      = "// Meets the api for the DomUpdater that Playback expects\n// but React works totally differently.\nclass GifState {\n  setFrame(frameNr) { this.frameNr = frameNr; }\n}"--><section class="content"><h4>An example - Playback</h4><pre><code class="language-javascript">setFrame(fraction, repeatCount) {
+Polymer('x-gif', XGifCore.Polymer);
+</code></pre></section><section class="content"><h1 class="red">✖</h1></section><section class="content"><h1>Problems</h1><ul><li>• Frameworks aren't really compatible with one another</li><li>• All have different expectations/idioms for accomplishing things</li></ul></section><!--section.content--><!--  h4 An example - Playback--><!--  pre--><!--    code.language-javascript--><!--      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SOME MATHS;\n  this.element.dataset['frame'] = frameNr;\n}"--><!--  pre--><!--    code.language-javascript--><!--      = "setFrame(fraction, repeatCount) {\n  var frameNr = // SAME MATHS;\n  this.domUpdater.setFrame(frameNr);\n}"--><!----><!--section.content--><!--  pre--><!--    code.language-javascript--><!--      = "class DirectDomUpdater {\n  setFrame(frameNr) {\n    this.element.dataset['frame'] = frameNr;\n  }\n}"--><!--  pre--><!--    code.language-javascript--><!--      = "// Meets the api for the DomUpdater that Playback expects\n// but React works totally differently.\nclass GifState {\n  setFrame(frameNr) { this.frameNr = frameNr; }\n}"--><section class="content"><h4>An example - Playback</h4><pre><code class="language-javascript">setFrame(fraction, repeatCount) {
   var frameNr = (this.pingPong &amp;&amp; repeatCount % 2 &gt;= 1) ?
     this.gif.frameAt(1 - fraction) :
     this.gif.frameAt(fraction);
@@ -74,4 +74,44 @@ speedChanged(oldVal, newVal) {
     this.controller.srcChanged(newVal);
   } else if (attribute == 'speed') {
     this.controller.speedChanged(parseFloat(newVal));
-  // ...</code></pre></section><section><div ui-fx="blur1" class="fullscreen"><x-gif src="images/carl_sagan_good.gif" fill n-times="1" stopped></x-gif></div><div class="content wait-for-gif"><h1>Dumb ideas</h1><div class="mid">are</div><h1>awesome</h1></div></section><section data-bespoke-state="light" class="content"><h1>Thanks!</h1><div class="line"><div class="me"></div><h3><strong>@GlenMaddern</strong></h3></div><h4><strong>geelen.github.io/a-gif-odyssey</strong></h4></section><section data-bespoke-state="light" class="content"><img src="images/djgif_logo.gif"><h1><a target="_blank" href="http://djgif.com/?rdio=p7794600&amp;tumblrs=mrdiv">DEMO</a></h1></section></article><script src="scripts/scripts.js"></script><link rel="import" href="x-gif/dist/x-gif.raw.html"></body></html>
+  // ...</code></pre></section><section data-bespoke-state="light" class="content"><h6>x-gif.html (Polymer)</h6><pre class="small"><code class="language-markup">&lt;link rel='import' href='polymer.html'&gt;
+
+&lt;polymer-element name='x-gif' attributes='src speed ... stopped'&gt;
+  &lt;template&gt;
+    &lt;link rel='stylesheet' href='x-gif.css' /&gt;
+    &lt;div class='frames-wrapper'&gt;
+      &lt;div id='frames'&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+
+&lt;script src='x-gif.js'&gt;&lt;/script&gt;
+&lt;!-- calls Polymer('x-gif', new XGif()) --&gt;</code></pre></section><section data-bespoke-state="light" class="content"><h6>x-gif.html (Web Component)</h6><pre class="small"><code class="language-markup">&lt;template id='template'&gt;
+  &lt;link rel='stylesheet' href='x-gif.css' /&gt;
+  &lt;div class='frames-wrapper'&gt;
+    &lt;div id='frames'&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script src='x-gif.js'&gt;&lt;/script&gt;</code></pre></section><section data-bespoke-state="light" class="content"><h6>x-gif.js (Web Component)</h6><pre class="small"><code class="language-javascript">class XGif extends HTMLElement {
+  createdCallback() {
+    this.shadow = this.xgif.createShadowRoot();
+    var owner = document.currentScript.ownerDocument;
+    var template = owner.querySelector('#template');
+    this.shadow.appendChild(template.content.cloneNode(true));
+  }
+}
+
+document.registerElement('x-gif', XGif);</code></pre></section><section data-bespoke-state="light" class="content"><h4>Chome 36+</h4><h6>&lt;x-gif&gt;</h6><pre><code>x-gif.html - 1kb
+x-gif.js - 11kb
+x-gif.css - 3kb</code></pre><h6><br>Vulcanized</h6><pre><code>x-gif.vulcanized.html - 14kb
+</code></pre></section><section data-bespoke-state="light" class="content"><h1>platform.js</h1><h4>... it's not just for Polymer</h4></section><section data-bespoke-state="light" class="content"><pre class="small"><code class="language-javascript">&lt;script&gt;
+  if ('registerElement' in document
+    &amp;&amp; 'createShadowRoot' in HTMLElement.prototype
+    &amp;&amp; 'import' in document.createElement('link')
+    &amp;&amp; 'content' in document.createElement('template')) {
+    // We're using a browser with native WC support!
+  } else {
+    document.write(&quot;&lt;script src='platform.js'&gt;&lt;/script&gt;&quot;)
+  }
+&lt;/script&gt;</code></pre></section><section data-bespoke-state="light" class="content"><h1>What's so different?</h1></section><section data-bespoke-state="light" class="content"><div class="mid">Extend the</div><h1>browser</h1><div class="mid">not the</div><h1>framework</h1><hr></section><section data-bespoke-state="light" class="content"><h2>Everything talks</h2><h1>HTML</h1></section><section class="content"><h3>Closing thoughts</h3></section><section><div ui-fx="blur1" class="fullscreen"><x-gif src="images/carl_sagan_good.gif" fill n-times="1" stopped></x-gif></div><div class="content wait-for-gif"><h1>The Web</h1><div class="mid">is</div><h1>awesome</h1></div></section><section data-bespoke-state="light" class="content"><h1>Thanks!</h1><div class="line"><div class="me"></div><h3><strong>@GlenMaddern</strong></h3></div><h4><strong>geelen.github.io/gifs-vs-web-components</strong></h4></section></article><script src="scripts/scripts.js"></script><link rel="import" href="x-gif/dist/x-gif.html"></body></html>

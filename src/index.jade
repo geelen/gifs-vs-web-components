@@ -336,23 +336,23 @@ html
           x-gif.vulcan.html - 34kb
         h6
           br
-          | 7 requests, 91kb total
+          | 2 requests, 84kb total
 
-      section.content
+      section.content.small
         h4 Polymer
         ul
           li • Very much a framework
           li • Own mental model for structuring apps
           li • Easy to follow, but seemed orthogonal to my purpose
 
-      section.content
+      section.content.small
         h4 What about Angular/Ember/React
         ul
           li • Custom elements without Web Components
           li • Provide common functionality (Promises, XHR)
           li • Why not use them?
 
-      section.content
+      section.content.small
         h4 An idea!
         ul
           li • A framework-agnostic core, with adapters for each framework
@@ -366,15 +366,15 @@ html
           code.language-javascript.
             import XGifCore from './x-gif.core.js'
             myModule.directive('xGif', XGifCore.Angular);
-            Ember.component('xGif', XGifCore.Ember);
+            Ember.Component.extend(XGifCore.Ember);
             React.createClass(XGifCore.React);
-            Polymer(XGifCore.Polymer);
+            Polymer('x-gif', XGifCore.Polymer);
 
       section.content
         h1.red ✖
 
       section.content
-        h4 Problems
+        h1 Problems
         ul
           li • Frameworks aren't really compatible with one another
           li • All have different expectations/idioms for accomplishing things
@@ -455,12 +455,65 @@ html
         pre.small: code.language-javascript
           = "attributeChangedCallback(attribute, oldVal, newVal) {\n  if (attribute == 'src') {\n    this.controller.srcChanged(newVal)\;\n  } else if (attribute == 'speed') {\n    this.controller.speedChanged(parseFloat(newVal));\n  // ..."
 
+      section.content(data-bespoke-state='light')
+        h6 x-gif.html (Polymer)
+        pre.small: code.language-markup
+          = "<link rel='import' href='polymer.html'>\n\n<polymer-element name='x-gif' attributes='src speed ... stopped'>\n  <template>\n    <link rel='stylesheet' href='x-gif.css' />\n    <div class='frames-wrapper'>\n      <div id='frames'></div>\n    </div>\n  </template>\n</polymer-element>\n\n<script src='x-gif.js'></script>\n<!-- calls Polymer('x-gif', new XGif()) -->"
+
+      section.content(data-bespoke-state='light')
+        h6 x-gif.html (Web Component)
+        pre.small: code.language-markup
+          = "<template id='template'>\n  <link rel='stylesheet' href='x-gif.css' />\n  <div class='frames-wrapper'>\n    <div id='frames'></div>\n  </div>\n</template>\n\n<script src='x-gif.js'></script>"
+
+      section.content(data-bespoke-state='light')
+        h6 x-gif.js (Web Component)
+        pre.small: code.language-javascript
+          = "class XGif extends HTMLElement {\n  createdCallback() {\n    this.shadow = this.xgif.createShadowRoot();\n    var owner = document.currentScript.ownerDocument;\n    var template = owner.querySelector('#template');\n    this.shadow.appendChild(template.content.cloneNode(true));\n  }\n}\n\ndocument.registerElement('x-gif', XGif);"
+
+      section.content(data-bespoke-state='light')
+        h4 Chome 36+
+        h6= "<x-gif>"
+        pre: code.
+          x-gif.html - 1kb
+          x-gif.js - 11kb
+          x-gif.css - 3kb
+        h6
+          br
+          | Vulcanized
+        pre: code.
+          x-gif.vulcanized.html - 14kb
+
+      section.content(data-bespoke-state='light')
+        h1 platform.js
+        h4 ... it's not just for Polymer
+
+      section.content(data-bespoke-state='light')
+        pre.small: code.language-javascript
+          = "<script>\n  if ('registerElement' in document\n    && 'createShadowRoot' in HTMLElement.prototype\n    && 'import' in document.createElement('link')\n    && 'content' in document.createElement('template')) {\n    // We're using a browser with native WC support!\n  } else {\n    document.write(\"<script src='platform.js'><\/script>\")\n  }\n</script>"
+
+      section.content(data-bespoke-state='light')
+        h1 What's so different?
+
+      section.content(data-bespoke-state='light')
+        .mid Extend the
+        h1 browser
+        .mid not the
+        h1 framework
+        hr
+
+      section.content(data-bespoke-state='light')
+        h2 Everything talks
+        h1 HTML
+
+      section.content
+        h3 Closing thoughts
+
       section
         .fullscreen(ui-fx="blur1")
           x-gif(src="images/carl_sagan_good.gif" fill n-times="1" stopped)
         .content.wait-for-gif
-          h1 Dumb ideas
-          .mid are
+          h1 The Web
+          .mid is
           h1 awesome
 
       section.content(data-bespoke-state='light')
@@ -470,12 +523,7 @@ html
           h3
             strong @GlenMaddern
         h4
-          strong geelen.github.io/a-gif-odyssey
-
-      section.content(data-bespoke-state='light')
-        img(src="images/djgif_logo.gif")
-        h1
-          a(target="_blank" href="http://djgif.com/?rdio=p7794600&tumblrs=mrdiv") DEMO
+          strong geelen.github.io/gifs-vs-web-components
 
     script(src='scripts/scripts.js')
-    link(rel="import" href="x-gif/dist/x-gif.raw.html")
+    link(rel="import" href="x-gif/dist/x-gif.html")
