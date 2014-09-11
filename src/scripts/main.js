@@ -41,7 +41,33 @@ bespoke.plugins.startXGif = function (deck, options) {
 
   deck.on('activate', setStopped(false));
   deck.on('deactivate', setStopped(true));
-}
+};
+
+bespoke.plugins.steps = function (deck, options) {
+  var currentSlide;
+  deck.on('activate', function (e) {
+    var numSteps = parseInt(e.slide.dataset.bespokeSteps);
+    if (numSteps && numSteps > 1) {
+      currentSlide = e.slide;
+      currentSlide.dataset.bespokeStepNr = 1;
+    } else {
+      currentSlide = undefined;
+    }
+  });
+  deck.on('next', function (e) {
+    console.log(e)
+    if (currentSlide) {
+      var numSteps = parseInt(currentSlide.dataset.bespokeSteps),
+        stepNr = parseInt(currentSlide.dataset.bespokeStepNr);
+      console.log(numSteps, stepNr);
+      if (stepNr < numSteps) {
+        currentSlide.dataset.bespokeStepNr = stepNr + 1;
+        return false;
+      }
+    }
+    return true;
+  })
+};
 
 bespoke.from('article', {
   keys: true,
@@ -51,7 +77,8 @@ bespoke.from('article', {
   state: true,
   bullets: true,
   delaySrc: true,
-  startXGif: true
+  startXGif: true,
+  steps: true
 });
 
 window.addEventListener('resize', function () {

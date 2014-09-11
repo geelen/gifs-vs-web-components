@@ -24,6 +24,8 @@
   height: 100%;
 }
 
+[ui-fx] {
+}
 [ui-fx~="blur1"] {
   filter: blur(1px);
 }
@@ -32,6 +34,10 @@
 }
 [ui-fx~="dark50%"] {
   opacity: 0.5;
+}
+[data-bespoke-step-nr="2"] [ui-fx~="step2:sinister"] {
+  transition: -webkit-filter 3s;
+  filter: blur(1px) hue-rotate(190deg) brightness(1.4) contrast(4);
 }
 
 .gif-2012 {

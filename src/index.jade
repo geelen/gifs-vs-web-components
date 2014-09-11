@@ -63,10 +63,6 @@ html
         h1
           img.smallish(src="images/heart.gif")
 
-      section.content
-        h4
-          strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
-
       section
         .content
           h2 mrdiv
@@ -83,10 +79,15 @@ html
         iframe(data-bespoke-delay-src='http://benschwarz.github.io/gifcity/?t=skt-na-veia-sempre')
 
       section.content
-        h1.green ✔
+        h4
+          strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
+
+      section(data-bespoke-steps="2")
+        .fullscreen(ui-fx="blur1 step2:sinister")
+          x-gif(src="images/arnie_happy.gif" fill stopped speed='0.4' ping-pong)
 
       section
-        .fullscreen(ui-fx="blur1")
+        .fullscreen(ui-fx="blur2")
           x-gif(src="images/takes_off_glasses.gif" fill stopped)
 
       section.content(data-bespoke-state='light')
@@ -222,7 +223,7 @@ html
           = "<x-gif\n  src=''\n  // Playback Modes\n  [speed='' || sync || bpm='']\n  // Playback options\n  stopped\n  fill\n  n-times=''\n  ping-pong\n  snap\n>"
 
       section.content(data-bespoke-state='light')
-        h4: a(target="_blank" href="http://localhost:1983/") geelen.github.io/x-gif
+        h4: a(target="_blank" href="http://localhost:1983/#/explosion.gif") geelen.github.io/x-gif
 
       //section.content(data-bespoke-state='light')
       //  h6 &lt;img src="images/jump.gif"&gt;
@@ -304,6 +305,10 @@ html
       section.content
         img(src="images/x-gif_traffic.png")
 
+      section
+        .fullscreen(ui-fx="blur2")
+          x-gif(src="images/ticked.gif" fill stopped speed='1.5' n-times='0.8' ping-pong)
+
       section.content
         h6 Polymer
         pre: code.
@@ -375,7 +380,7 @@ html
         h1.red ✖
 
       section.content
-        h1 Problems
+        h4 Problems
         ul
           li Frameworks aren't really compatible with one another
           li All have different expectations/idioms for accomplishing things
@@ -534,8 +539,8 @@ html
           .me
           h3
             strong @GlenMaddern
-        h4
-          strong geelen.github.io/gifs-vs-web-components
+        h6 geelen.github.io/gifs-vs-web-components
+        h6 geelen.github.io/x-gif
 
     script(src='scripts/scripts.js')
     link(rel="import" href="x-gif/dist/x-gif.html")
