@@ -835,11 +835,9 @@ bespoke.plugins.steps = function (deck, options) {
     }
   });
   deck.on('next', function (e) {
-    console.log(e)
     if (currentSlide) {
       var numSteps = parseInt(currentSlide.dataset.bespokeSteps),
         stepNr = parseInt(currentSlide.dataset.bespokeStepNr);
-      console.log(numSteps, stepNr);
       if (stepNr < numSteps) {
         currentSlide.dataset.bespokeStepNr = stepNr + 1;
         return false;
