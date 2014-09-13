@@ -41,6 +41,12 @@ html
           h1 Me & GIFs
 
       section
+        .fullscreen(ui-fx="blur1")
+          x-gif(src="images/top-gun-high-five.gif" fill stopped n-times='1')
+        .content.nobuild
+          h1 Me & GIFs
+
+      section
         .fullscreen
           x-gif(src="images/fractal.gif" fill stopped)
       section
@@ -561,6 +567,8 @@ html
           h3
             strong @GlenMaddern
         h6 geelen.github.io/gifs-vs-web-components
+          br
+          small ~40Mb ¯\_(ツ)_/¯
         h6 geelen.github.io/x-gif
 
     script(src='scripts/scripts.js')
