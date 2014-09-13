@@ -30,20 +30,30 @@ html
             .me
             h4 @GlenMaddern
 
+      section.fullscreen
+        .content
+          h3 Me?
+
       section
         .fullscreen(ui-fx="blur2")
-          x-gif(src="images/stars.gif" fill speed="0.6" stopped)
+          x-gif(src="images/apollorockygif1.gif" fill speed="1.2" n-times="0.45" stopped)
         .content
-          .mid A story in four parts
+          h1 Me & GIFs
+
+      section
+        .fullscreen
+          x-gif(src="images/fractal.gif" fill stopped)
+      section
+        .fullscreen
+          x-gif(src="images/hateplow.gif" fill stopped)
+
+      section
+        .almost-fullscreen
+          x-gif(src="images/deal-with-it-goat.gif" fill stopped n-times='1')
 
       section.content
         h3 Chapter One
         h1 The Idea
-
-      section.content
-        h1 VastImg
-
-      section.content(data-bespoke-state='gif-skull-2')
 
       section.content
         h1 VastImg
@@ -62,6 +72,10 @@ html
         .mid =
         h1
           img.smallish(src="images/heart.gif")
+
+      section.content
+        h4
+          strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
 
       section
         .content
@@ -83,19 +97,19 @@ html
           strong benschwarz.github.io/gifcity/?t=tumblrs,go,here
 
       section(data-bespoke-steps="2")
-        .fullscreen(ui-fx="blur1 step2:sinister")
+        .fullscreen(ui-fx="blur1 arnie")
           x-gif(src="images/arnie_happy.gif" fill stopped speed='0.4' ping-pong)
 
       section
         .fullscreen(ui-fx="blur2")
-          x-gif(src="images/takes_off_glasses.gif" fill stopped)
+          x-gif(src="images/takes_off_glasses.gif" fill stopped speed='1')
 
       section.content(data-bespoke-state='light')
         img(src="images/djgif_logo.gif")
         h1 DJGif
         h4 github.com/geelen/djgif
         h4 djgif.com
-          span.feat  (soon)
+          span.feat  (one day)
 
       section.content.nobuild
         .mid Two challenges:
@@ -205,25 +219,29 @@ html
         h1 The Component
 
       section.content(data-bespoke-state='light')
-        img(src="images/p-logo.svg")
-        h1. &lt;x-gif&gt;
-        h4 geelen.github.io/x-gif
-
-      section.content(data-bespoke-state='light')
-        h1 Dreamcode
+        h3: strong Dreamcode
 
       section.content(data-bespoke-state='light')
         pre: code.language-markup
           = "<img src='lulz.gif'>"
         pre: code.language-markup
-          = "<x-gif src='lulz.gif'></x-gif>"
+          = "<x-gif src='lulz.gif'>"
+
+      section
+        .fullscreen(ui-fx="")
+          x-gif(src="images/is-it-possible.gif" fill stopped speed='1' n-times='1')
+
+      section.content(data-bespoke-state='light')
+        img(src="images/p-logo.svg")
+        h1. &lt;x-gif&gt;
+        h4 geelen.github.io/x-gif
 
       section.content(data-bespoke-state='light')
         pre: code.language-javascript
           = "<x-gif\n  src=''\n  // Playback Modes\n  [speed='' || sync || bpm='']\n  // Playback options\n  stopped\n  fill\n  n-times=''\n  ping-pong\n  snap\n>"
 
       section.content(data-bespoke-state='light')
-        h4: a(target="_blank" href="http://localhost:1983/#/explosion.gif") geelen.github.io/x-gif
+        h4: a(target="_blank" href="http://localhost:1983/#/nope.gif") geelen.github.io/x-gif
 
       //section.content(data-bespoke-state='light')
       //  h6 &lt;img src="images/jump.gif"&gt;
@@ -422,10 +440,13 @@ html
         .fullscreen
           x-gif(src="images/nope.gif" fill stopped)
 
-      section.content
-        h1 Shadow DOM
-        .mid is
-        h1 badass
+      section
+        .fullscreen(ui-fx="dark50%")
+          x-gif(src="images/badass.gif" fill stopped speed='0.8' ping-pong)
+        .content
+          h1 Shadow DOM
+          .mid is
+          h1 badass
 
       section.content
         h1 :(
