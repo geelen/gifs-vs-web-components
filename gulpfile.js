@@ -65,11 +65,11 @@ gulp.task('clean', function () {
 });
 
 gulp.task('x-gif', function () {
-  gulp.src([
+  return gulp.src([
     'src/bower_components/x-gif/dist/*'
   ])
     .pipe(gulp.dest('public/x-gif/dist'));
-})
+});
 
 gulp.task('copy', function () {
   return gulp.src(
